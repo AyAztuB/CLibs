@@ -2,6 +2,11 @@
 
 An union of some of C utils library.
 
+## Documentation
+
+A Doxyfile is provided to generate a doxygen documentation.
+The doxygen documentation is hosted on [github pages](https://ayaztub.github.io/CLibs/).
+
 ## Instalation
 
 ```sh

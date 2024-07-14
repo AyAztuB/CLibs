@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>C-libs: core_utils.h File Reference</title>
+<title>C-libs: assert.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('core__utils_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('assert_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -93,18 +93,74 @@ $(document).ready(function(){initNavTree('core__utils_8h.html',''); initResizabl
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">core_utils.h File Reference</div>  </div>
+<div class="title">assert.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="logger_8h.html">ayaztub/core_utils/logger.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="assert_8h.html">ayaztub/core_utils/assert.h</a>&gt;</code><br />
-</div></div><!-- contents -->
+
+<p>Header file for compile-time assertions.  
+<a href="#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a4b023efa74e82314e5e2aca4914e2806"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="assert_8h.html#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a>(predicate,  file)&#160;&#160;&#160;__CASSERT_IMPL(predicate, file, __LINE__)</td></tr>
+<tr class="memdesc:a4b023efa74e82314e5e2aca4914e2806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asserts a compile-time condition.  <a href="assert_8h.html#a4b023efa74e82314e5e2aca4914e2806">More...</a><br /></td></tr>
+<tr class="separator:a4b023efa74e82314e5e2aca4914e2806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Header file for compile-time assertions. </p>
+<p>This header provides macros for creating compile-time assertions. Compile-time assertions are useful for validating conditions during compilation and generating errors if the conditions are not met.</p>
+<dl class="section note"><dt>Note</dt><dd>You can define NOASSERT to remove assertions. </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a4b023efa74e82314e5e2aca4914e2806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b023efa74e82314e5e2aca4914e2806">&#9670;&nbsp;</a></span>COMPILE_ASSERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COMPILE_ASSERT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">predicate, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">file&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__CASSERT_IMPL(predicate, file, __LINE__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asserts a compile-time condition. </p>
+<p>This macro asserts a compile-time condition. If the condition is false, it generates a compilation error.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">predicate</td><td>The condition to assert. Must be a compile-time constant. </td></tr>
+    <tr><td class="paramname">file</td><td>A unique identifier for the assertion, typically the file name.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>You can define NOASSERT to remove the COMPILE_ASSERT block.</p>
+<p>Example usage: </p><div class="fragment"><div class="line"><a class="code" href="assert_8h.html#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a>(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) == 4, int_size_check); <span class="comment">// Asserts that int is 4 bytes</span></div>
+<div class="ttc" id="aassert_8h_html_a4b023efa74e82314e5e2aca4914e2806"><div class="ttname"><a href="assert_8h.html#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a></div><div class="ttdeci">#define COMPILE_ASSERT(predicate, file)</div><div class="ttdoc">Asserts a compile-time condition.</div><div class="ttdef"><b>Definition:</b> assert.h:39</div></div>
+</div><!-- fragment --> 
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a6cfef18da99c3955ca9857d1b0683e1.html">ayaztub</a></li><li class="navelem"><a class="el" href="core__utils_8h.html">core_utils.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a6cfef18da99c3955ca9857d1b0683e1.html">ayaztub</a></li><li class="navelem"><a class="el" href="dir_ce65c590ecfd628045fd53db9233ef53.html">core_utils</a></li><li class="navelem"><a class="el" href="assert_8h.html">assert.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

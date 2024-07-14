@@ -112,24 +112,18 @@ $(document).ready(function(){initNavTree('logger_8h.html',''); initResizable(); 
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlogger__options.html">logger_options</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure for customizing default logger output.  <a href="structlogger__options.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structlogger__options"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#structlogger__options">logger_options</a></td></tr>
+<tr class="memdesc:structlogger__options"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure for customizing default logger output.  <a href="logger_8h.html#structlogger__options">More...</a><br /></td></tr>
+<tr class="separator:structlogger__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a9dc6c49b86b33b5b3f81883ef02fbfd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1">SOURCE_PATH_SIZE</a>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:a9dc6c49b86b33b5b3f81883ef02fbfd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to truncate the root file path.  <a href="logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1">More...</a><br /></td></tr>
 <tr class="separator:a9dc6c49b86b33b5b3f81883ef02fbfd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="memItemLeft" align="right" valign="top"><a id="a5fccb4fc71e44089a1b1a77fc76c0b68"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>__FILENAME__</b>&#160;&#160;&#160;((__FILE__) + (<a class="el" href="logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1">SOURCE_PATH_SIZE</a>))</td></tr>
+<tr class="memitem:a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>&#160;&#160;&#160;((__FILE__) + (<a class="el" href="logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1">SOURCE_PATH_SIZE</a>))</td></tr>
+<tr class="memdesc:a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to adjust the file path based on SOURCE_PATH_SIZE.  <a href="logger_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">More...</a><br /></td></tr>
 <tr class="separator:a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c88d66f155f884f2af437475edf7dfc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a9c88d66f155f884f2af437475edf7dfc">LOG_LVL</a>(X)</td></tr>
-<tr class="memdesc:a9c88d66f155f884f2af437475edf7dfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">X macro for defining log levels.  <a href="logger_8h.html#a9c88d66f155f884f2af437475edf7dfc">More...</a><br /></td></tr>
-<tr class="separator:a9c88d66f155f884f2af437475edf7dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3c422f7a9eaa0e2cb4cd4df33c2e69c"><td class="memItemLeft" align="right" valign="top"><a id="ac3c422f7a9eaa0e2cb4cd4df33c2e69c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>X</b>(A)&#160;&#160;&#160;A,</td></tr>
-<tr class="separator:ac3c422f7a9eaa0e2cb4cd4df33c2e69c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a874b3e145bf67f8eab9fbb6898e9523c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(LEVEL,  FMT, ...)</td></tr>
 <tr class="memdesc:a874b3e145bf67f8eab9fbb6898e9523c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to log messages with variadic arguments.  <a href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">More...</a><br /></td></tr>
 <tr class="separator:a874b3e145bf67f8eab9fbb6898e9523c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,13 +133,22 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ac91d55174d383848b976a34de843748e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#ac91d55174d383848b976a34de843748e">log_level</a> </td></tr>
+<tr class="memitem:ac91d55174d383848b976a34de843748e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#ac91d55174d383848b976a34de843748e">log_level</a> { <br />
+&#160;&#160;<a class="el" href="logger_8h.html#ac91d55174d383848b976a34de843748ea0593585da9181e972974c1274d8f2b4f">DEBUG</a>
+, <a class="el" href="logger_8h.html#ac91d55174d383848b976a34de843748ea748005382152808a72b1a9177d9dc806">INFO</a>
+, <a class="el" href="logger_8h.html#ac91d55174d383848b976a34de843748ea984de77c680eaff141ec910e25568a81">WARNING</a>
+, <a class="el" href="logger_8h.html#ac91d55174d383848b976a34de843748ea2fd6f336d08340583bd620a7f5694c90">ERROR</a>
+, <br />
+&#160;&#160;<a class="el" href="logger_8h.html#ac91d55174d383848b976a34de843748eaad9dee005a3d0f9137b2ac1e0869f89b">TIMEOUT</a>
+, <a class="el" href="logger_8h.html#ac91d55174d383848b976a34de843748ea651d8a47a6976d6fe05c0e03fb4cd2d0">FATAL</a>
+<br />
+ }</td></tr>
 <tr class="memdesc:ac91d55174d383848b976a34de843748e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of log levels.  <a href="logger_8h.html#ac91d55174d383848b976a34de843748e">More...</a><br /></td></tr>
 <tr class="separator:ac91d55174d383848b976a34de843748e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5b6fd6aee4124f7081071947aa26861b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a5b6fd6aee4124f7081071947aa26861b">logger_set_options</a> (struct <a class="el" href="structlogger__options.html">logger_options</a> options)</td></tr>
+<tr class="memitem:a5b6fd6aee4124f7081071947aa26861b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a5b6fd6aee4124f7081071947aa26861b">logger_set_options</a> (struct <a class="el" href="logger_8h.html#structlogger__options">logger_options</a> options)</td></tr>
 <tr class="memdesc:a5b6fd6aee4124f7081071947aa26861b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set options to override the default logger settings.  <a href="logger_8h.html#a5b6fd6aee4124f7081071947aa26861b">More...</a><br /></td></tr>
 <tr class="separator:a5b6fd6aee4124f7081071947aa26861b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21c95355fe306651e7e9b2b400d083b1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a21c95355fe306651e7e9b2b400d083b1">logger_set_outfile</a> (const char *filename)</td></tr>
@@ -160,8 +163,110 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the logger utility. </p>
-<p>This file provides logging functionality with various log levels and options. It allows logging messages to a file or standard output and provides customization options for log formatting and filtering. </p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<p>This file provides logging functionality with various log levels and options. It allows logging messages to a file or standard output and provides customization options for log formatting and filtering. </p><dl class="section note"><dt>Note</dt><dd>define NOLOG before including the header or in compile arguments to remove all <a class="el" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c" title="Macro to log messages with variadic arguments.">LOG()</a> call</dd></dl>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="logger_8h.html">ayaztub/core_utils/logger.h</a>&gt;</span></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
+<div class="line">    <span class="keywordflow">if</span> (!<a class="code" href="logger_8h.html#a21c95355fe306651e7e9b2b400d083b1">logger_set_outfile</a>(<span class="stringliteral">&quot;file.log&quot;</span>))</div>
+<div class="line">        <a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea651d8a47a6976d6fe05c0e03fb4cd2d0">FATAL</a>(<span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;cannot open file `file.log`&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(<a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea748005382152808a72b1a9177d9dc806">INFO</a>, <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;info log printed in file.log with date and thread_id if on linux&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="logger_8h.html#a3620e6dde3dffb918bcbf697179673eb">logger_close_outfile</a>();</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(<a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea748005382152808a72b1a9177d9dc806">INFO</a>, <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;back on stdout/stderr&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="logger_8h.html#a5b6fd6aee4124f7081071947aa26861b">logger_set_options</a>((<span class="keyword">struct</span> <a class="code" href="logger_8h.html#structlogger__options">logger_options</a>){</div>
+<div class="line">        .log_level = <a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea984de77c680eaff141ec910e25568a81">WARNING</a>,</div>
+<div class="line">        .show_date = <span class="keyword">true</span>,</div>
+<div class="line"><span class="preprocessor">    #ifdef __linux__</span></div>
+<div class="line">        .show_thread_id = <span class="keyword">true</span>,</div>
+<div class="line"><span class="preprocessor">    #endif </span><span class="comment">// __linux__</span></div>
+<div class="line">    });</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(<a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea0593585da9181e972974c1274d8f2b4f">DEBUG</a>, <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;debug log not printed due to log level WARNING in options&quot;</span>);</div>
+<div class="line">    <a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(<a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea984de77c680eaff141ec910e25568a81">WARNING</a>, <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;log printed on stdout&quot;</span>);</div>
+<div class="line">    <a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(<a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea2fd6f336d08340583bd620a7f5694c90">ERROR</a>, <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;error log on stderr&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="logger_8h.html#a21c95355fe306651e7e9b2b400d083b1">logger_set_outfile</a>(<span class="stringliteral">&quot;stderr&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(<a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea0593585da9181e972974c1274d8f2b4f">DEBUG</a>, <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;still not displayed...&quot;</span>);</div>
+<div class="line">    <a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(<a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea984de77c680eaff141ec910e25568a81">WARNING</a>, <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;all logs on stderr this time !&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="logger_8h.html#a3620e6dde3dffb918bcbf697179673eb">logger_close_outfile</a>();</div>
+<div class="line">    <span class="comment">// this doesn&#39;t close the stderr file stream but removed it from the internal to log back on stdout/stderr</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="alogger_8h_html"><div class="ttname"><a href="logger_8h.html">logger.h</a></div><div class="ttdoc">Header file for the logger utility.</div></div>
+<div class="ttc" id="alogger_8h_html_a21c95355fe306651e7e9b2b400d083b1"><div class="ttname"><a href="logger_8h.html#a21c95355fe306651e7e9b2b400d083b1">logger_set_outfile</a></div><div class="ttdeci">bool logger_set_outfile(const char *filename)</div><div class="ttdoc">Provide a log file to the logger.</div></div>
+<div class="ttc" id="alogger_8h_html_a3620e6dde3dffb918bcbf697179673eb"><div class="ttname"><a href="logger_8h.html#a3620e6dde3dffb918bcbf697179673eb">logger_close_outfile</a></div><div class="ttdeci">void logger_close_outfile(void)</div><div class="ttdoc">Close the currently set log file.</div></div>
+<div class="ttc" id="alogger_8h_html_a5b6fd6aee4124f7081071947aa26861b"><div class="ttname"><a href="logger_8h.html#a5b6fd6aee4124f7081071947aa26861b">logger_set_options</a></div><div class="ttdeci">void logger_set_options(struct logger_options options)</div><div class="ttdoc">Set options to override the default logger settings.</div></div>
+<div class="ttc" id="alogger_8h_html_a874b3e145bf67f8eab9fbb6898e9523c"><div class="ttname"><a href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a></div><div class="ttdeci">#define LOG(LEVEL, FMT,...)</div><div class="ttdoc">Macro to log messages with variadic arguments.</div><div class="ttdef"><b>Definition:</b> logger.h:147</div></div>
+<div class="ttc" id="alogger_8h_html_ac91d55174d383848b976a34de843748ea0593585da9181e972974c1274d8f2b4f"><div class="ttname"><a href="logger_8h.html#ac91d55174d383848b976a34de843748ea0593585da9181e972974c1274d8f2b4f">DEBUG</a></div><div class="ttdeci">@ DEBUG</div><div class="ttdef"><b>Definition:</b> logger.h:92</div></div>
+<div class="ttc" id="alogger_8h_html_ac91d55174d383848b976a34de843748ea2fd6f336d08340583bd620a7f5694c90"><div class="ttname"><a href="logger_8h.html#ac91d55174d383848b976a34de843748ea2fd6f336d08340583bd620a7f5694c90">ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition:</b> logger.h:92</div></div>
+<div class="ttc" id="alogger_8h_html_ac91d55174d383848b976a34de843748ea651d8a47a6976d6fe05c0e03fb4cd2d0"><div class="ttname"><a href="logger_8h.html#ac91d55174d383848b976a34de843748ea651d8a47a6976d6fe05c0e03fb4cd2d0">FATAL</a></div><div class="ttdeci">@ FATAL</div><div class="ttdef"><b>Definition:</b> logger.h:92</div></div>
+<div class="ttc" id="alogger_8h_html_ac91d55174d383848b976a34de843748ea748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="logger_8h.html#ac91d55174d383848b976a34de843748ea748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdef"><b>Definition:</b> logger.h:92</div></div>
+<div class="ttc" id="alogger_8h_html_ac91d55174d383848b976a34de843748ea984de77c680eaff141ec910e25568a81"><div class="ttname"><a href="logger_8h.html#ac91d55174d383848b976a34de843748ea984de77c680eaff141ec910e25568a81">WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdef"><b>Definition:</b> logger.h:92</div></div>
+<div class="ttc" id="alogger_8h_html_structlogger__options"><div class="ttname"><a href="logger_8h.html#structlogger__options">logger_options</a></div><div class="ttdoc">Structure for customizing default logger output.</div><div class="ttdef"><b>Definition:</b> logger.h:113</div></div>
+</div><!-- fragment --> </div><hr/><h2 class="groupheader">Data Structure Documentation</h2>
+<a name="structlogger__options" id="structlogger__options"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structlogger__options">&#9670;&nbsp;</a></span>logger_options</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct logger_options</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p>Structure for customizing default logger output. </p>
+<p>This structure allows customization of the logger's behavior when no log file is specified. It must be passed to logger_set_options to take effect. When a log file is provided, these options are automatically adjusted to print as mush information as possible. To do so, if a log file is provided, the <a class="el" href="logger_8h.html#a76c97c153d4cca949f1fce7010bd7ae1">logger_options::log_level</a> will be DEBUG, the <a class="el" href="logger_8h.html#ac8d9f0eaee0ff24f74125a2d90f6e4e5">logger_options::show_date</a> will be true and the <a class="el" href="logger_8h.html#a7ab5fcdf71f70481c31a07c2f278ecb9">logger_options::show_thread_id</a> will be true (Linux only). </p>
+</div><table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="a76c97c153d4cca949f1fce7010bd7ae1"></a>enum <a class="el" href="logger_8h.html#ac91d55174d383848b976a34de843748e">log_level</a></td>
+<td class="fieldname">
+log_level</td>
+<td class="fielddoc">
+<p>Log level threshold; logs with a level lower than this will not be printed. DEBUG by default. </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="ac8d9f0eaee0ff24f74125a2d90f6e4e5"></a>bool</td>
+<td class="fieldname">
+show_date</td>
+<td class="fielddoc">
+<p>Flag to show the date in logs. False by default. </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a7ab5fcdf71f70481c31a07c2f278ecb9"></a>bool</td>
+<td class="fieldname">
+show_thread_id</td>
+<td class="fielddoc">
+<p>Flag to show the thread ID in logs. Only available on Linux; false by default. </p><dl class="section note"><dt>Note</dt><dd>Only available on Linux </dd></dl>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a5fccb4fc71e44089a1b1a77fc76c0b68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fccb4fc71e44089a1b1a77fc76c0b68">&#9670;&nbsp;</a></span>__FILENAME__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __FILENAME__&#160;&#160;&#160;((__FILE__) + (<a class="el" href="logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1">SOURCE_PATH_SIZE</a>))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro to adjust the file path based on SOURCE_PATH_SIZE. </p>
+<p>This macro modifies the <b>FILE</b> macro to remove a specified number of characters from the beginning, making the logged file paths more readable. </p>
+
+</div>
+</div>
 <a id="aada70275cd005ca57e6760c04839ad2f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aada70275cd005ca57e6760c04839ad2f">&#9670;&nbsp;</a></span>FATAL</h2>
 
@@ -191,7 +296,7 @@ Functions</h2></td></tr>
 <div class="line">        LOG(<a class="code" href="logger_8h.html#aada70275cd005ca57e6760c04839ad2f">FATAL</a>, (FMT), __VA_ARGS__); \</div>
 <div class="line">        exit(1); \</div>
 <div class="line">    } <span class="keywordflow">while</span>(0)</div>
-<div class="ttc" id="alogger_8h_html_aada70275cd005ca57e6760c04839ad2f"><div class="ttname"><a href="logger_8h.html#aada70275cd005ca57e6760c04839ad2f">FATAL</a></div><div class="ttdeci">#define FATAL(FMT,...)</div><div class="ttdoc">Macro to log fatal messages and crash the program.</div><div class="ttdef"><b>Definition:</b> logger.h:161</div></div>
+<div class="ttc" id="alogger_8h_html_aada70275cd005ca57e6760c04839ad2f"><div class="ttname"><a href="logger_8h.html#aada70275cd005ca57e6760c04839ad2f">FATAL</a></div><div class="ttdeci">#define FATAL(FMT,...)</div><div class="ttdoc">Macro to log fatal messages and crash the program.</div><div class="ttdef"><b>Definition:</b> logger.h:178</div></div>
 </div><!-- fragment -->
 <p>Macro to log fatal messages and crash the program. </p>
 <p>This macro logs a message with the FATAL log level and then crashes the program. Even if logging is disabled, this macro will cause the program to exit.</p>
@@ -202,7 +307,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Example usage: </p><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#aada70275cd005ca57e6760c04839ad2f">FATAL</a>(<span class="stringliteral">&quot;Critical error: %s&quot;</span>, error_message);</div>
+<p>Example usage: </p><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea651d8a47a6976d6fe05c0e03fb4cd2d0">FATAL</a>(<span class="stringliteral">&quot;Critical error: %s&quot;</span>, error_message);</div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -248,8 +353,9 @@ Functions</h2></td></tr>
 <div class="line">                break; \</div>
 <div class="line">            } \</div>
 <div class="line">            snprintf(__buff, __size, (FMT), __VA_ARGS__); \</div>
-<div class="line">            logger_log((LEVEL), __FILENAME__, __LINE__, __func__, __buff); \</div>
+<div class="line">            logger_log((LEVEL), <a class="code" href="logger_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, __buff); \</div>
 <div class="line">        } <span class="keywordflow">while</span>(0)</div>
+<div class="ttc" id="alogger_8h_html_a5fccb4fc71e44089a1b1a77fc76c0b68"><div class="ttname"><a href="logger_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a></div><div class="ttdeci">#define __FILENAME__</div><div class="ttdoc">Macro to adjust the file path based on SOURCE_PATH_SIZE.</div><div class="ttdef"><b>Definition:</b> logger.h:73</div></div>
 </div><!-- fragment -->
 <p>Macro to log messages with variadic arguments. </p>
 <p>This macro logs messages with a specified log level and format string. If a log file is provided, logs are written to the file. Otherwise, logs are written to stderr if the log level is greater than WARNING, and to stdout if the log level is less than or equal to WARNING. If the log level is FATAL, logs are written to both the file (if provided) and stderr. This macro can be disabled defining NOLOG.</p>
@@ -262,43 +368,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Example usage: </p><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(INFO, <span class="stringliteral">&quot;Application started with %d arguments&quot;</span>, argc);</div>
-<div class="line"><a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(ERROR, <span class="stringliteral">&quot;Failed to open file: %s&quot;</span>, filename);</div>
-<div class="ttc" id="alogger_8h_html_a874b3e145bf67f8eab9fbb6898e9523c"><div class="ttname"><a href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a></div><div class="ttdeci">#define LOG(LEVEL, FMT,...)</div><div class="ttdoc">Macro to log messages with variadic arguments.</div><div class="ttdef"><b>Definition:</b> logger.h:130</div></div>
+<p>Example usage: </p><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(<a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea748005382152808a72b1a9177d9dc806">INFO</a>, <span class="stringliteral">&quot;Application started with %d arguments&quot;</span>, argc);</div>
+<div class="line"><a class="code" href="logger_8h.html#a874b3e145bf67f8eab9fbb6898e9523c">LOG</a>(<a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea2fd6f336d08340583bd620a7f5694c90">ERROR</a>, <span class="stringliteral">&quot;Failed to open file: %s&quot;</span>, filename);</div>
 </div><!-- fragment --> 
-</div>
-</div>
-<a id="a9c88d66f155f884f2af437475edf7dfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c88d66f155f884f2af437475edf7dfc">&#9670;&nbsp;</a></span>LOG_LVL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LOG_LVL</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">X</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    X(DEBUG) \</div>
-<div class="line">    X(INFO) \</div>
-<div class="line">    X(WARNING) \</div>
-<div class="line">    X(ERROR) \</div>
-<div class="line">    X(TIMEOUT) \</div>
-<div class="line">    X(<a class="code" href="logger_8h.html#aada70275cd005ca57e6760c04839ad2f">FATAL</a>)</div>
-</div><!-- fragment -->
-<p>X macro for defining log levels. </p>
-<p>This macro should never be called by the user. It defines all possible log levels using an X-macro technique.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">X</td><td>Macro parameter to be expanded. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <a id="a9dc6c49b86b33b5b3f81883ef02fbfd1"></a>
@@ -314,7 +386,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Macro to truncate the root file path. </p>
-<p>This macro is useful when the project is compiled with CMake, allowing for a cleaner file path in logs by removing a fixed number of characters from the start of the <b>FILE</b> macro. </p>
+<p>This macro is useful when the project is compiled with CMake, allowing for a cleaner file path in logs by removing a fixed number of characters from the start of the <b>FILE</b> macro. The default value if the macro wasn't defined earlier is 0. </p>
 
 </div>
 </div>
@@ -333,6 +405,14 @@ Functions</h2></td></tr>
 
 <p>Enumeration of log levels. </p>
 <p>These log levels can be used to control the verbosity of the logger. In order, there are: DEBUG, INFO, WARNING, ERROR, TIMEOUT, FATAL </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac91d55174d383848b976a34de843748ea0593585da9181e972974c1274d8f2b4f"></a>DEBUG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac91d55174d383848b976a34de843748ea748005382152808a72b1a9177d9dc806"></a>INFO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac91d55174d383848b976a34de843748ea984de77c680eaff141ec910e25568a81"></a>WARNING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac91d55174d383848b976a34de843748ea2fd6f336d08340583bd620a7f5694c90"></a>ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac91d55174d383848b976a34de843748eaad9dee005a3d0f9137b2ac1e0869f89b"></a>TIMEOUT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac91d55174d383848b976a34de843748ea651d8a47a6976d6fe05c0e03fb4cd2d0"></a>FATAL&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
 </div>
 </div>
@@ -356,7 +436,6 @@ Functions</h2></td></tr>
 <p>Close the currently set log file. </p>
 <p>This function closes the log file that was previously set using logger_set_outfile.</p>
 <p>Example usage: </p><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#a3620e6dde3dffb918bcbf697179673eb">logger_close_outfile</a>();</div>
-<div class="ttc" id="alogger_8h_html_a3620e6dde3dffb918bcbf697179673eb"><div class="ttname"><a href="logger_8h.html#a3620e6dde3dffb918bcbf697179673eb">logger_close_outfile</a></div><div class="ttdeci">void logger_close_outfile(void)</div><div class="ttdoc">Close the currently set log file.</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -428,7 +507,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void logger_set_options </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structlogger__options.html">logger_options</a>&#160;</td>
+          <td class="paramtype">struct <a class="el" href="logger_8h.html#structlogger__options">logger_options</a>&#160;</td>
           <td class="paramname"><em>options</em></td><td>)</td>
           <td></td>
         </tr>
@@ -436,22 +515,20 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set options to override the default logger settings. </p>
-<p>This function allows the user to customize the logger's behavior by setting options defined in the <a class="el" href="structlogger__options.html" title="Structure for customizing default logger output.">logger_options</a> structure.</p>
+<p>This function allows the user to customize the logger's behavior by setting options defined in the <a class="el" href="logger_8h.html#structlogger__options" title="Structure for customizing default logger output.">logger_options</a> structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">options</td><td>Structure containing the logger options.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Example usage: </p><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#a5b6fd6aee4124f7081071947aa26861b">logger_set_options</a>((<span class="keyword">struct</span> <a class="code" href="structlogger__options.html">logger_options</a>) {</div>
-<div class="line">  .log_level = ERROR,</div>
+<p>Example usage: </p><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#a5b6fd6aee4124f7081071947aa26861b">logger_set_options</a>((<span class="keyword">struct</span> <a class="code" href="logger_8h.html#structlogger__options">logger_options</a>) {</div>
+<div class="line">  .log_level = <a class="code" href="logger_8h.html#ac91d55174d383848b976a34de843748ea2fd6f336d08340583bd620a7f5694c90">ERROR</a>,</div>
 <div class="line">  .show_date = <span class="keyword">true</span>,</div>
 <div class="line"><span class="preprocessor">#ifdef __linux__</span></div>
 <div class="line">  .show_thread_id = <span class="keyword">true</span>,</div>
 <div class="line"><span class="preprocessor">#endif </span><span class="comment">// __linux__</span></div>
 <div class="line">});</div>
-<div class="ttc" id="alogger_8h_html_a5b6fd6aee4124f7081071947aa26861b"><div class="ttname"><a href="logger_8h.html#a5b6fd6aee4124f7081071947aa26861b">logger_set_options</a></div><div class="ttdeci">void logger_set_options(struct logger_options options)</div><div class="ttdoc">Set options to override the default logger settings.</div></div>
-<div class="ttc" id="astructlogger__options_html"><div class="ttname"><a href="structlogger__options.html">logger_options</a></div><div class="ttdoc">Structure for customizing default logger output.</div><div class="ttdef"><b>Definition:</b> logger.h:96</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -483,7 +560,6 @@ Functions</h2></td></tr>
 <p>Example usage: </p><div class="fragment"><div class="line"><span class="keywordflow">if</span> (!<a class="code" href="logger_8h.html#a21c95355fe306651e7e9b2b400d083b1">logger_set_outfile</a>(<span class="stringliteral">&quot;logfile.txt&quot;</span>)) {</div>
 <div class="line">    fprintf(stderr, <span class="stringliteral">&quot;Failed to set log file\n&quot;</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="alogger_8h_html_a21c95355fe306651e7e9b2b400d083b1"><div class="ttname"><a href="logger_8h.html#a21c95355fe306651e7e9b2b400d083b1">logger_set_outfile</a></div><div class="ttdeci">bool logger_set_outfile(const char *filename)</div><div class="ttdoc">Provide a log file to the logger.</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

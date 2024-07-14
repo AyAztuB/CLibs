@@ -9,6 +9,7 @@
  *
  * @code
  * #include <ayaztub/core_utils/logger.h>
+ *
  * int main(int argc, char **argv) {
  *     if (!logger_set_outfile("file.log"))
  *         FATAL("%s", "cannot open file `file.log`");

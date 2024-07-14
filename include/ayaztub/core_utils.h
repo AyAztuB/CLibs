@@ -2,5 +2,6 @@
 #define __AYAZTUB__CORE_UTILS_H__
 
 #include <ayaztub/core_utils/logger.h>
+#include <ayaztub/core_utils/assert.h>
 
 #endif // __AYAZTUB__CORE_UTILS_H__

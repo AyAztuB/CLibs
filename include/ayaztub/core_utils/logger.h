@@ -5,6 +5,7 @@
  * This file provides logging functionality with various log levels and options. 
  * It allows logging messages to a file or standard output and provides customization 
  * options for log formatting and filtering.
+ * @note define NOLOG before including the header or in compile arguments to remove all LOG() call
  *
  * @code
  * #include <ayaztub/core_utils/logger.h>
@@ -64,7 +65,6 @@
 #endif // SOURCE_PATH_SIZE
 
 /**
- * @def __FILENAME__
  * @brief Macro to adjust the file path based on SOURCE_PATH_SIZE.
  *
  * This macro modifies the __FILE__ macro to remove a specified number of characters from the beginning,

@@ -5,6 +5,42 @@
  * This file provides logging functionality with various log levels and options. 
  * It allows logging messages to a file or standard output and provides customization 
  * options for log formatting and filtering.
+ *
+ * @code
+ * #include <ayaztub/core_utils/logger.h>
+ * int main(int argc, char **argv) {
+ *     if (!logger_set_outfile("file.log"))
+ *         FATAL("%s", "cannot open file `file.log`");
+ *
+ *     LOG(INFO, "%s", "info log printed in file.log with date and thread_id if on linux");
+ *
+ *     logger_close_outfile();
+ *
+ *     LOG(INFO, "%s", "back on stdout/stderr");
+ *
+ *     logger_set_options((struct logger_options){
+ *         .log_level = WARNING,
+ *         .show_date = true,
+ *     #ifdef __linux__
+ *         .show_thread_id = true,
+ *     #endif // __linux__
+ *     });
+ *
+ *     LOG(DEBUG, "%s", "debug log not printed due to log level WARNING in options");
+ *     LOG(WARNING, "%s", "log printed on stdout");
+ *     LOG(ERROR, "%s", "error log on stderr");
+ *
+ *     logger_set_outfile("stderr");
+ *
+ *     LOG(DEBUG, "%s", "still not displayed...");
+ *     LOG(WARNING, "%s", "all logs on stderr this time !");
+ *
+ *     logger_close_outfile();
+ *     // this doesn't close the stderr file stream but removed it from the internal to log back on stdout/stderr
+ *
+ *     return 0;
+ * }
+ * @endcode
  */
 
 #ifndef __AYAZTUB__CORE_UTILS__LOGGER_H__
@@ -21,6 +57,7 @@
  *
  * This macro is useful when the project is compiled with CMake, allowing for a cleaner
  * file path in logs by removing a fixed number of characters from the start of the __FILE__ macro.
+ * The default value if the macro wasn't defined earlier is 0.
  */
 #ifndef SOURCE_PATH_SIZE
     #define SOURCE_PATH_SIZE 0
@@ -35,15 +72,6 @@
  */
 #define __FILENAME__ ((__FILE__) + (SOURCE_PATH_SIZE))
 
-/**
- * @def LOG_LVL
- * @brief X macro for defining log levels.
- *
- * This macro should never be called by the user. It defines all possible log levels
- * using an X-macro technique.
- *
- * @param X Macro parameter to be expanded.
- */
 #define LOG_LVL(X) \
     X(DEBUG) \
     X(INFO) \
@@ -81,17 +109,7 @@ enum log_level {
  * Flag to show the date in logs. False by default.
  * @var logger_options::show_thread_id
  * Flag to show the thread ID in logs. Only available on Linux; false by default.
- *
- * Example usage:
- * @code
- * struct logger_options options;
- * options.log_level = INFO;
- * options.show_date = true;
- * #ifdef __linux__
- * options.show_thread_id = true;
- * #endif
- * logger_set_options(options);
- * @endcode
+ * @note Only available on Linux
  */
 struct logger_options {
     enum log_level log_level;

@@ -55,10 +55,9 @@ bool logger_set_outfile(const char* filename) {
 }
 
 void logger_close_outfile(void) {
-    if (outfile && outfile != stderr) {
+    if (outfile && outfile != stderr)
         fclose(outfile);
-        outfile = NULL;
-    }
+    outfile = NULL;
 }
 
 void logger_log(enum log_level level, const char* file_name, size_t line, const char* func_name, char* message) {

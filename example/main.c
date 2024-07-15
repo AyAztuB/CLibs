@@ -16,6 +16,20 @@ int main(void) {
     LOG(DEBUG, "test msg: %zu", 1lu);
     LOG(WARNING, "fst warning: %s", "msg copy");
 
+    int a = 5;
+    float b = 3.14f;
+    double c = 2.718281828;
+    char d = 'x';
+    char *e = "Hello, world!";
+
+    dbg(a);
+    dbg(b);
+    dbg(c);
+    dbg(d);
+    dbg(e);
+
+    set_breakpoint();
+    
     LOGGER_SET_OUTFILE("stderr");
     LOG(WARNING, "warning on stderr: %d", 101);
     LOGGER_CLOSE_OUTFILE();

@@ -16,35 +16,27 @@
 #ifndef FPRINTF
 #    include <stdio.h>
 /**
- * @def FPRINTF(FILE, FMT, ...)
+ * @def FPRINTF
  * @brief Macro for formatted output to a file stream.
  *
  * This macro allow you to use your own fprintf function instead of the default
  * one from stdio.h. By default, if undefined, it is an alias of the fprintf
  * standard function.
- *
- * @warning In std=c99, which is the standard I used, the @c __VA_OPT__(,) macro
- * is not defined. So, we need to provide at least one argument in the
- * variadic ones. If you work on a modern C standard, you should consider
- * defining a new one as follow
- * @code
- * #define FPRINTF(FILE, FMT, ...) fprintf(FILE, FMT, __VA_OPT__(,) __VA_ARGS__)
- * @endcode
  */
-#    define FPRINTF(FILE, FMT, ...) fprintf(FILE, FMT, __VA_ARGS__)
+#    define FPRINTF fprintf
 #endif // FPRINTF
 
 #ifndef ABORT
 #    include <stdlib.h>
 /**
- * @def ABORT()
+ * @def ABORT
  * @brief Macro to abort the program.
  *
  * This macro allow you to use your own abort function instead of the default
  * one from stdlib.h. By default, if undefined, it is an alias of the abort
  * standard function.
  */
-#    define ABORT() abort()
+#    define ABORT abort
 #endif // ABORT
 
 #ifdef NOASSERT

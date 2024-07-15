@@ -9,22 +9,17 @@
  * @note define NOLOG before including the header or in compile arguments to
  * remove all LOG() call
  *
- * @todo define custom fprintf/snprintf/sprintf/exit/FILE/fopen/fclose/stderr
- * to allow customisation => pass those function defined by default in header
- * as arguments => make more macro to do define which we will use and no
- * longer pass it directly (nobody want to pass std func in a log if they exist)
- *
  * @code
  * #include <ayaztub/core_utils/logger.h>
  *
  * int main(int argc, char **argv) {
- *     if (!logger_set_outfile("file.log"))
+ *     if (!LOGGER_SET_OUTFILE("file.log"))
  *         FATAL("%s", "cannot open file `file.log`");
  *
  *     LOG(INFO, "%s",
  *         "info log printed in file.log with date and thread_id if on linux");
  *
- *     logger_close_outfile();
+ *     LOGGER_CLOSE_OUTFILE();
  *
  *     LOG(INFO, "%s", "back on stdout/stderr");
  *
@@ -40,12 +35,12 @@
  *     LOG(WARNING, "%s", "log printed on stdout");
  *     LOG(ERROR, "%s", "error log on stderr");
  *
- *     logger_set_outfile("stderr");
+ *     LOGGER_SET_OUTFILE("stderr");
  *
  *     LOG(DEBUG, "%s", "still not displayed...");
  *     LOG(WARNING, "%s", "all logs on stderr this time !");
  *
- *     logger_close_outfile();
+ *     LOGGER_CLOSE_OUTFILE();
  *     // this doesn't close the stderr file stream but removed it from the
  *     //   internal to log back on stdout/stderr
  *
@@ -59,8 +54,133 @@
 
 #include <stdbool.h>
 #include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
+
+#ifndef FPRINTF
+#    include <stdio.h>
+/**
+ * @def FPRINTF
+ * @brief Macro for formatted output to a file stream.
+ *
+ * This macro allow you to use your own fprintf function instead of the default
+ * one from stdio.h. By default, if undefined, it is an alias of the fprintf
+ * standard function.
+ */
+#    define FPRINTF fprintf
+#endif // FPRINTF
+
+#ifndef SNPRINTF
+#    include <stdio.h>
+/**
+ * @def SNPRINTF
+ * @brief Macro for formatted output to a buffer with size.
+ *
+ * This macro allow you to use your own snprintf function instead of the default
+ * one from stdio.h. By default, if undefined, it is an alias of the snprintf
+ * standard function.
+ */
+#    define SNPRINTF snprintf
+#endif // SNPRINTF
+
+#ifndef SPRINTF
+#    include <stdio.h>
+/**
+ * @def SPRINTF
+ * @brief Macro for formatted output to a buffer.
+ *
+ * This macro allow you to use your own sprintf function instead of the default
+ * one from stdio.h. By default, if undefined, it is an alias of the sprintf
+ * standard function.
+ */
+#    define SPRINTF sprintf
+#endif // SPRINTF
+
+#ifndef FOPEN
+#    include <stdio.h>
+/**
+ * @def FOPEN
+ * @brief Macro to open a file.
+ *
+ * This macro allow you to use your own fopen function instead of the default
+ * one from stdio.h. By default, if undefined, it is an alias of the fopen
+ * standard function.
+ */
+#    define FOPEN fopen
+#endif // FOPEN
+
+#ifndef FCLOSE
+#    include <stdio.h>
+/**
+ * @def FCLOSE
+ * @brief Macro to close a file.
+ *
+ * This macro allow you to use your own fclose function instead of the default
+ * one from stdio.h. By default, if undefined, it is an alias of the fclose
+ * standard function.
+ */
+#    define FCLOSE fclose
+#endif // FCLOSE
+
+#ifndef STDERR
+#    include <stdio.h>
+/**
+ * @def STDERR
+ * @brief Macro for the error output stream.
+ *
+ * This macro allow you to use your own stderr variable instead of the default
+ * one from stdio.h. By default, if undefined, it is an alias of the stderr
+ * standard error stream.
+ */
+#    define STDERR stderr
+#endif // STDERR
+
+#ifndef STDOUT
+#    include <stdio.h>
+/**
+ * @def STDOUT
+ * @brief Macro for the standard output stream.
+ *
+ * This macro allow you to use your own stdout variable instead of the default
+ * one from stdio.h. By default, if undefined, it is an alias of the stdout
+ * standard output stream.
+ */
+#    define STDOUT stdout
+#endif // STDOUT
+
+#ifndef MALLOC
+#    include <stdlib.h>
+/**
+ * @def MALLOC
+ * @brief Macro to allocate memory.
+ *
+ * This macro allow you to use your own allocator function instead of the
+ * default one from stdlib.h. By default, if undefined, it is an alias of the
+ * malloc standard function.
+ */
+#    define MALLOC malloc
+#endif // MALLOC
+
+#ifndef EXIT
+#    include <stdlib.h>
+/**
+ * @def EXIT
+ * @brief Macro to exit the program.
+ *
+ * This macro allow you to use your own exit function instead of the default
+ * one from stdlib.h. By default, if undefined, it is an alias of the exit
+ * standard function.
+ */
+#    define EXIT exit
+#endif // EXIT
+
+#ifndef EXIT_FAILURE
+/**
+ * @def EXIT_FAILURE
+ * @brief Macro for exit failure code.
+ *
+ * This macro defines the exit code for program failure. By default, it's 1.
+ */
+#    define EXIT_FAILURE 1
+#endif // EXIT_FAILURE
 
 /**
  * @def SOURCE_PATH_SIZE
@@ -145,9 +265,9 @@ struct logger_options {
  * disabled defining NOLOG.
  *
  * @warning Disable logs defining the macro NOLOG will result in the suppression
- * of all LOG macro call in the source code. Thus, the arguments will no longer
- * be computed and this can lead to undefined behavior if arguments can make
- * side effects.
+ * of all LOG() macro call in the source code. Thus, the arguments will no
+ * longer be computed and this can lead to undefined behavior if arguments can
+ * make side effects.
  *
  * @param LEVEL Log level.
  * @param FMT Format string.
@@ -164,17 +284,18 @@ struct logger_options {
 #else // NOLOG
 #    define LOG(LEVEL, FMT, ...)                                               \
         do {                                                                   \
-            int __n = snprintf(NULL, 0, (FMT), __VA_ARGS__);                   \
+            int __n = SNPRINTF(NULL, 0, (FMT), __VA_ARGS__);                   \
             if (__n < 0) {                                                     \
                 break;                                                         \
             }                                                                  \
             size_t __size = (size_t)__n + 1;                                   \
-            char *__buff = malloc(__size * sizeof(*__buff));                   \
+            char *__buff = MALLOC(__size * sizeof(*__buff));                   \
             if (__buff == NULL) {                                              \
                 break;                                                         \
             }                                                                  \
-            snprintf(__buff, __size, (FMT), __VA_ARGS__);                      \
-            logger_log((LEVEL), __FILENAME__, __LINE__, __func__, __buff);     \
+            SNPRINTF(__buff, __size, (FMT), __VA_ARGS__);                      \
+            logger_log((LEVEL), __FILENAME__, __LINE__, __func__, __buff,      \
+                       SPRINTF, FPRINTF, STDOUT, STDERR);                      \
         } while (0)
 #endif // NOLOG
 
@@ -197,7 +318,7 @@ struct logger_options {
 #define FATAL(FMT, ...)                                                        \
     do {                                                                       \
         LOG(FATAL, (FMT), __VA_ARGS__);                                        \
-        exit(1);                                                               \
+        EXIT(EXIT_FAILURE);                                                    \
     } while (0)
 
 /**
@@ -222,51 +343,87 @@ struct logger_options {
 void logger_set_options(struct logger_options options);
 
 /**
- * @brief Provide a log file to the logger.
+ * @def LOGGER_SET_OUTFILE(filename)
+ * @brief Macro to set the log output file.
  *
- * This function sets the log file where all logs will be written. If the
- * filename "stderr" is provided, all logs will be printed to stderr instead of
- * stdout/stderr.
+ * This macro sets the log output file using the specified filename.
+ * It is a wrapper around logger_set_outfile().
  *
- * @param filename Name of the file to log into.
- * @return true on success, false on failure.
+ * @param filename The name of the log output file.
+ * @return true if the file was successfully set, false otherwise.
  *
  * Example usage:
  * @code
- * if (!logger_set_outfile("logfile.txt")) {
+ * if (!LOGGER_SET_OUTFILE("logfile.txt")) {
  *     fprintf(stderr, "Failed to set log file\n");
  * }
  * @endcode
  */
-bool logger_set_outfile(const char *filename);
+#define LOGGER_SET_OUTFILE(filename) logger_set_outfile(filename, FOPEN, STDERR)
 
 /**
- * @brief Close the currently set log file.
+ * @brief Sets the log output file.
  *
- * This function closes the log file that was previously set using
- * logger_set_outfile.
+ * This function sets the log output file using the specified filename and file
+ * opening function. It should not be used directly; use LOGGER_SET_OUTFILE()
+ * instead.
+ *
+ * @param filename The name of the log output file.
+ * @param open_file Function pointer to open a file.
+ * @param stderr_file Standard error file stream.
+ * @return true if the file was successfully set, false otherwise.
+ */
+bool logger_set_outfile(const char *filename,
+                        FILE *(*open_file)(const char *, const char *),
+                        FILE *stderr_file);
+
+/**
+ * @def LOGGER_CLOSE_OUTFILE()
+ * @brief Macro to close the log output file.
+ *
+ * This macro closes the log file that was previously set using
+ * LOGGER_SET_OUTFILE(). This macro closes the log output file. It is a wrapper
+ * around logger_close_outfile().
  *
  * Example usage:
  * @code
- * logger_close_outfile();
+ * LOGGER_CLOSE_OUTFILE();
  * @endcode
  */
-void logger_close_outfile(void);
+#define LOGGER_CLOSE_OUTFILE() logger_close_outfile(FCLOSE, STDERR)
 
 /**
- * @brief Log a message.
+ * @brief Closes the log output file.
  *
- * This function logs a message with a specified log level, file name, line
- * number, and function name. It should never be used directly; use the LOG()
- * macro instead.
+ * This function closes the log output file using the specified file closing
+ * function. It should not be used directly; use LOGGER_CLOSE_OUTFILE() instead.
  *
- * @param level Log level.
- * @param file_name Name of the file where the log is coming from.
- * @param line Line number where the log is coming from.
- * @param func_name Function name where the log is coming from.
- * @param message Log message.
+ * @param close_file Function pointer to close a file.
+ * @param stderr_file Standard error file stream.
+ */
+void logger_close_outfile(int (*close_file)(FILE *), FILE *stderr_file);
+
+/**
+ * @brief Logs a message with the specified log level.
+ *
+ * This function logs a message with the specified log level, file name, line
+ * number, function name, and message. It should not be used directly; use the
+ * LOG() macro instead.
+ *
+ * @param level The log level.
+ * @param file_name The name of the source file where the log is generated.
+ * @param line The line number where the log is generated.
+ * @param func_name The name of the function where the log is generated.
+ * @param message The log message.
+ * @param _sprintf Function pointer for sprintf-like functionality.
+ * @param _fprintf Function pointer for fprintf-like functionality.
+ * @param _stdout Standard output file stream.
+ * @param _stderr Standard error file stream.
  */
 void logger_log(enum log_level level, const char *file_name, size_t line,
-                const char *func_name, char *message);
+                const char *func_name, char *message,
+                int (*_sprintf)(char *, const char *, ...),
+                int (*_fprintf)(FILE *, const char *, ...), FILE *_stdout,
+                FILE *_stderr);
 
 #endif // __AYAZTUB__CORE_UTILS__LOGGER_H__

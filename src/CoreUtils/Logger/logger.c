@@ -4,7 +4,6 @@
 
 #include <ayaztub/core_utils/logger.h>
 #include <stdbool.h>
-#include <stdio.h>
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
@@ -41,91 +40,96 @@ void logger_set_options(struct logger_options options) {
     logger_options = options;
 }
 
-bool logger_set_outfile(const char *filename) {
+bool logger_set_outfile(const char *filename,
+                        FILE *(*open_file)(const char *, const char *),
+                        FILE *stderr_file) {
     if (outfile != NULL)
         return false;
     if (!strcmp(filename, "stderr")) {
-        outfile = stderr;
+        outfile = stderr_file;
         return true;
     }
-    FILE *f = fopen(filename, "w");
+    FILE *f = open_file(filename, "w");
     if (!f)
         return false;
     outfile = f;
     return true;
 }
 
-void logger_close_outfile(void) {
-    if (outfile && outfile != stderr)
-        fclose(outfile);
+void logger_close_outfile(int (*close_file)(FILE *), FILE *stderr_file) {
+    if (outfile && outfile != stderr_file)
+        close_file(outfile);
     outfile = NULL;
 }
 
 void logger_log(enum log_level level, const char *file_name, size_t line,
-                const char *func_name, char *message) {
+                const char *func_name, char *message,
+                int (*_sprintf)(char *, const char *, ...),
+                int (*_fprintf)(FILE *, const char *, ...), FILE *_stdout,
+                FILE *_stderr) {
 #ifdef __linux__
     pid_t id = gettid();
 #endif // __linux__
     time_t t = time(NULL);
     struct tm *tt = localtime(&t);
     char date[100] = { 0 };
-    sprintf(date, "[%d-%d-%d %d:%d:%d]", tt->tm_year + 1900, tt->tm_mon + 1,
-            tt->tm_mday, tt->tm_hour, tt->tm_min, tt->tm_sec);
-    if (outfile && outfile != stderr) {
-        fprintf(outfile, "[%s] %s ", log_level_str[level], date);
+    _sprintf(date, "[%d-%d-%d %d:%d:%d]", tt->tm_year + 1900, tt->tm_mon + 1,
+             tt->tm_mday, tt->tm_hour, tt->tm_min, tt->tm_sec);
+    if (outfile && outfile != _stderr) {
+        _fprintf(outfile, "[%s] %s ", log_level_str[level], date);
 #ifdef __linux__
         if (id == getpid())
-            fprintf(outfile, "[main thread] ");
+            _fprintf(outfile, "[main thread] ");
         else
-            fprintf(outfile, "[thread: %d] ", id);
+            _fprintf(outfile, "[thread: %d] ", id);
 #endif // __linux__
-        fprintf(outfile, "%s:%zu in %s(): %s\n", file_name, line, func_name,
-                message);
+        _fprintf(outfile, "%s:%zu in %s(): %s\n", file_name, line, func_name,
+                 message);
     }
-    if ((level >= logger_options.log_level && (!outfile || outfile == stderr))
+    if ((level >= logger_options.log_level && (!outfile || outfile == _stderr))
         || level == FATAL) {
         const char *color;
         FILE *out;
         switch (level) {
             case DEBUG:
                 color = GRAY;
-                out = stdout;
+                out = _stdout;
                 break;
             case INFO:
                 color = TURQUOISE;
-                out = stdout;
+                out = _stdout;
                 break;
             case WARNING:
                 color = YELLOW;
-                out = stdout;
+                out = _stdout;
                 break;
             case ERROR:
                 color = ORANGE;
-                out = stderr;
+                out = _stderr;
                 break;
             case TIMEOUT:
                 color = BLUE;
-                out = stderr;
+                out = _stderr;
                 break;
             case FATAL:
                 color = RED;
-                out = stderr;
+                out = _stderr;
                 break;
         }
         if (outfile)
             out = outfile;
-        fprintf(out, "%s[%s]%s ", color, log_level_str[level], WHITE);
+        _fprintf(out, "%s[%s]%s ", color, log_level_str[level], WHITE);
         if (logger_options.show_date)
-            fprintf(out, "%s ", date);
+            _fprintf(out, "%s ", date);
 #ifdef __linux__
         if (logger_options.show_thread_id) {
             if (id == getpid())
-                fprintf(out, "[main thread] ");
+                _fprintf(out, "[main thread] ");
             else
-                fprintf(out, "[thread: %d] ", id);
+                _fprintf(out, "[thread: %d] ", id);
         }
 #endif // __linux__
-        fprintf(out, "%s:%zu in %s(): %s%s%s\n", file_name, line, func_name,
-                color, message, WHITE);
+        _fprintf(out, "%s:%zu in %s(): %s%s%s\n", file_name, line, func_name,
+                 color, message, WHITE);
     }
 }

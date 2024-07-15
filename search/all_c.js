@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['warning_0',['WARNING',['../logger_8h.html#ac91d55174d383848b976a34de843748ea984de77c680eaff141ec910e25568a81',1,'logger.h']]]
+  ['usage_0',['Usage',['../index.html#autotoc_md5',1,'']]],
+  ['utils_1',['Core Utils',['../index.html#autotoc_md4',1,'']]]
 ];

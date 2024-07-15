@@ -111,12 +111,12 @@ $(function(){initNavTree('assert_8h.html',''); initResizable(); });
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:abc00202d68a1a7d9421c225971f96506" id="r_abc00202d68a1a7d9421c225971f96506"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc00202d68a1a7d9421c225971f96506">FPRINTF</a>(FILE,  FMT, ...)&#160;&#160;&#160;fprintf(FILE, FMT, __VA_ARGS__)</td></tr>
-<tr class="memdesc:abc00202d68a1a7d9421c225971f96506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro for formatted output to a file stream.  <br /></td></tr>
-<tr class="separator:abc00202d68a1a7d9421c225971f96506"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83f1b9ca93564e467aea795ee0711be7" id="r_a83f1b9ca93564e467aea795ee0711be7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83f1b9ca93564e467aea795ee0711be7">ABORT</a>()&#160;&#160;&#160;abort()</td></tr>
-<tr class="memdesc:a83f1b9ca93564e467aea795ee0711be7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to abort the program.  <br /></td></tr>
-<tr class="separator:a83f1b9ca93564e467aea795ee0711be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d03ea01910257a961b0937d3cb0e2f" id="r_ae6d03ea01910257a961b0937d3cb0e2f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6d03ea01910257a961b0937d3cb0e2f">FPRINTF</a>&#160;&#160;&#160;fprintf</td></tr>
+<tr class="memdesc:ae6d03ea01910257a961b0937d3cb0e2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro for formatted output to a file stream.  <br /></td></tr>
+<tr class="separator:ae6d03ea01910257a961b0937d3cb0e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5376571bbf4cdc9782683635f366f89a" id="r_a5376571bbf4cdc9782683635f366f89a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5376571bbf4cdc9782683635f366f89a">ABORT</a>&#160;&#160;&#160;abort</td></tr>
+<tr class="memdesc:a5376571bbf4cdc9782683635f366f89a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to abort the program.  <br /></td></tr>
+<tr class="separator:a5376571bbf4cdc9782683635f366f89a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b023efa74e82314e5e2aca4914e2806" id="r_a4b023efa74e82314e5e2aca4914e2806"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a>(predicate,  file)&#160;&#160;&#160;        __CASSERT_IMPL(predicate, file, __LINE__)</td></tr>
 <tr class="memdesc:a4b023efa74e82314e5e2aca4914e2806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asserts a compile-time condition.  <br /></td></tr>
 <tr class="separator:a4b023efa74e82314e5e2aca4914e2806"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,17 +132,14 @@ Macros</h2></td></tr>
 <p>This header provides macros for creating compile-time and runtime assertions. Compile-time assertions are useful for validating conditions known during compilation (such as sizeof) and stop the compilation with an error if the conditions are not met.</p>
 <dl class="section note"><dt>Note</dt><dd>You can define NOASSERT to remove assertions. </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a83f1b9ca93564e467aea795ee0711be7" name="a83f1b9ca93564e467aea795ee0711be7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83f1b9ca93564e467aea795ee0711be7">&#9670;&#160;</a></span>ABORT</h2>
+<a id="a5376571bbf4cdc9782683635f366f89a" name="a5376571bbf4cdc9782683635f366f89a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5376571bbf4cdc9782683635f366f89a">&#9670;&#160;</a></span>ABORT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ABORT</td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td>&#160;&#160;&#160;abort()</td>
+          <td class="memname">#define ABORT&#160;&#160;&#160;abort</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -178,7 +175,7 @@ Macros</h2></td></tr>
 <p>Example usage: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> value = 10;</div>
 <div class="line"><a class="code hl_define" href="#a2e2bfc1e4caa2081ec462817c54a2d84">assert</a>(value == 10); <span class="comment">// No output, as the condition is true.</span></div>
 <div class="line"><a class="code hl_define" href="#a2e2bfc1e4caa2081ec462817c54a2d84">assert</a>(value == 0);  <span class="comment">// Outputs an assertion failure message and aborts.</span></div>
-<div class="ttc" id="aassert_8h_html_a2e2bfc1e4caa2081ec462817c54a2d84"><div class="ttname"><a href="#a2e2bfc1e4caa2081ec462817c54a2d84">assert</a></div><div class="ttdeci">#define assert(predicate)</div><div class="ttdoc">Asserts a runtime condition with a default message.</div><div class="ttdef"><b>Definition</b> assert.h:141</div></div>
+<div class="ttc" id="aassert_8h_html_a2e2bfc1e4caa2081ec462817c54a2d84"><div class="ttname"><a href="#a2e2bfc1e4caa2081ec462817c54a2d84">assert</a></div><div class="ttdeci">#define assert(predicate)</div><div class="ttdoc">Asserts a runtime condition with a default message.</div><div class="ttdef"><b>Definition</b> assert.h:133</div></div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>This macro is only defined if <code>assert</code> is not already defined and is an alias to the <a class="el" href="#a9021b2d384ce26058ebc05080f7a9810" title="Asserts a runtime condition with a formatted message.">ASSERT()</a> macro with "failed" as default message.</dd>
 <dd>
 Defining NOASSERT will remove the ASSERT block and thus the assert also </dd></dl>
@@ -234,7 +231,7 @@ Defining NOASSERT will remove the ASSERT block and thus the assert also </dd></d
 <div class="line"><span class="comment">// No output, as the condition is true.</span></div>
 <div class="line"><a class="code hl_define" href="#a9021b2d384ce26058ebc05080f7a9810">ASSERT</a>(value == 0, <span class="stringliteral">&quot;Value should not be %d&quot;</span>, value);</div>
 <div class="line"><span class="comment">// Outputs an assertion failure message and aborts.</span></div>
-<div class="ttc" id="aassert_8h_html_a9021b2d384ce26058ebc05080f7a9810"><div class="ttname"><a href="#a9021b2d384ce26058ebc05080f7a9810">ASSERT</a></div><div class="ttdeci">#define ASSERT(predicate, fmt,...)</div><div class="ttdoc">Asserts a runtime condition with a formatted message.</div><div class="ttdef"><b>Definition</b> assert.h:103</div></div>
+<div class="ttc" id="aassert_8h_html_a9021b2d384ce26058ebc05080f7a9810"><div class="ttname"><a href="#a9021b2d384ce26058ebc05080f7a9810">ASSERT</a></div><div class="ttdeci">#define ASSERT(predicate, fmt,...)</div><div class="ttdoc">Asserts a runtime condition with a formatted message.</div><div class="ttdef"><b>Definition</b> assert.h:95</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -269,38 +266,24 @@ Defining NOASSERT will remove the ASSERT block and thus the assert also </dd></d
 <dl class="section note"><dt>Note</dt><dd>You can define NOASSERT to remove the COMPILE_ASSERT block.</dd></dl>
 <p>Example usage: </p><div class="fragment"><div class="line"><a class="code hl_define" href="#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a>(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) == 4, int_size_check);</div>
 <div class="line"><span class="comment">// Asserts that int is 4 bytes</span></div>
-<div class="ttc" id="aassert_8h_html_a4b023efa74e82314e5e2aca4914e2806"><div class="ttname"><a href="#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a></div><div class="ttdeci">#define COMPILE_ASSERT(predicate, file)</div><div class="ttdoc">Asserts a compile-time condition.</div><div class="ttdef"><b>Definition</b> assert.h:77</div></div>
+<div class="ttc" id="aassert_8h_html_a4b023efa74e82314e5e2aca4914e2806"><div class="ttname"><a href="#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a></div><div class="ttdeci">#define COMPILE_ASSERT(predicate, file)</div><div class="ttdoc">Asserts a compile-time condition.</div><div class="ttdef"><b>Definition</b> assert.h:69</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="abc00202d68a1a7d9421c225971f96506" name="abc00202d68a1a7d9421c225971f96506"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc00202d68a1a7d9421c225971f96506">&#9670;&#160;</a></span>FPRINTF</h2>
+<a id="ae6d03ea01910257a961b0937d3cb0e2f" name="ae6d03ea01910257a961b0937d3cb0e2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6d03ea01910257a961b0937d3cb0e2f">&#9670;&#160;</a></span>FPRINTF</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define FPRINTF</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">FILE, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">FMT, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)&#160;&#160;&#160;fprintf(FILE, FMT, __VA_ARGS__)</td>
+          <td class="memname">#define FPRINTF&#160;&#160;&#160;fprintf</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Macro for formatted output to a file stream. </p>
-<p>This macro allow you to use your own fprintf function instead of the default one from stdio.h. By default, if undefined, it is an alias of the fprintf standard function.</p>
-<dl class="section warning"><dt>Warning</dt><dd>In std=c99, which is the standard I used, the <code>__VA_OPT__(,)</code> macro is not defined. So, we need to provide at least one argument in the variadic ones. If you work on a modern C standard, you should consider defining a new one as follow <div class="fragment"><div class="line"><span class="preprocessor">#define FPRINTF(FILE, FMT, ...) fprintf(FILE, FMT, __VA_OPT__(,) __VA_ARGS__)</span></div>
-</div><!-- fragment --> </dd></dl>
+<p>This macro allow you to use your own fprintf function instead of the default one from stdio.h. By default, if undefined, it is an alias of the fprintf standard function. </p>
 
 </div>
 </div>

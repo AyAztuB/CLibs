@@ -24,7 +24,7 @@
  * standard function.
  *
  * @warning In std=c99, which is the standard I used, the @c __VA_OPT__(,) macro
- * is not defined. Indead, we need to provide at least one argument in the
+ * is not defined. So, we need to provide at least one argument in the
  * variadic ones. If you work on a modern C standard, you should consider
  * defining a new one as follow
  * @code

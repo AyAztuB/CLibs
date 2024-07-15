@@ -5,8 +5,14 @@
  * This file provides logging functionality with various log levels and options.
  * It allows logging messages to a file or standard output and provides
  * customization options for log formatting and filtering.
+ *
  * @note define NOLOG before including the header or in compile arguments to
  * remove all LOG() call
+ *
+ * @todo define custom fprintf/snprintf/sprintf/exit/FILE/fopen/fclose/stderr
+ * to allow customisation => pass those function defined by default in header
+ * as arguments => make more macro to do define which we will use and no
+ * longer pass it directly (nobody want to pass std func in a log if they exist)
  *
  * @code
  * #include <ayaztub/core_utils/logger.h>

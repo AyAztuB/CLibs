@@ -13,8 +13,9 @@
 #define __AYAZTUB__CORE_UTILS__ASSERT_H__
 
 #define __GLUE(a, b) a##b
-#define __CASSERT_IMPL(predicate, file, line) \
-  typedef char __attribute__((unused))  __GLUE(assertion_failed_##file##_, line)[2*!!(predicate)-1]
+#define __CASSERT_IMPL(predicate, file, line)                                  \
+    typedef char __attribute__((unused))                                       \
+    __GLUE(assertion_failed_##file##_, line)[2 * !!(predicate)-1]
 
 /**
  * @def COMPILE_ASSERT(predicate, file)
@@ -30,13 +31,15 @@
  *
  * Example usage:
  * @code
- * COMPILE_ASSERT(sizeof(int) == 4, int_size_check); // Asserts that int is 4 bytes
+ * COMPILE_ASSERT(sizeof(int) == 4, int_size_check);
+ * // Asserts that int is 4 bytes
  * @endcode
  */
 #ifdef NOASSERT
-  #define COMPILE_ASSERT(predicate, file) (void)0;
+#    define COMPILE_ASSERT(predicate, file) (void)0;
 #else // NOASSERT
-  #define COMPILE_ASSERT(predicate, file) __CASSERT_IMPL(predicate, file, __LINE__)
+#    define COMPILE_ASSERT(predicate, file)                                    \
+        __CASSERT_IMPL(predicate, file, __LINE__)
 #endif // NOASSERT
 
 #endif // __AYAZTUB__CORE_UTILS__ASSERT_H__

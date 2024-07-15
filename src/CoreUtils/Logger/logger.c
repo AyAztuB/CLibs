@@ -1,14 +1,13 @@
 #ifdef __linux__
-    #define _GNU_SOURCE
+#    define _GNU_SOURCE
 #endif // __linux__
 
 #include <ayaztub/core_utils/logger.h>
-
+#include <stdbool.h>
 #include <stdio.h>
+#include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include <stdbool.h>
-#include <string.h>
 
 #define RED "\033[0;31m"
 #define GREEN "\033[0;32m"
@@ -19,7 +18,7 @@
 #define ORANGE "\033[0;38:2:220:165:0m"
 #define GRAY "\033[0;2m"
 
-static const char* log_level_str[] = {
+static const char *log_level_str[] = {
 #define X(A) [A] = #A,
     LOG_LVL(X)
 #undef X
@@ -29,7 +28,7 @@ static const char* log_level_str[] = {
 // if log file provided: all logs printed (even if log level > DEBUG)
 // if log file provided: all logs in this file + FATAL level still on stderr...
 
-static FILE* outfile = NULL;
+static FILE *outfile = NULL;
 static struct logger_options logger_options = {
     .log_level = DEBUG,
     .show_date = false,
@@ -42,14 +41,16 @@ void logger_set_options(struct logger_options options) {
     logger_options = options;
 }
 
-bool logger_set_outfile(const char* filename) {
-    if (outfile != NULL) return false;
+bool logger_set_outfile(const char *filename) {
+    if (outfile != NULL)
+        return false;
     if (!strcmp(filename, "stderr")) {
         outfile = stderr;
         return true;
     }
-    FILE* f = fopen(filename, "w");
-    if (!f) return false;
+    FILE *f = fopen(filename, "w");
+    if (!f)
+        return false;
     outfile = f;
     return true;
 }
@@ -60,14 +61,16 @@ void logger_close_outfile(void) {
     outfile = NULL;
 }
 
-void logger_log(enum log_level level, const char* file_name, size_t line, const char* func_name, char* message) {
+void logger_log(enum log_level level, const char *file_name, size_t line,
+                const char *func_name, char *message) {
 #ifdef __linux__
     pid_t id = gettid();
 #endif // __linux__
     time_t t = time(NULL);
-    struct tm* tt = localtime(&t); 
+    struct tm *tt = localtime(&t);
     char date[100] = { 0 };
-    sprintf(date, "[%d-%d-%d %d:%d:%d]", tt->tm_year + 1900, tt->tm_mon + 1, tt->tm_mday, tt->tm_hour, tt->tm_min, tt->tm_sec);
+    sprintf(date, "[%d-%d-%d %d:%d:%d]", tt->tm_year + 1900, tt->tm_mon + 1,
+            tt->tm_mday, tt->tm_hour, tt->tm_min, tt->tm_sec);
     if (outfile && outfile != stderr) {
         fprintf(outfile, "[%s] %s ", log_level_str[level], date);
 #ifdef __linux__
@@ -76,11 +79,13 @@ void logger_log(enum log_level level, const char* file_name, size_t line, const 
         else
             fprintf(outfile, "[thread: %d] ", id);
 #endif // __linux__
-        fprintf(outfile, "%s:%zu in %s(): %s\n", file_name, line, func_name, message);
+        fprintf(outfile, "%s:%zu in %s(): %s\n", file_name, line, func_name,
+                message);
     }
-    if ((level >= logger_options.log_level && (!outfile || outfile == stderr)) || level == FATAL) {
-        const char* color;
-        FILE* out;
+    if ((level >= logger_options.log_level && (!outfile || outfile == stderr))
+        || level == FATAL) {
+        const char *color;
+        FILE *out;
         switch (level) {
             case DEBUG:
                 color = GRAY;
@@ -107,19 +112,20 @@ void logger_log(enum log_level level, const char* file_name, size_t line, const 
                 out = stderr;
                 break;
         }
-        if (outfile) out = outfile;
+        if (outfile)
+            out = outfile;
         fprintf(out, "%s[%s]%s ", color, log_level_str[level], WHITE);
         if (logger_options.show_date)
             fprintf(out, "%s ", date);
 #ifdef __linux__
-        if (logger_options.show_thread_id)
-        {
+        if (logger_options.show_thread_id) {
             if (id == getpid())
                 fprintf(out, "[main thread] ");
             else
                 fprintf(out, "[thread: %d] ", id);
         }
 #endif // __linux__
-        fprintf(out, "%s:%zu in %s(): %s%s%s\n", file_name, line, func_name, color, message, WHITE);
+        fprintf(out, "%s:%zu in %s(): %s%s%s\n", file_name, line, func_name,
+                color, message, WHITE);
     }
 }

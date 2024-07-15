@@ -25,14 +25,7 @@
 var NAVTREE =
 [
   [ "C-libs", "index.html", [
-    [ "CLibs", "index.html", [
-      [ "Documentation", "index.html#autotoc_md1", null ],
-      [ "Instalation", "index.html#autotoc_md2", null ],
-      [ "Libraries", "index.html#autotoc_md3", [
-        [ "Core Utils", "index.html#autotoc_md4", null ]
-      ] ],
-      [ "Usage", "index.html#autotoc_md5", null ]
-    ] ],
+    [ "CLibs", "index.html", "index" ],
     [ "Todo List", "todo.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

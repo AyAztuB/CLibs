@@ -62,7 +62,7 @@
  *
  * This macro is useful when the project is compiled with CMake, allowing for a
  * cleaner file path in logs by removing a fixed number of characters from the
- * start of the __FILE__ macro. The default value if the macro wasn't defined
+ * start of the @c __FILE__ macro. The default value if the macro wasn't defined
  * earlier is 0.
  */
 #ifndef SOURCE_PATH_SIZE
@@ -72,7 +72,7 @@
 /**
  * @brief Macro to adjust the file path based on SOURCE_PATH_SIZE.
  *
- * This macro modifies the __FILE__ macro to remove a specified number of
+ * This macro modifies the @c __FILE__ macro to remove a specified number of
  * characters from the beginning, making the logged file paths more readable.
  */
 #define __FILENAME__ ((__FILE__) + (SOURCE_PATH_SIZE))
@@ -251,7 +251,7 @@ void logger_close_outfile(void);
  * @brief Log a message.
  *
  * This function logs a message with a specified log level, file name, line
- * number, and function name. It should never be used directly; use the LOG
+ * number, and function name. It should never be used directly; use the LOG()
  * macro instead.
  *
  * @param level Log level.

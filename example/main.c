@@ -3,8 +3,8 @@
 
 int main(void) {
     COMPILE_ASSERT(sizeof(size_t) == 8, main_example);
-    ASSERT(1 == 1, "assert correct");
-    ASSERT(1 == 2, "assert failed");
+    ASSERT(1 == 1, "%s", "assert correct");
+    assert(1 == 2);
     logger_set_options((struct logger_options){
         .log_level = WARNING,
         .show_date = true,

@@ -7,8 +7,8 @@ var indexSectionsWithContent =
   4: "ls",
   5: "l",
   6: "defitw",
-  7: "_cfls",
-  8: "c"
+  7: "_acfls",
+  8: "ct"
 };
 
 var indexSectionNames =

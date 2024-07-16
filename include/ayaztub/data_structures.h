@@ -1,0 +1,4 @@
+#ifndef __AYAZTUB__DATA_STRUCTURES_H__
+#define __AYAZTUB__DATA_STRUCTURES_H__
+
+#endif // __AYAZTUB__DATA_STRUCTURES_H__

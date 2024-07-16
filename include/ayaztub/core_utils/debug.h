@@ -1,3 +1,38 @@
+/**
+ * @file debug.h
+ * @brief Debug utilities for various data types and arrays.
+ *
+ * This header provides macros and functions to facilitate debugging by printing
+ * values of various data types and arrays, along with their expressions, file
+ * names, line numbers, and function names.
+ *
+ * @note You can define NODBG to remove dbg() and dbg_array() macro call without
+ * removing the expression statement
+ *
+ * @warning The dbg() and dbg_array() macro are only defined for C11 or newer.
+ * In version lower than C11, the comportement is like if NODBG was defined.
+ * If you work on version lower than C11, you are free to use the CALL_DBG()
+ * and CALL_DBG_ARRAY() macros.
+ *
+ * Usage example:
+ * @code
+ * #include <ayaztub/core_utils/debug.h>
+ *
+ * DBG_ARRAY_FUNC_DECL(const char **, string, "\"%s\"")
+ *
+ * int main(int argc, char **argv) {
+ *     if (dbg((bool)(argc == 1))) {
+ *          dbg(argv[0]);
+ *     }
+ *     CALL_DBG_ARRAY(dbg_array_string, (const char **)argv, argc);
+ *
+ *     set_breakpoint();
+ *
+ *     return 0;
+ * }
+ * @endcode
+ */
+
 #ifndef __AYAZTUB__CORE_UTILS__DEBUG_H__
 #define __AYAZTUB__CORE_UTILS__DEBUG_H__
 
@@ -71,17 +106,19 @@
              const bool *: dbg_array_const_bool)                               \
         (__FILE__, __LINE__, __func__, #value, value, length)
 #    else // __STDC_VERSION__ >= 201112L
-#        define dbg(value)                                                     \
-            FPRINTF(DBG_OUTSTREAM,                                             \
-                    "dbg() macro is not supported in this version of C\n");
-#        define dbg_array(value, length)                                       \
-            FPRINTF(                                                           \
-                DBG_OUTSTREAM,                                                 \
-                "dbg_array() macro is not supported in this version of C\n");
+// macros undefined
+#        define dbg(value) (value)
+#        define dbg_array(value, length) (value)
 #    endif // __STDC_VERSION__ >= 201112L
+#    define CALL_DBG(dbg_func_name, value)                                     \
+        dbg_func_name(__FILE__, __LINE__, __func__, #value, value)
+#    define CALL_DBG_ARRAY(dbg_func_name, value, length)                       \
+        dbg_func_name(__FILE__, __LINE__, __func__, #value, value, length)
 #else // NODBG
 #    define dbg(value) (value)
 #    define dbg_array(value, length) (value)
+#    define CALL_DBG(dbg_func_name, value) (value)
+#    define CALL_DBG_ARRAY(dbg_func_name, value, length) (value)
 #endif // NODBG
 
 #define GRAY "\033[0;2m"

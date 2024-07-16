@@ -18,6 +18,7 @@ git clone https://github.com/AyAztuB/CLibs.git && cd CLibs && cmake -B build && 
 ### Core Utils
 
 - Assert
+- Debug
 - Logger
 
 

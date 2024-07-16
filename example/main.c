@@ -1,6 +1,6 @@
-#include <stdio.h>
-#define FOPEN fopen
 #include <ayaztub.h>
+
+DBG_ARRAY_FUNC_DECL(const char **, string, "\"%s\"")
 
 int main(void) {
     COMPILE_ASSERT(sizeof(size_t) == 8, main_example);
@@ -27,9 +27,15 @@ int main(void) {
     dbg(c);
     dbg(d);
     dbg(e);
+    bool f = dbg((bool)(a == 0));
+    dbg(f);
+
+    char *g[] = { "This", "is", "a", "test", "!" };
+    dbg(g);
+    CALL_DBG_ARRAY(dbg_array_string, (const char **)g, sizeof(g) / sizeof(*g));
 
     set_breakpoint();
-    
+
     LOGGER_SET_OUTFILE("stderr");
     LOG(WARNING, "warning on stderr: %d", 101);
     LOGGER_CLOSE_OUTFILE();

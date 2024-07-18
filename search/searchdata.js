@@ -2,12 +2,12 @@ var indexSectionsWithContent =
 {
   0: "_acdefilmrstuw",
   1: "l",
-  2: "aclr",
-  3: "l",
+  2: "acdlr",
+  3: "ls",
   4: "ls",
   5: "l",
   6: "defitw",
-  7: "_aceflms",
+  7: "_acdeflms",
   8: "c"
 };
 

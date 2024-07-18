@@ -265,7 +265,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Structure for customizing default logger output. </p>
-<p>This structure allows customization of the logger's behavior when no log file is specified. It must be passed to logger_set_options to take effect. When a log file is provided, these options are automatically adjusted to print as mush information as possible. To do so, if a log file is provided, the <a class="el" href="#a76c97c153d4cca949f1fce7010bd7ae1">logger_options::log_level</a> will be DEBUG, the <a class="el" href="#ac8d9f0eaee0ff24f74125a2d90f6e4e5">logger_options::show_date</a> will be true and the <a class="el" href="#a7ab5fcdf71f70481c31a07c2f278ecb9">logger_options::show_thread_id</a> will be true (Linux only). </p>
+<p>This structure allows customization of the logger's behavior when no log file is specified. It must be passed to logger_set_options to take effect. When a log file is provided, these options are automatically adjusted to print as mush information as possible. To do so, if a log file is provided, the <a class="el" href="#a76c97c153d4cca949f1fce7010bd7ae1">logger_options::log_level</a> will be DEBUG, the <a class="el" href="#ac8d9f0eaee0ff24f74125a2d90f6e4e5">logger_options::show_date</a> will be true and the logger_options::show_thread_id will be true (Linux only). </p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
@@ -281,13 +281,6 @@ log_level</td>
 show_date</td>
 <td class="fielddoc">
 <p>Flag to show the date in logs. False by default. </p>
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a7ab5fcdf71f70481c31a07c2f278ecb9" name="a7ab5fcdf71f70481c31a07c2f278ecb9"></a>bool</td>
-<td class="fieldname">
-show_thread_id</td>
-<td class="fielddoc">
-<p>Flag to show the thread ID in logs. Only available on Linux; false by default. </p><dl class="section note"><dt>Note</dt><dd>Only available on Linux </dd></dl>
 </td></tr>
 </table>
 

@@ -65,6 +65,27 @@
 #    define FPRINTF fprintf
 #endif // FPRINTF
 
+/**
+ * @def SOURCE_PATH_SIZE
+ * @brief Macro to truncate the root file path.
+ *
+ * This macro is useful when the project is compiled with CMake, allowing for a
+ * cleaner file path in logs by removing a fixed number of characters from the
+ * start of the @c __FILE__ macro. The default value if the macro wasn't defined
+ * earlier is 0.
+ */
+#ifndef SOURCE_PATH_SIZE
+#    define SOURCE_PATH_SIZE 0
+#endif // SOURCE_PATH_SIZE
+
+/**
+ * @brief Macro to adjust the file path based on SOURCE_PATH_SIZE.
+ *
+ * This macro modifies the @c __FILE__ macro to remove a specified number of
+ * characters from the beginning, making the logged file paths more readable.
+ */
+#define __FILENAME__ ((__FILE__) + (SOURCE_PATH_SIZE))
+
 #ifndef NODBG
 #    if __STDC_VERSION__ >= 201112L
 /**
@@ -113,7 +134,7 @@
              unsigned char *: dbg_uchar_p,                                     \
              const unsigned char *: dbg_const_uchar_p,                         \
              default: dbg_pointer)                                             \
-        (__FILE__, __LINE__, __func__, #value, value)
+        (__FILENAME__, __LINE__, __func__, #value, value)
 
 /**
  * @def dbg_array(value, length)
@@ -169,7 +190,7 @@
              const unsigned char *: dbg_array_const_uchar,                     \
              bool *: dbg_array_bool,                                           \
              const bool *: dbg_array_const_bool)                               \
-        (__FILE__, __LINE__, __func__, #value, value, length)
+        (__FILENAME__, __LINE__, __func__, #value, value, length)
 #    else // __STDC_VERSION__ >= 201112L
 // macros undefined
 #        define dbg(value) (value)
@@ -200,7 +221,7 @@
  * @endcode
  */
 #    define CALL_DBG(dbg_func_name, value)                                     \
-        dbg_func_name(__FILE__, __LINE__, __func__, #value, value)
+        dbg_func_name(__FILENAME__, __LINE__, __func__, #value, value)
 
 /**
  * @def CALL_DBG_ARRAY(dbg_func_name, value, length)
@@ -227,7 +248,7 @@
  * @endcode
  */
 #    define CALL_DBG_ARRAY(dbg_func_name, value, length)                       \
-        dbg_func_name(__FILE__, __LINE__, __func__, #value, value, length)
+        dbg_func_name(__FILENAME__, __LINE__, __func__, #value, value, length)
 #else // NODBG
 #    define dbg(value) (value)
 #    define dbg_array(value, length) (value)

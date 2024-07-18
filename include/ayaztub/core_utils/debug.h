@@ -5,6 +5,7 @@
  * This header provides macros and functions to facilitate debugging by printing
  * values of various data types and arrays, along with their expressions, file
  * names, line numbers, and function names.
+ * The dbg() macro aims to be similar to the rust dbg!() one.
  *
  * @note You can define NODBG to remove dbg() and dbg_array() macro call without
  * removing the expression statement
@@ -40,16 +41,55 @@
 
 #ifndef DBG_OUTSTREAM
 #    include <stdio.h>
+/**
+ * @def DBG_OUTSTREAM
+ * @brief Macro for the debug output stream
+ *
+ * This macro allow you to set the debuf output stream as you want
+ * (file/stdio/stderr). By default, if undefined, it is an alias of the stderr
+ * standard stream.
+ */
 #    define DBG_OUTSTREAM stderr
 #endif // DBG_OUTSTREAM
 
 #ifndef FPRINTF
 #    include <stdio.h>
+/**
+ * @def FPRINTF
+ * @brief Macro for formatted output to a file stream.
+ *
+ * This macro allow you to use your own fprintf function instead of the default
+ * one from stdio.h. By default, if undefined, it is an alias of the fprintf
+ * standard function.
+ */
 #    define FPRINTF fprintf
 #endif // FPRINTF
 
 #ifndef NODBG
 #    if __STDC_VERSION__ >= 201112L
+/**
+ * @def dbg(value)
+ * @brief Macro to print a debug message for a variable.
+ *
+ * This macro prints a debug message for the specified variable, including its
+ * name and value.
+ * It aims to be the same as the rust dbg!() macro.
+ *
+ * @note You can remove the dbg() macro defining NODBG. Removing the macro will
+ * not remove the value (aka, return of the macro still useful).
+ *
+ * @warning This macro is only defined for C11 or newer.
+ *
+ * @param value The variable to debug.
+ * @return the value itself.
+ *
+ * Example usage:
+ * @code
+ * int x = 42;
+ * float f = ((float) dbg(x)) + 0.5f;
+ * dbg(f);
+ * @endcode
+ */
 #        define dbg(value)                                                     \
             _Generic((value),                                                  \
              char: dbg_char,                                                   \
@@ -74,6 +114,31 @@
              const unsigned char *: dbg_const_uchar_p,                         \
              default: dbg_pointer)                                             \
         (__FILE__, __LINE__, __func__, #value, value)
+
+/**
+ * @def dbg_array(value, length)
+ * @brief Macro to print a debug message for an array.
+ *
+ * This macro prints a debug message for the specified array, including its name
+ * and elements. It aims to be the same as the rust dbg!() macro but for arrays.
+ *
+ * @note You can remove the dbg_array() macro defining NODBG. Removing the macro
+ * will not remove the value (aka, return of the macro still useful).
+ *
+ * @warning This macro is only defined for C11 or newer.
+ *
+ * @param value The array to debug.
+ * @param length The length of the array.
+ * @return the value array itself.
+ *
+ * Example usage:
+ * @code
+ * int arr[] = {1, 2, 3, 4, 5};
+ * if (dbg_array(arr, 5)[0] == 0) {
+ *     printf("This should not be true...\n");
+ * }
+ * @endcode
+ */
 #        define dbg_array(value, length)                                       \
             _Generic((value),                                                  \
              short *: dbg_array_short,                                         \
@@ -110,8 +175,57 @@
 #        define dbg(value) (value)
 #        define dbg_array(value, length) (value)
 #    endif // __STDC_VERSION__ >= 201112L
+
+/**
+ * @def CALL_DBG(dbg_func_name, value)
+ * @brief Macro to call a debug function for a variable.
+ *
+ * This macro calls a debug function for the specified variable.
+ *
+ * @note You can remove the CALL_DBG() macro defining NODBG. Removing the macro
+ * will not remove the value (aka, return of the macro still useful).
+ *
+ * @note Instead of the dbg() macro, this has no C version requirement.
+ *
+ * @param dbg_func_name The name of the debug function.
+ * @param value The variable to debug.
+ * @return the value itself.
+ *
+ * Example usage:
+ * @code
+ * int x = 69;
+ * if ((CALL_DBG(dbg_int, x) + 1) % 10 == 0) {
+ *     printf("This is true!\n");
+ * }
+ * @endcode
+ */
 #    define CALL_DBG(dbg_func_name, value)                                     \
         dbg_func_name(__FILE__, __LINE__, __func__, #value, value)
+
+/**
+ * @def CALL_DBG_ARRAY(dbg_func_name, value, length)
+ * @brief Macro to call a debug function for an array.
+ *
+ * This macro calls a debug function for the specified array.
+ *
+ * @note You can remove the CALL_DBG_ARRAY() macro defining NODBG. Removing the
+ * macro will not remove the value (aka, return of the macro still useful).
+ *
+ * @note Instead of the dbg_array() macro, this has no C version requirement.
+ *
+ * @param dbg_func_name The name of the debug function.
+ * @param value The array to debug.
+ * @param length The length of the array.
+ * @return the value array itself.
+ *
+ * Example usage:
+ * @code
+ * int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+ * if (CALL_DBG_ARRAY(dbg_array_int, arr, 10)[0] == 0) {
+ *     printf("This is true!\n");
+ * }
+ * @endcode
+ */
 #    define CALL_DBG_ARRAY(dbg_func_name, value, length)                       \
         dbg_func_name(__FILE__, __LINE__, __func__, #value, value, length)
 #else // NODBG
@@ -125,6 +239,26 @@
 #define WHITE "\033[0m"
 #define TURQUOISE "\033[0;36m"
 
+/**
+ * @def DBG_FUNC_DECL(type, name, fmt)
+ * @brief Macro to declare a debug function for a variable.
+ *
+ * This macro declares a debug function for the specified variable type.
+ *
+ * @param type The type of the variable.
+ * @param name The name of the debug function.
+ * @param fmt The format string for the variable value.
+ *
+ * Example usage:
+ * @code
+ * DBG_FUNC_DECL(int, my_int, "%d");
+ * // create a function following the prototype:
+ * // static inline int dbg_my_int(const char *file, unsigned int line,
+ * //                              const char *func_name, const char *expr,
+ * //                              int value);
+ * // This function can new be call using CALL_DBG() macro
+ * @endcode
+ */
 #define DBG_FUNC_DECL(type, name, fmt)                                         \
     static inline type dbg_##name(const char *file, unsigned int line,         \
                                   const char *func_name, const char *expr,     \
@@ -136,6 +270,29 @@
         return value;                                                          \
     }
 
+/**
+ * @def DBG_ARRAY_FUNC_DECL(type, name, fmt)
+ * @brief Macro to declare a debug function for an array.
+ *
+ * This macro declares a debug function for the specified array type.
+ *
+ * @param type The type of the array elements.
+ * @param name The name of the debug function.
+ * @param fmt The format string for the array elements.
+ *
+ * Example usage:
+ * @code
+ * DBG_ARRAY_FUNC_DECL(const char **, string, "\"%s\"");
+ * // create a function following the prototype:
+ * // static inline const char **dbg_array_string(const char *file,
+ * //                                             unsigned int line,
+ * //                                             const char *func_name,
+ * //                                             const char *expr,
+ * //                                             const char **array,
+ * //                                             size_t length);
+ * // This function can new be call using CALL_DBG_ARRAY() macro
+ * @endcode
+ */
 #define DBG_ARRAY_FUNC_DECL(type, name, fmt)                                   \
     static inline type dbg_array_##name(                                       \
         const char *file, unsigned int line, const char *func_name,            \
@@ -291,6 +448,13 @@ static inline bool *dbg_array_bool(const char *file, unsigned int line,
     return array;
 }
 
+/**
+ * @brief Function to set a breakpoint for debugging.
+ *
+ * This function raises a `SIGTRAP` signal, which causes the program to stop and
+ * enter a state where a debugger can be attached. It is useful for setting
+ * breakpoints in code.
+ */
 void set_breakpoint(void);
 
 #endif // __AYAZTUB__CORE_UTILS__DEBUG_H__

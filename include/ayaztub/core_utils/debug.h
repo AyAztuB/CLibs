@@ -277,7 +277,11 @@
  * // static inline int dbg_my_int(const char *file, unsigned int line,
  * //                              const char *func_name, const char *expr,
  * //                              int value);
- * // This function can new be call using CALL_DBG() macro
+ * // This function can now be called using CALL_DBG() macro
+ * int main(int argc, char **argv) {
+ *     CALL_DBG(dbg_my_int, argc);
+ *     return 0;
+ * }
  * @endcode
  */
 #define DBG_FUNC_DECL(type, name, fmt)                                         \
@@ -311,7 +315,10 @@
  * //                                             const char *expr,
  * //                                             const char **array,
  * //                                             size_t length);
- * // This function can new be call using CALL_DBG_ARRAY() macro
+ * // This function can now be called using CALL_DBG_ARRAY() macro
+ * int main(int argc, char **argv) {
+ *     CALL_DBG_ARRAY(dbg_array_string, (const char **)argv, argc);
+ *     return 0;
  * @endcode
  */
 #define DBG_ARRAY_FUNC_DECL(type, name, fmt)                                   \

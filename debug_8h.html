@@ -172,7 +172,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="adebug_8h_html_a5cf2a3e231c4a3c55578e8ccde380305"><div class="ttname"><a href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a></div><div class="ttdeci">#define CALL_DBG_ARRAY(dbg_func_name, value, length)</div><div class="ttdoc">Macro to call a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:250</div></div>
 <div class="ttc" id="adebug_8h_html_a7cdbf05f95e59109480e0952d40b1086"><div class="ttname"><a href="#a7cdbf05f95e59109480e0952d40b1086">set_breakpoint</a></div><div class="ttdeci">void set_breakpoint(void)</div><div class="ttdoc">Function to set a breakpoint for debugging.</div></div>
 <div class="ttc" id="adebug_8h_html_ab2ad123fb65eadf2d20d6d827ac84209"><div class="ttname"><a href="#ab2ad123fb65eadf2d20d6d827ac84209">dbg</a></div><div class="ttdeci">#define dbg(value)</div><div class="ttdoc">Macro to print a debug message for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:114</div></div>
-<div class="ttc" id="adebug_8h_html_adbcf56eef7621327cadf29e3db6c7415"><div class="ttname"><a href="#adbcf56eef7621327cadf29e3db6c7415">DBG_ARRAY_FUNC_DECL</a></div><div class="ttdeci">#define DBG_ARRAY_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:317</div></div>
+<div class="ttc" id="adebug_8h_html_adbcf56eef7621327cadf29e3db6c7415"><div class="ttname"><a href="#adbcf56eef7621327cadf29e3db6c7415">DBG_ARRAY_FUNC_DECL</a></div><div class="ttdeci">#define DBG_ARRAY_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:324</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a5fccb4fc71e44089a1b1a77fc76c0b68" name="a5fccb4fc71e44089a1b1a77fc76c0b68"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5fccb4fc71e44089a1b1a77fc76c0b68">&#9670;&#160;</a></span>__FILENAME__</h2>
@@ -458,7 +458,10 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line"><span class="comment">//                                             const char *expr,</span></div>
 <div class="line"><span class="comment">//                                             const char **array,</span></div>
 <div class="line"><span class="comment">//                                             size_t length);</span></div>
-<div class="line"><span class="comment">// This function can new be call using CALL_DBG_ARRAY() macro</span></div>
+<div class="line"><span class="comment">// This function can now be called using CALL_DBG_ARRAY() macro</span></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
+<div class="line">    <a class="code hl_define" href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a>(dbg_array_string, (<span class="keyword">const</span> <span class="keywordtype">char</span> **)argv, argc);</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -510,8 +513,12 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line"><span class="comment">// static inline int dbg_my_int(const char *file, unsigned int line,</span></div>
 <div class="line"><span class="comment">//                              const char *func_name, const char *expr,</span></div>
 <div class="line"><span class="comment">//                              int value);</span></div>
-<div class="line"><span class="comment">// This function can new be call using CALL_DBG() macro</span></div>
-<div class="ttc" id="adebug_8h_html_a527c3a831b811490c671cb70a31f6ebb"><div class="ttname"><a href="#a527c3a831b811490c671cb70a31f6ebb">DBG_FUNC_DECL</a></div><div class="ttdeci">#define DBG_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:283</div></div>
+<div class="line"><span class="comment">// This function can now be called using CALL_DBG() macro</span></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
+<div class="line">    <a class="code hl_define" href="#a3d80dcf66f051287e0bd6e6d692a2e6c">CALL_DBG</a>(dbg_my_int, argc);</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="adebug_8h_html_a527c3a831b811490c671cb70a31f6ebb"><div class="ttname"><a href="#a527c3a831b811490c671cb70a31f6ebb">DBG_FUNC_DECL</a></div><div class="ttdeci">#define DBG_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:287</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

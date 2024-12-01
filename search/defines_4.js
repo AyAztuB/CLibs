@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['exit_0',['EXIT',['../logger_8h.html#ad111e603bbebe5d87f6bc39264ce4733',1,'logger.h']]],
-  ['exit_5ffailure_1',['EXIT_FAILURE',['../logger_8h.html#a73efe787c131b385070f25d18b7c9aa4',1,'logger.h']]]
+  ['log_0',['LOG',['../logger_8h.html#aabadde7d5f8f3525736c00118b4949e5',1,'logger.h']]],
+  ['log_5ffatal_1',['LOG_FATAL',['../logger_8h.html#a89cecd05aeaafc715ebc091cf74d10fe',1,'logger.h']]]
 ];

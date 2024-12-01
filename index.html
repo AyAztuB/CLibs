@@ -106,27 +106,35 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 Documentation</h1>
 <p>A Doxyfile is provided to generate a doxygen documentation. The doxygen documentation is hosted on <a href="https://ayaztub.github.io/CLibs/">github pages</a>.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
-Instalation</h1>
+Installation</h1>
 <div class="fragment"><div class="line">git clone https://github.com/AyAztuB/CLibs.git &amp;&amp; cd CLibs &amp;&amp; cmake -B build &amp;&amp; cmake --build build --target libayaztub &amp;&amp; cmake --build build --target install</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+Tests</h1>
+<div class="fragment"><div class="line">git clone https://github.com/AyAztuB/CLibs.git &amp;&amp; cd CLibs &amp;&amp; cmake -B build &amp;&amp; cmake --build build &amp;&amp; ctest --test-dir build</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Libraries</h1>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Core Utils</h2>
 <ul>
 <li>Assert</li>
 <li>Debug</li>
 <li>Logger</li>
+<li>Util Attributes</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Usage</h1>
 <p>Some code example are provided in <code>example/</code>. In general, you can use it after installation like so:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ayaztub_8h.html">ayaztub.h</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;ayaztub.h&gt;</span></div>
 <div class="line"><span class="comment">// or a more specific header like &lt;ayaztub/core_utils/logger.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// ...</span></div>
-<div class="ttc" id="aayaztub_8h_html"><div class="ttname"><a href="ayaztub_8h.html">ayaztub.h</a></div></div>
-</div><!-- fragment --><p>and compile it with: </p><div class="fragment"><div class="line">gcc your_code.c -layaztub</div>
-</div><!-- fragment --> </div></div><!-- PageDoc -->
+</div><!-- fragment --><p>and compile it with: </p><div class="fragment"><div class="line">gcc your_code.c -layaztub &lt;AND_LIB_DEPENDENCIES&gt;</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
+Lib dependencies</h1>
+<p>The lib requires some dependencies:</p><ul>
+<li>pthread </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
 </div><!-- contents -->
 </div><!-- doc-content -->

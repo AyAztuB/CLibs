@@ -8,7 +8,6 @@ var debug_8h =
     [ "DBG_ARRAY_FUNC_DECL", "debug_8h.html#adbcf56eef7621327cadf29e3db6c7415", null ],
     [ "DBG_FUNC_DECL", "debug_8h.html#a527c3a831b811490c671cb70a31f6ebb", null ],
     [ "DBG_OUTSTREAM", "debug_8h.html#a731415649bbdbb4705521e2d8b519d6d", null ],
-    [ "FPRINTF", "debug_8h.html#ae6d03ea01910257a961b0937d3cb0e2f", null ],
     [ "SOURCE_PATH_SIZE", "debug_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1", null ],
     [ "set_breakpoint", "debug_8h.html#a7cdbf05f95e59109480e0952d40b1086", null ]
 ];

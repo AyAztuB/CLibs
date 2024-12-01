@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['malloc_0',['MALLOC',['../logger_8h.html#a3e218828af7ddd3f4cd0d3772562b520',1,'logger.h']]]
+  ['usage_0',['Usage',['../index.html#autotoc_md6',1,'']]],
+  ['utils_1',['Core Utils',['../index.html#autotoc_md5',1,'']]]
 ];

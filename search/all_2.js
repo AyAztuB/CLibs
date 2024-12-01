@@ -4,6 +4,5 @@ var searchData=
   ['call_5fdbg_5farray_1',['CALL_DBG_ARRAY',['../debug_8h.html#a5cf2a3e231c4a3c55578e8ccde380305',1,'debug.h']]],
   ['clibs_2',['CLibs',['../index.html',1,'']]],
   ['compile_5fassert_3',['COMPILE_ASSERT',['../assert_8h.html#a4b023efa74e82314e5e2aca4914e2806',1,'assert.h']]],
-  ['core_20utils_4',['Core Utils',['../index.html#autotoc_md4',1,'']]],
-  ['core_5futils_2eh_5',['core_utils.h',['../core__utils_8h.html',1,'']]]
+  ['core_20utils_4',['Core Utils',['../index.html#autotoc_md5',1,'']]]
 ];

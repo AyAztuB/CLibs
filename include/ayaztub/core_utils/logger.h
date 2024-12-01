@@ -1,186 +1,89 @@
 /**
  * @file logger.h
- * @brief Header file for the logger utility.
+ * @brief Thread-safe logger library for debugging purposes in C99.
  *
- * This file provides logging functionality with various log levels and options.
- * It allows logging messages to a file or standard output and provides
- * customization options for log formatting and filtering.
+ * This library provides logging functionality with various log levels, support
+ * for callbacks, and options to log to files or standard output. It is designed
+ * for debugging and includes features like backtrace logging on fatal errors.
  *
- * @note define NOLOG before including the header or in compile arguments to
- * remove all LOG() call
+ * @note define NOLOG to remove all LOG() calls
+ *
+ * @warning As you can remove all LOG() calls using NOLOG, you MUST NEVER call a
+ * function in the LOG() macro argument as this function call will also be
+ * removed.
+ *
+ * @note define NOLOG will not remove backtrace logs on fatal signals (SIGSEGV,
+ * SIGILL, SIGABRT, ...)
+ *
+ * @warning This logger is optimized for debugging and may not be suitable for
+ * high-performance logging in production. For release builds, use restrictive
+ * log levels or disable logging using NOLOG.
+ *
+ * @warning This library is thread-safe but the logger callback registered by
+ * the user is called IN the critical section (to ensure logs order consitancy
+ * between with the logger core). To avoid deadlocks, the user MUST NEVER do
+ * recursive logging and thus MUST NEVER call any logger core functions/macros
+ * in the callback provided.
  *
  * @code
+ * // usage example
  * #include <ayaztub/core_utils/logger.h>
  *
  * int main(int argc, char **argv) {
- *     if (!LOGGER_SET_OUTFILE("file.log"))
- *         FATAL("%s", "cannot open file `file.log`");
+ * #ifndef __GNUC__
+ *     logger_init();
+ * #endif // __GNUC__
  *
- *     LOG(INFO, "%s",
- *         "info log printed in file.log with date and thread_id if on linux");
+ *     logger_set_format_options(true, true, true);
+ *     logger_set_log_level(LOG_DEBUG);
  *
- *     LOGGER_CLOSE_OUTFILE();
+ *     if (!logger_set_log_file("logfile.txt")) {
+ *         // error on logger setup...
+ *         fprintf(stderr, "Failed to setup logger:"
+ *             " open logfile.txt failed !\n");
+ *         exit(1);
+ *     }
  *
- *     LOG(INFO, "%s", "back on stdout/stderr");
+ *     // Log messages of various levels
+ *     LOG(LOG_INFO, "This is and informational message.");
+ *     LOG(LOG_WARN, "This is a warning message.");
+ *     LOG(LOG_ERROR, "This is an error message.");
+ *     LOG(LOG_DEBUG, "Debugging details: x = %d, y = %d", 69, 96);
  *
- *     logger_set_options((struct logger_options){
- *         .log_level = WARNING,
- *         .show_date = true,
- *     #ifdef __linux__
- *         .show_thread_id = true,
- *     #endif // __linux__
- *     });
+ *     // Demonstarte callback usage (log to stdout)
+ *     logger_set_callback(log_on_stdout);
+ *     LOG(LOG_TRACE, "Trace message with callback active"
+ *         " (logged on both stdout and logfile.txt).");
  *
- *     LOG(DEBUG, "%s", "debug log not printed due to log level WARNING !");
- *     LOG(WARNING, "%s", "log printed on stdout");
- *     LOG(ERROR, "%s", "error log on stderr");
+ *     // cleanup: logger_close_file() autonatically called by
+ *     // logger_deinit() destructor
  *
- *     LOGGER_SET_OUTFILE("stderr");
- *
- *     LOG(DEBUG, "%s", "still not displayed...");
- *     LOG(WARNING, "%s", "all logs on stderr this time !");
- *
- *     LOGGER_CLOSE_OUTFILE();
- *     // this doesn't close the stderr file stream but removed it from the
- *     //   internal to log back on stdout/stderr
+ * #ifndef __GNUC__
+ *     logger_deinit();
+ * #endif // __GNUC__
  *
  *     return 0;
  * }
  * @endcode
+ *
+ * @note On fatal error (or signal SIGSEGV, SIGABRT, SIGILL, SIGFPE, SIGBUS),
+ * the backtrace may be logged as FATAL.
+ * For example, the backtrace log `./a.out(+0x21ae) [0x5620024571ae]`
+ * can be retrieved using addr2line:
+ * `addr2line -Cfspe ./a.out +0x21ae` gives us the function, file and line
+ * (with debug flags -g)
+ *
+ * @todo Integrate the addr2line tool in the log_backtrace() function, without
+ * any allocation (fatal error may be due to corrupted memory...).
  */
 
 #ifndef __AYAZTUB__CORE_UTILS__LOGGER_H__
 #define __AYAZTUB__CORE_UTILS__LOGGER_H__
 
+#include <ayaztub/core_utils/util_attributes.h>
 #include <stdbool.h>
-#include <stddef.h>
-
-#ifndef FPRINTF
-#    include <stdio.h>
-/**
- * @def FPRINTF
- * @brief Macro for formatted output to a file stream.
- *
- * This macro allow you to use your own fprintf function instead of the default
- * one from stdio.h. By default, if undefined, it is an alias of the fprintf
- * standard function.
- */
-#    define FPRINTF fprintf
-#endif // FPRINTF
-
-#ifndef SNPRINTF
-#    include <stdio.h>
-/**
- * @def SNPRINTF
- * @brief Macro for formatted output to a buffer with size.
- *
- * This macro allow you to use your own snprintf function instead of the default
- * one from stdio.h. By default, if undefined, it is an alias of the snprintf
- * standard function.
- */
-#    define SNPRINTF snprintf
-#endif // SNPRINTF
-
-#ifndef SPRINTF
-#    include <stdio.h>
-/**
- * @def SPRINTF
- * @brief Macro for formatted output to a buffer.
- *
- * This macro allow you to use your own sprintf function instead of the default
- * one from stdio.h. By default, if undefined, it is an alias of the sprintf
- * standard function.
- */
-#    define SPRINTF sprintf
-#endif // SPRINTF
-
-#ifndef FOPEN
-#    include <stdio.h>
-/**
- * @def FOPEN
- * @brief Macro to open a file.
- *
- * This macro allow you to use your own fopen function instead of the default
- * one from stdio.h. By default, if undefined, it is an alias of the fopen
- * standard function.
- */
-#    define FOPEN fopen
-#endif // FOPEN
-
-#ifndef FCLOSE
-#    include <stdio.h>
-/**
- * @def FCLOSE
- * @brief Macro to close a file.
- *
- * This macro allow you to use your own fclose function instead of the default
- * one from stdio.h. By default, if undefined, it is an alias of the fclose
- * standard function.
- */
-#    define FCLOSE fclose
-#endif // FCLOSE
-
-#ifndef STDERR
-#    include <stdio.h>
-/**
- * @def STDERR
- * @brief Macro for the error output stream.
- *
- * This macro allow you to use your own stderr variable instead of the default
- * one from stdio.h. By default, if undefined, it is an alias of the stderr
- * standard error stream.
- */
-#    define STDERR stderr
-#endif // STDERR
-
-#ifndef STDOUT
-#    include <stdio.h>
-/**
- * @def STDOUT
- * @brief Macro for the standard output stream.
- *
- * This macro allow you to use your own stdout variable instead of the default
- * one from stdio.h. By default, if undefined, it is an alias of the stdout
- * standard output stream.
- */
-#    define STDOUT stdout
-#endif // STDOUT
-
-#ifndef MALLOC
-#    include <stdlib.h>
-/**
- * @def MALLOC
- * @brief Macro to allocate memory.
- *
- * This macro allow you to use your own allocator function instead of the
- * default one from stdlib.h. By default, if undefined, it is an alias of the
- * malloc standard function.
- */
-#    define MALLOC malloc
-#endif // MALLOC
-
-#ifndef EXIT
-#    include <stdlib.h>
-/**
- * @def EXIT
- * @brief Macro to exit the program.
- *
- * This macro allow you to use your own exit function instead of the default
- * one from stdlib.h. By default, if undefined, it is an alias of the exit
- * standard function.
- */
-#    define EXIT exit
-#endif // EXIT
-
-#ifndef EXIT_FAILURE
-/**
- * @def EXIT_FAILURE
- * @brief Macro for exit failure code.
- *
- * This macro defines the exit code for program failure. By default, it's 1.
- */
-#    define EXIT_FAILURE 1
-#endif // EXIT_FAILURE
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * @def SOURCE_PATH_SIZE
@@ -201,229 +104,233 @@
  * This macro modifies the @c __FILE__ macro to remove a specified number of
  * characters from the beginning, making the logged file paths more readable.
  */
+#ifndef __FILENAME__
 #define __FILENAME__ ((__FILE__) + (SOURCE_PATH_SIZE))
-
-#define LOG_LVL(X)                                                             \
-    X(DEBUG)                                                                   \
-    X(INFO)                                                                    \
-    X(WARNING)                                                                 \
-    X(ERROR)                                                                   \
-    X(TIMEOUT)                                                                 \
-    X(FATAL)
+#endif // __FILENAME__
 
 /**
  * @enum log_level
- * @brief Enumeration of log levels.
- *
- * These log levels can be used to control the verbosity of the logger.
- * In order, there are: DEBUG, INFO, WARNING, ERROR, TIMEOUT, FATAL
+ * @brief Log levels supported by the logger.
  */
 enum log_level {
-#define X(A) A,
-    LOG_LVL(X)
-#undef X
+    LOG_QUITE, /**< No output */
+    LOG_FATAL, /**< Fatal errors (program will terminate) */
+    LOG_ERROR, /**< Errors */
+    LOG_TIMEOUT, /**< Timeout warnings */
+    LOG_WARN, /**< Warnings */
+    LOG_INFO, /**< Informational messages */
+    LOG_TRACE, /**< Trace-level debugging */
+    LOG_DEBUG, /**< Debug-level messages */
+    LOG_FULL, /**< All messages */
 };
 
 /**
- * @struct logger_options
- * @brief Structure for customizing default logger output.
+ * @typedef logger_cb_t
+ * @brief Logger callback type.
  *
- * This structure allows customization of the logger's behavior when no log file
- * is specified. It must be passed to logger_set_options to take effect. When a
- * log file is provided, these options are automatically adjusted to print as
- * mush information as possible. To do so, if a log file is provided, the
- * logger_options::log_level will be DEBUG, the logger_options::show_date will
- * be true and the logger_options::show_thread_id will be true (Linux only).
+ * This function is called whenever a log message is generated.
+ * It must not call logger functions/macros directly to avoid recursion.
  *
- * @var logger_options::log_level
- * Log level threshold; logs with a level lower than this will not be printed.
- * DEBUG by default.
- * @var logger_options::show_date
- * Flag to show the date in logs. False by default.
- * @var logger_options::show_thread_id
- * Flag to show the thread ID in logs. Only available on Linux; false by
- * default.
- * @note Only available on Linux
+ * @param lvl Log level of the message.
+ * @param colored_message Log message with formatting (for TTY outputs like
+ * stdout).
+ * @param raw_message Log message without formatting (for file outputs).
  */
-struct logger_options {
-    enum log_level log_level;
-    bool show_date;
-#ifdef __linux__
-    bool show_thread_id;
-#endif // __linux__
-};
+typedef void (*logger_cb_t)(enum log_level lvl,
+                            const char *const colored_message,
+                            const char *const raw_message);
 
 /**
- * @def LOG
- * @brief Macro to log messages with variadic arguments.
+ * @brief Initializes the logger.
  *
- * This macro logs messages with a specified log level and format string. If a
- * log file is provided, logs are written to the file. Otherwise, logs are
- * written to stderr if the log level is greater than WARNING, and to stdout if
- * the log level is less than or equal to WARNING. If the log level is FATAL,
- * logs are written to both the file (if provided) and stderr. This macro can be
- * disabled defining NOLOG.
+ * This function is called automatically at program startup (constructor
+ * attribute). It must not be called directly.
  *
- * @warning Disable logs defining the macro NOLOG will result in the suppression
- * of all LOG() macro call in the source code. Thus, the arguments will no
- * longer be computed and this can lead to undefined behavior if arguments can
- * make side effects.
- *
- * @param LEVEL Log level.
- * @param FMT Format string.
- * @param ... Variadic arguments for the format string.
- *
- * Example usage:
+ * @warning CONSTRUCTOR is not defined without __GNUC__. If working with a non
+ * GNUC complient compiler, please call it directly at main start.
  * @code
- * LOG(INFO, "Application started with %d arguments", argc);
- * LOG(ERROR, "Failed to open file: %s", filename);
- * @endcode
- */
-#ifdef NOLOG
-#    define LOG(LEVEL, FMT, ...) (void)LEVEL
-#else // NOLOG
-#    define LOG(LEVEL, FMT, ...)                                               \
-        do {                                                                   \
-            int __n = SNPRINTF(NULL, 0, (FMT), __VA_ARGS__);                   \
-            if (__n < 0) {                                                     \
-                break;                                                         \
-            }                                                                  \
-            size_t __size = (size_t)__n + 1;                                   \
-            char *__buff = MALLOC(__size * sizeof(*__buff));                   \
-            if (__buff == NULL) {                                              \
-                break;                                                         \
-            }                                                                  \
-            SNPRINTF(__buff, __size, (FMT), __VA_ARGS__);                      \
-            logger_log((LEVEL), __FILENAME__, __LINE__, __func__, __buff,      \
-                       SPRINTF, FPRINTF, STDOUT, STDERR);                      \
-        } while (0)
-#endif // NOLOG
-
-/**
- * @def FATAL
- * @brief Macro to log fatal messages and crash the program.
+ * int main(void) {
+ * #ifndef __GNUC__
+ *     logger_init();
+ * #endif // __GNUC__
  *
- * This macro logs a message with the FATAL log level and then crashes the
- * program. Even if logging is disabled, this macro will cause the program to
- * exit.
+ *     // program code
  *
- * @param FMT Format string.
- * @param ... Variadic arguments for the format string.
+ * #ifndef __GNUC__
+ *     logger_deinit();
+ * #endif // __GNUC__
  *
- * Example usage:
- * @code
- * FATAL("Critical error: %s", error_message);
- * @endcode
- */
-#define FATAL(FMT, ...)                                                        \
-    do {                                                                       \
-        LOG(FATAL, (FMT), __VA_ARGS__);                                        \
-        EXIT(EXIT_FAILURE);                                                    \
-    } while (0)
-
-/**
- * @brief Set options to override the default logger settings.
- *
- * This function allows the user to customize the logger's behavior by setting
- * options defined in the logger_options structure.
- *
- * @param options Structure containing the logger options.
- *
- * Example usage:
- * @code
- * logger_set_options((struct logger_options) {
- *   .log_level = ERROR,
- *   .show_date = true,
- * #ifdef __linux__
- *   .show_thread_id = true,
- * #endif // __linux__
- * });
- * @endcode
- */
-void logger_set_options(struct logger_options options);
-
-/**
- * @def LOGGER_SET_OUTFILE(filename)
- * @brief Macro to set the log output file.
- *
- * This macro sets the log output file using the specified filename.
- * It is a wrapper around logger_set_outfile().
- *
- * @param filename The name of the log output file.
- * @return true if the file was successfully set, false otherwise.
- *
- * Example usage:
- * @code
- * if (!LOGGER_SET_OUTFILE("logfile.txt")) {
- *     fprintf(stderr, "Failed to set log file\n");
+ *     return EXIT_SUCCESS;
  * }
  * @endcode
  */
-#define LOGGER_SET_OUTFILE(filename) logger_set_outfile(filename, FOPEN, STDERR)
+CONSTRUCTOR void logger_init(void);
 
 /**
- * @brief Sets the log output file.
+ * @brief Deinitializes the logger.
  *
- * This function sets the log output file using the specified filename and file
- * opening function. It should not be used directly; use LOGGER_SET_OUTFILE()
- * instead.
+ * This function is called automatically at program termination (destructor
+ * attribute). It must not be called directly.
  *
- * @param filename The name of the log output file.
- * @param open_file Function pointer to open a file.
- * @param stderr_file Standard error file stream.
- * @return true if the file was successfully set, false otherwise.
+ * @warning If __GNUC__ is not defined, please refer to the example in
+ * logger_init().
  */
-bool logger_set_outfile(const char *filename,
-                        FILE *(*open_file)(const char *, const char *),
-                        FILE *stderr_file);
+DESTRUCTOR void logger_deinit(void);
 
 /**
- * @def LOGGER_CLOSE_OUTFILE()
- * @brief Macro to close the log output file.
+ * @brief Configures log formatting options.
  *
- * This macro closes the log file that was previously set using
- * LOGGER_SET_OUTFILE(). This macro closes the log output file. It is a wrapper
- * around logger_close_outfile().
+ * @param show_date Whether to include the current date in log messages.
+ * @param show_thread Whether to include thread identifiers in log messages.
+ * @param log_trace_on_fatal Whether to log a backtrace on fatal errors or
+ * signals.
  *
- * Example usage:
+ * @note All options are true by default.
+ */
+void logger_set_format_options(bool show_date, bool show_thread,
+                               bool log_trace_on_fatal);
+
+/**
+ * @brief Sets the current log level.
+ *
+ * Messages below the specified level will not be logged.
+ *
+ * @param level The desired log level.
+ */
+void logger_set_log_level(enum log_level level);
+
+/**
+ * @brief Sets the log level based on a string.
+ *
+ * @param log_level String representation of the log level (e.g., "INFO",
+ * "DEBUG", "LOG_INFO", "LOG_DEBUG").
+ */
+void logger_set_log_level_from_string(const char *const log_level) NONNULL
+    NULL_TERMINATED_STRING_ARG(1);
+
+/**
+ * @brief Sets the log level based on an environment variable.
+ *
+ * The logger will look for the environment variable `LOG_LEVEL` and configure
+ * the level accordingly. The environment variable `LOG_LEVEL` value must
+ * follow the same format as the string parameter accepted by
+ * logger_set_log_level_from_string().
+ */
+void logger_set_log_level_from_env(void);
+
+/**
+ * @brief Sets the output file for log messages.
+ *
+ * @param filename Path to the log file.
+ * @return `true` if the file was successfully opened, `false` otherwise.
+ */
+bool logger_set_log_file(const char *const filename) NONNULL
+    NULL_TERMINATED_STRING_ARG(1);
+
+/**
+ * @brief Sets the output file for log messages based on an environment
+ * variable.
+ *
+ * The logger will look for the environment variable `LOG_FILE` and configure
+ * the output file accordingly.
+ *
+ * @param default_filename Path to the log path if the environment variable was
+ * not found. (can be NULL)
+ * @return `true` if environment variable `LOG_FILE` exists and was successfully
+ * opened OR if default_filename is not NULL and was successfully opened,
+ * `false` otherwise (1- LOG_FILE env variable exists but file cannot be opened,
+ * 2- LOG_FILE env variable does not exists and default_filename is NULL, 3-
+ * LOG_FILE env variable does not exists and default_filename cannot be opened)
+ */
+bool logger_set_log_file_from_env(const char *const default_filename);
+
+/**
+ * @brief Sets the file descriptor for log output.
+ *
+ * @param file A valid file pointer for output.
+ * @return `true` if the file descriptor is valid, `false` otherwise.
+ *
+ * @warning The file descriptor must not be closed by the user after this
+ * function call. If you want to close it, please refer to the
+ * logger_close_file() function.
+ */
+bool logger_set_log_fileno(FILE *file) NONNULL FD_ARG_WRITE(1);
+
+/**
+ * @brief Closes the current log file, if any.
+ *
+ * @note Automatically called by logger_deinit().
+ */
+void logger_close_file(void);
+
+/**
+ * @brief Sets a callback function to handle log messages.
+ *
+ * @param callback Pointer to the callback function.
+ */
+void logger_set_callback(logger_cb_t callback);
+
+/**
+ * @brief Logs a message with a specified log level.
+ *
+ * @param level Log level for the message.
+ * @param file Source file name (__FILE__).
+ * @param line Source line number (__LINE__).
+ * @param func Source function name (__func__).
+ * @param fmt Format string for the message.
+ * @param ... Additional arguments for the format string.
+ *
+ * @note Please use the user friendly LOG() macro insteed.
+ */
+FORMAT(printf, 5, 6)
+void log_message(enum log_level level, const char *const file, size_t line,
+                 const char *const func, const char *const fmt, ...) NONNULL
+    NULL_TERMINATED_STRING_ARG(2) NULL_TERMINATED_STRING_ARG(4);
+
+/**
+ * @brief Logs a message using the default log macro.
+ *
+ * Usage:
  * @code
- * LOGGER_CLOSE_OUTFILE();
+ * LOG(LOG_INFO, "This is an info message with value: %d", value);
  * @endcode
+ *
+ * @param lvl Log level.
+ * @param ... Format string and arguments.
  */
-#define LOGGER_CLOSE_OUTFILE() logger_close_outfile(FCLOSE, STDERR)
+#ifdef NOLOG
+#    define LOG(lvl, ...) (void)0
+#else // NOLOG
+#    define LOG(lvl, ...)                                                      \
+        log_message((lvl), __FILENAME__, __LINE__, __func__, __VA_ARGS__)
+#endif // NOLOG
 
 /**
- * @brief Closes the log output file.
+ * @brief Logs a fatal message and exits the program.
  *
- * This function closes the log output file using the specified file closing
- * function. It should not be used directly; use LOGGER_CLOSE_OUTFILE() instead.
+ * This macro is intended to exit the program even if logging is disabled
+ * (with NOLOG defined).
  *
- * @param close_file Function pointer to close a file.
- * @param stderr_file Standard error file stream.
+ * @param ... Format string and arguments.
  */
-void logger_close_outfile(int (*close_file)(FILE *), FILE *stderr_file);
+#define LOG_FATAL(...)                                                         \
+    do {                                                                       \
+        LOG(LOG_FATAL, __VA_ARGS__);                                           \
+        exit(1);                                                               \
+    } while (0)
+
+// ---------- logger callback to log on stdout/stderr ---------- //
 
 /**
- * @brief Logs a message with the specified log level.
- *
- * This function logs a message with the specified log level, file name, line
- * number, function name, and message. It should not be used directly; use the
- * LOG() macro instead.
- *
- * @param level The log level.
- * @param file_name The name of the source file where the log is generated.
- * @param line The line number where the log is generated.
- * @param func_name The name of the function where the log is generated.
- * @param message The log message.
- * @param _sprintf Function pointer for sprintf-like functionality.
- * @param _fprintf Function pointer for fprintf-like functionality.
- * @param _stdout Standard output file stream.
- * @param _stderr Standard error file stream.
+ * @brief Logs a message to stdout using the logger callback.
  */
-void logger_log(enum log_level level, const char *file_name, size_t line,
-                const char *func_name, char *message,
-                int (*_sprintf)(char *, const char *, ...),
-                int (*_fprintf)(FILE *, const char *, ...), FILE *_stdout,
-                FILE *_stderr);
+void log_on_stdout(enum log_level, const char *const, const char *const) NONNULL
+    NULL_TERMINATED_STRING_ARG(2) NULL_TERMINATED_STRING_ARG(3);
+
+/**
+ * @brief Logs a message to stderr using the logger callback.
+ */
+void log_on_stderr(enum log_level, const char *const, const char *const) NONNULL
+    NULL_TERMINATED_STRING_ARG(2) NULL_TERMINATED_STRING_ARG(3);
 
 #endif // __AYAZTUB__CORE_UTILS__LOGGER_H__

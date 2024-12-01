@@ -52,19 +52,6 @@
 #    define DBG_OUTSTREAM stderr
 #endif // DBG_OUTSTREAM
 
-#ifndef FPRINTF
-#    include <stdio.h>
-/**
- * @def FPRINTF
- * @brief Macro for formatted output to a file stream.
- *
- * This macro allow you to use your own fprintf function instead of the default
- * one from stdio.h. By default, if undefined, it is an alias of the fprintf
- * standard function.
- */
-#    define FPRINTF fprintf
-#endif // FPRINTF
-
 /**
  * @def SOURCE_PATH_SIZE
  * @brief Macro to truncate the root file path.
@@ -84,7 +71,9 @@
  * This macro modifies the @c __FILE__ macro to remove a specified number of
  * characters from the beginning, making the logged file paths more readable.
  */
-#define __FILENAME__ ((__FILE__) + (SOURCE_PATH_SIZE))
+#ifndef __FILENAME__
+#    define __FILENAME__ ((__FILE__) + (SOURCE_PATH_SIZE))
+#endif // __FILENAME__
 
 #ifndef NODBG
 #    if __STDC_VERSION__ >= 201112L
@@ -257,7 +246,7 @@
 #endif // NODBG
 
 #define GRAY "\033[0;2m"
-#define WHITE "\033[0m"
+#define RESET "\033[0m"
 #define TURQUOISE "\033[0;36m"
 
 /**
@@ -288,8 +277,8 @@
     static inline type dbg_##name(const char *file, unsigned int line,         \
                                   const char *func_name, const char *expr,     \
                                   type value) {                                \
-        FPRINTF(DBG_OUTSTREAM,                                                 \
-                GRAY "%s:%u in %s()" WHITE ": " TURQUOISE "%s" WHITE " = " fmt \
+        fprintf(DBG_OUTSTREAM,                                                 \
+                GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = " fmt \
                      "\n",                                                     \
                 file, line, func_name, expr, value);                           \
         return value;                                                          \
@@ -325,15 +314,15 @@
     static inline type dbg_array_##name(                                       \
         const char *file, unsigned int line, const char *func_name,            \
         const char *expr, type array, size_t length) {                         \
-        FPRINTF(DBG_OUTSTREAM,                                                 \
-                GRAY "%s:%u in %s()" WHITE ": " TURQUOISE "%s" WHITE " = [ ",  \
+        fprintf(DBG_OUTSTREAM,                                                 \
+                GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = [ ",  \
                 file, line, func_name, expr);                                  \
         for (size_t i = 0; i < length; i++) {                                  \
             if (i)                                                             \
-                FPRINTF(DBG_OUTSTREAM, ", ");                                  \
-            FPRINTF(DBG_OUTSTREAM, fmt, array[i]);                             \
+                fprintf(DBG_OUTSTREAM, ", ");                                  \
+            fprintf(DBG_OUTSTREAM, fmt, array[i]);                             \
         }                                                                      \
-        FPRINTF(DBG_OUTSTREAM, " ] with length = %zu\n", length);              \
+        fprintf(DBG_OUTSTREAM, " ] with length = %zu\n", length);              \
         return array;                                                          \
     }
 
@@ -356,8 +345,8 @@ DBG_FUNC_DECL(double, double, "%lf")
 static inline bool dbg_bool(const char *file, unsigned int line,
                             const char *func_name, const char *expr,
                             bool value) {
-    FPRINTF(DBG_OUTSTREAM,
-            GRAY "%s:%u in %s()" WHITE ": " TURQUOISE "%s" WHITE " = %s\n",
+    fprintf(DBG_OUTSTREAM,
+            GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = %s\n",
             file, line, func_name, expr, value ? "true" : "false");
     return value;
 }
@@ -370,18 +359,18 @@ DBG_FUNC_DECL(const char *, const_char_p, "\"%s\"")
 static inline const signed char *
 dbg_const_schar_p(const char *file, unsigned int line, const char *func_name,
                   const char *expr, const signed char *value) {
-    FPRINTF(DBG_OUTSTREAM,
-            GRAY "%s:%u in %s()" WHITE ": " TURQUOISE "%s" WHITE " = ", file,
+    fprintf(DBG_OUTSTREAM,
+            GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = ", file,
             line, func_name, expr);
     if (!value)
-        FPRINTF(DBG_OUTSTREAM, "(null)\n");
+        fprintf(DBG_OUTSTREAM, "(null)\n");
     else {
         for (size_t i = 0; value[i]; i++) {
             if (i)
-                FPRINTF(DBG_OUTSTREAM, ", ");
-            FPRINTF(DBG_OUTSTREAM, "%hhd", value[i]);
+                fprintf(DBG_OUTSTREAM, ", ");
+            fprintf(DBG_OUTSTREAM, "%hhd", value[i]);
         }
-        FPRINTF(DBG_OUTSTREAM, "\n");
+        fprintf(DBG_OUTSTREAM, "\n");
     }
     return value;
 }
@@ -396,18 +385,18 @@ static inline signed char *dbg_schar_p(const char *file, unsigned int line,
 static inline const unsigned char *
 dbg_const_uchar_p(const char *file, unsigned int line, const char *func_name,
                   const char *expr, const unsigned char *value) {
-    FPRINTF(DBG_OUTSTREAM,
-            GRAY "%s:%u in %s()" WHITE ": " TURQUOISE "%s" WHITE " = ", file,
+    fprintf(DBG_OUTSTREAM,
+            GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = ", file,
             line, func_name, expr);
     if (!value)
-        FPRINTF(DBG_OUTSTREAM, "(null)\n");
+        fprintf(DBG_OUTSTREAM, "(null)\n");
     else {
         for (size_t i = 0; value[i]; i++) {
             if (i)
-                FPRINTF(DBG_OUTSTREAM, ", ");
-            FPRINTF(DBG_OUTSTREAM, "%hhu", value[i]);
+                fprintf(DBG_OUTSTREAM, ", ");
+            fprintf(DBG_OUTSTREAM, "%hhu", value[i]);
         }
-        FPRINTF(DBG_OUTSTREAM, "\n");
+        fprintf(DBG_OUTSTREAM, "\n");
     }
     return value;
 }
@@ -457,15 +446,15 @@ DBG_ARRAY_FUNC_DECL(const unsigned char *, const_uchar, "%hhu")
 static inline const bool *
 dbg_array_const_bool(const char *file, unsigned int line, const char *func_name,
                      const char *expr, const bool *array, size_t length) {
-    FPRINTF(DBG_OUTSTREAM,
-            GRAY "%s:%u in %s()" WHITE ": " TURQUOISE "%s" WHITE " = [ ", file,
+    fprintf(DBG_OUTSTREAM,
+            GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = [ ", file,
             line, func_name, expr);
     for (size_t i = 0; i < length; i++) {
         if (i)
-            FPRINTF(DBG_OUTSTREAM, ", ");
-        FPRINTF(DBG_OUTSTREAM, "%s", array[i] ? "true" : "false");
+            fprintf(DBG_OUTSTREAM, ", ");
+        fprintf(DBG_OUTSTREAM, "%s", array[i] ? "true" : "false");
     }
-    FPRINTF(DBG_OUTSTREAM, " ] with length = %zu\n", length);
+    fprintf(DBG_OUTSTREAM, " ] with length = %zu\n", length);
     return array;
 }
 

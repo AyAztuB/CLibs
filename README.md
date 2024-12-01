@@ -7,10 +7,16 @@ An union of some of C utils library.
 A Doxyfile is provided to generate a doxygen documentation.
 The doxygen documentation is hosted on [github pages](https://ayaztub.github.io/CLibs/).
 
-## Instalation
+## Installation
 
 ```sh
 git clone https://github.com/AyAztuB/CLibs.git && cd CLibs && cmake -B build && cmake --build build --target libayaztub && cmake --build build --target install
+```
+
+## Tests
+
+```sh
+git clone https://github.com/AyAztuB/CLibs.git && cd CLibs && cmake -B build && cmake --build build && ctest --test-dir build
 ```
 
 ## Libraries
@@ -20,6 +26,7 @@ git clone https://github.com/AyAztuB/CLibs.git && cd CLibs && cmake -B build && 
 - Assert
 - Debug
 - Logger
+- Util Attributes
 
 
 ## Usage
@@ -36,5 +43,10 @@ In general, you can use it after installation like so:
 
 and compile it with:
 ```sh
-gcc your_code.c -layaztub
+gcc your_code.c -layaztub <AND_LIB_DEPENDENCIES>
 ```
+
+## Lib dependencies
+
+The lib requires some dependencies:
+- pthread

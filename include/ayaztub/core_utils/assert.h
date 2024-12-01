@@ -13,31 +13,8 @@
 #ifndef __AYAZTUB__CORE_UTILS__ASSERT_H__
 #define __AYAZTUB__CORE_UTILS__ASSERT_H__
 
-#ifndef FPRINTF
-#    include <stdio.h>
-/**
- * @def FPRINTF
- * @brief Macro for formatted output to a file stream.
- *
- * This macro allow you to use your own fprintf function instead of the default
- * one from stdio.h. By default, if undefined, it is an alias of the fprintf
- * standard function.
- */
-#    define FPRINTF fprintf
-#endif // FPRINTF
-
-#ifndef ABORT
-#    include <stdlib.h>
-/**
- * @def ABORT
- * @brief Macro to abort the program.
- *
- * This macro allow you to use your own abort function instead of the default
- * one from stdlib.h. By default, if undefined, it is an alias of the abort
- * standard function.
- */
-#    define ABORT abort
-#endif // ABORT
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifdef NOASSERT
 #    define COMPILE_ASSERT(predicate, file) ((void)0);
@@ -95,12 +72,12 @@
 #    define ASSERT(predicate, fmt, ...)                                        \
         do {                                                                   \
             if (!(predicate)) {                                                \
-                FPRINTF(stderr,                                                \
+                fprintf(stderr,                                                \
                         "\033[0;31mAssertion failed\033[0m: `%s`, with "       \
                         "message " fmt " (%s:%d in %s())\n",                   \
                         #predicate, __VA_ARGS__, __FILE__, __LINE__,           \
                         __func__);                                             \
-                ABORT();                                                       \
+                abort();                                                       \
             }                                                                  \
         } while (0)
 

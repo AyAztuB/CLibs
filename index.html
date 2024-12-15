@@ -110,7 +110,8 @@ Installation</h1>
 <div class="fragment"><div class="line">git clone https://github.com/AyAztuB/CLibs.git &amp;&amp; cd CLibs &amp;&amp; cmake -B build &amp;&amp; cmake --build build --target libayaztub &amp;&amp; cmake --build build --target install</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
 Tests</h1>
-<div class="fragment"><div class="line">git clone https://github.com/AyAztuB/CLibs.git &amp;&amp; cd CLibs &amp;&amp; cmake -B build &amp;&amp; cmake --build build &amp;&amp; ctest --test-dir build</div>
+<div class="fragment"><div class="line">git clone https://github.com/AyAztuB/CLibs.git &amp;&amp; cd CLibs &amp;&amp; cmake -B build -DBUILD_TESTS=ON &amp;&amp; cmake --build build --target tests &amp;&amp; ctest --test-dir build</div>
+</div><!-- fragment --><p>To get the unit test coverage report, you can use gcovr in the build directory as follow: </p><div class="fragment"><div class="line">cd build &amp;&amp; gcovr -r .. . --html-details coverage.html &amp;&amp; firefox coverage.html</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Libraries</h1>
 <h2><a class="anchor" id="autotoc_md5"></a>

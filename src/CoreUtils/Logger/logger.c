@@ -257,7 +257,9 @@ void logger_set_log_level_from_string(const char *const log_level) {
         lvl_str = log_level + 4;
 
     pthread_mutex_lock(&log_mutex);
-    if (strcmp(lvl_str, "DEBUG") == 0)
+    if (strcmp(lvl_str, "FULL") == 0)
+        current_log_level = LOG_FULL;
+    else if (strcmp(lvl_str, "DEBUG") == 0)
         current_log_level = LOG_DEBUG;
     else if (strcmp(lvl_str, "TRACE") == 0)
         current_log_level = LOG_TRACE;
@@ -331,6 +333,10 @@ void logger_set_callback(logger_cb_t callback) {
 
 void log_message(enum log_level level, const char *const file, size_t line,
                  const char *const func, const char *const fmt, ...) {
+    // LOG_FULL and LOG_QUITE are not valid log level messages and are used
+    // for convenience to accept either all logs or no ones.
+    if (level == LOG_FULL || level == LOG_QUITE)
+        return;
     if (level > current_log_level)
         return;
 
@@ -367,11 +373,13 @@ void log_message(enum log_level level, const char *const file, size_t line,
 void log_on_stdout(UNUSED enum log_level lvl, const char *const colored_message,
                    UNUSED const char *const raw_message) {
     printf("%s\n", colored_message);
+    fflush(stdout);
 }
 
 void log_on_stderr(UNUSED enum log_level lvl, const char *const colored_message,
                    UNUSED const char *const raw_message) {
     fprintf(stderr, "%s\n", colored_message);
+    fflush(stderr);
 }
 
 // ---------- Logger Tests ---------- //

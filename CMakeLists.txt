@@ -30,22 +30,10 @@ install(TARGETS libayaztub
         RUNTIME DESTINATION bin)
 install(DIRECTORY include/ DESTINATION include)
 
-# Enable testing
-enable_testing()
+option(BUILD_TESTS "Build all the libayaztub unit tests." OFF)
 
-# Criterion-based test binary setup
-find_library(CRITERION NAMES criterion libcriterion REQUIRED)
-
-# Add the test executable
-add_executable(tests "")
-
-# Link the library and Criterion to the test executable
-target_link_libraries(tests PRIVATE libayaztub ${CRITERION})
-
-# Add test directory to include paths for tests
-target_include_directories(tests PRIVATE include test src)
-
-# Add the test executable to ctest
-add_test(NAME ayaztub_tests COMMAND tests)
-
-add_subdirectory(test)
+if (BUILD_TESTS)
+  # Enable testing
+  enable_testing()
+  add_subdirectory(test)
+endif()

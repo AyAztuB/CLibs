@@ -16,7 +16,12 @@ git clone https://github.com/AyAztuB/CLibs.git && cd CLibs && cmake -B build && 
 ## Tests
 
 ```sh
-git clone https://github.com/AyAztuB/CLibs.git && cd CLibs && cmake -B build && cmake --build build && ctest --test-dir build
+git clone https://github.com/AyAztuB/CLibs.git && cd CLibs && cmake -B build -DBUILD_TESTS=ON && cmake --build build --target tests && ctest --test-dir build
+```
+
+To get the unit test coverage report, you can use gcovr in the build directory as follow:
+```sh
+cd build && gcovr -r .. . --html-details coverage.html && firefox coverage.html
 ```
 
 ## Libraries

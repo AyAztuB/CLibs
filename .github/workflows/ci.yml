@@ -1,4 +1,4 @@
-name: Build and Deploy Doxygen Documentation
+name: Build, Test, and Deploy Doxygen Documentation
 
 on:
   push:
@@ -9,17 +9,39 @@ on:
       - main  # Change this to your default branch
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'  # Adjust as necessary
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake flex bison graphviz libcriterion-dev
+
+    - name: Build library with CMake
+      run: |
+        cmake -B build -DCMAKE_BUILD_TYPE=Release
+        cmake --build build
+
+    - name: Build unit tests with CMake
+      run: |
+        cmake -B build/unit_tests -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON
+        cmake --build build/unit_tests --target tests
+
+    - name: Run unit tests with criterion
+      run: |
+        cd build/unit_tests
+        ctest
+
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
     - name: Install dependencies
       run: |

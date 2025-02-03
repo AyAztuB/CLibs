@@ -152,7 +152,7 @@ Macros</h2></td></tr>
 <p>Example usage: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> value = 10;</div>
 <div class="line"><a class="code hl_define" href="#a2e2bfc1e4caa2081ec462817c54a2d84">assert</a>(value == 10); <span class="comment">// No output, as the condition is true.</span></div>
 <div class="line"><a class="code hl_define" href="#a2e2bfc1e4caa2081ec462817c54a2d84">assert</a>(value == 0);  <span class="comment">// Outputs an assertion failure message and aborts.</span></div>
-<div class="ttc" id="aassert_8h_html_a2e2bfc1e4caa2081ec462817c54a2d84"><div class="ttname"><a href="#a2e2bfc1e4caa2081ec462817c54a2d84">assert</a></div><div class="ttdeci">#define assert(predicate)</div><div class="ttdoc">Asserts a runtime condition with a default message.</div><div class="ttdef"><b>Definition</b> assert.h:110</div></div>
+<div class="ttc" id="aassert_8h_html_a2e2bfc1e4caa2081ec462817c54a2d84"><div class="ttname"><a href="#a2e2bfc1e4caa2081ec462817c54a2d84">assert</a></div><div class="ttdeci">#define assert(predicate)</div><div class="ttdoc">Asserts a runtime condition with a default message.</div><div class="ttdef"><b>Definition</b> assert.h:112</div></div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>This macro is only defined if <code>assert</code> is not already defined and is an alias to the <a class="el" href="#a9021b2d384ce26058ebc05080f7a9810" title="Asserts a runtime condition with a formatted message.">ASSERT()</a> macro with "failed" as default message.</dd>
 <dd>
 Defining NOASSERT will remove the ASSERT block and thus the assert also </dd></dl>
@@ -186,7 +186,7 @@ Defining NOASSERT will remove the ASSERT block and thus the assert also </dd></d
 <div class="line">            if (!(predicate)) {                                                \</div>
 <div class="line">                fprintf(stderr,                                                \</div>
 <div class="line">                        <span class="stringliteral">&quot;\033[0;31mAssertion failed\033[0m: `%s`, with &quot;</span>       \</div>
-<div class="line">                        <span class="stringliteral">&quot;message &quot;</span> fmt <span class="stringliteral">&quot; (%s:%d in %s())\n&quot;</span>,                   \</div>
+<div class="line">                        <span class="stringliteral">&quot;message `&quot;</span> fmt <span class="stringliteral">&quot;` (%s:%d in %s())\n&quot;</span>,                   \</div>
 <div class="line">                        #predicate, __VA_ARGS__, __FILE__, __LINE__,           \</div>
 <div class="line">                        __func__);                                             \</div>
 <div class="line">                abort();                                                       \</div>
@@ -208,7 +208,7 @@ Defining NOASSERT will remove the ASSERT block and thus the assert also </dd></d
 <div class="line"><span class="comment">// No output, as the condition is true.</span></div>
 <div class="line"><a class="code hl_define" href="#a9021b2d384ce26058ebc05080f7a9810">ASSERT</a>(value == 0, <span class="stringliteral">&quot;Value should not be %d&quot;</span>, value);</div>
 <div class="line"><span class="comment">// Outputs an assertion failure message and aborts.</span></div>
-<div class="ttc" id="aassert_8h_html_a9021b2d384ce26058ebc05080f7a9810"><div class="ttname"><a href="#a9021b2d384ce26058ebc05080f7a9810">ASSERT</a></div><div class="ttdeci">#define ASSERT(predicate, fmt,...)</div><div class="ttdoc">Asserts a runtime condition with a formatted message.</div><div class="ttdef"><b>Definition</b> assert.h:72</div></div>
+<div class="ttc" id="aassert_8h_html_a9021b2d384ce26058ebc05080f7a9810"><div class="ttname"><a href="#a9021b2d384ce26058ebc05080f7a9810">ASSERT</a></div><div class="ttdeci">#define ASSERT(predicate, fmt,...)</div><div class="ttdoc">Asserts a runtime condition with a formatted message.</div><div class="ttdef"><b>Definition</b> assert.h:74</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -243,7 +243,7 @@ Defining NOASSERT will remove the ASSERT block and thus the assert also </dd></d
 <dl class="section note"><dt>Note</dt><dd>You can define NOASSERT to remove the COMPILE_ASSERT block.</dd></dl>
 <p>Example usage: </p><div class="fragment"><div class="line"><a class="code hl_define" href="#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a>(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) == 4, int_size_check);</div>
 <div class="line"><span class="comment">// Asserts that int is 4 bytes</span></div>
-<div class="ttc" id="aassert_8h_html_a4b023efa74e82314e5e2aca4914e2806"><div class="ttname"><a href="#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a></div><div class="ttdeci">#define COMPILE_ASSERT(predicate, file)</div><div class="ttdoc">Asserts a compile-time condition.</div><div class="ttdef"><b>Definition</b> assert.h:46</div></div>
+<div class="ttc" id="aassert_8h_html_a4b023efa74e82314e5e2aca4914e2806"><div class="ttname"><a href="#a4b023efa74e82314e5e2aca4914e2806">COMPILE_ASSERT</a></div><div class="ttdeci">#define COMPILE_ASSERT(predicate, file)</div><div class="ttdoc">Asserts a compile-time condition.</div><div class="ttdef"><b>Definition</b> assert.h:48</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -252,7 +252,7 @@ Defining NOASSERT will remove the ASSERT block and thus the assert also </dd></d
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a6cfef18da99c3955ca9857d1b0683e1.html">ayaztub</a></li><li class="navelem"><a class="el" href="dir_ce65c590ecfd628045fd53db9233ef53.html">core_utils</a></li><li class="navelem"><a class="el" href="assert_8h.html">assert.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a6cfef18da99c3955ca9857d1b0683e1.html">ayaztub</a></li><li class="navelem"><a class="el" href="dir_3432ee83dccd92b96605fd2bcebfba30.html">utils</a></li><li class="navelem"><a class="el" href="assert_8h.html">assert.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>

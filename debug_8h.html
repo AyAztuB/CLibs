@@ -118,7 +118,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a9dc6c49b86b33b5b3f81883ef02fbfd1" id="r_a9dc6c49b86b33b5b3f81883ef02fbfd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dc6c49b86b33b5b3f81883ef02fbfd1">SOURCE_PATH_SIZE</a>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:a9dc6c49b86b33b5b3f81883ef02fbfd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to truncate the root file path.  <br /></td></tr>
 <tr class="separator:a9dc6c49b86b33b5b3f81883ef02fbfd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fccb4fc71e44089a1b1a77fc76c0b68" id="r_a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>&#160;&#160;&#160;((__FILE__) + (<a class="el" href="#a9dc6c49b86b33b5b3f81883ef02fbfd1">SOURCE_PATH_SIZE</a>))</td></tr>
+<tr class="memitem:a5fccb4fc71e44089a1b1a77fc76c0b68" id="r_a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>&#160;&#160;&#160;((__FILE__) + (<a class="el" href="logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1">SOURCE_PATH_SIZE</a>))</td></tr>
 <tr class="memdesc:a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to adjust the file path based on SOURCE_PATH_SIZE.  <br /></td></tr>
 <tr class="separator:a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2ad123fb65eadf2d20d6d827ac84209" id="r_ab2ad123fb65eadf2d20d6d827ac84209"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2ad123fb65eadf2d20d6d827ac84209">dbg</a>(value)</td></tr>
@@ -127,10 +127,10 @@ Macros</h2></td></tr>
 <tr class="memitem:a8f811545e44871a453d4b4aff6896e2a" id="r_a8f811545e44871a453d4b4aff6896e2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f811545e44871a453d4b4aff6896e2a">dbg_array</a>(value,  length)</td></tr>
 <tr class="memdesc:a8f811545e44871a453d4b4aff6896e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to print a debug message for an array.  <br /></td></tr>
 <tr class="separator:a8f811545e44871a453d4b4aff6896e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d80dcf66f051287e0bd6e6d692a2e6c" id="r_a3d80dcf66f051287e0bd6e6d692a2e6c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d80dcf66f051287e0bd6e6d692a2e6c">CALL_DBG</a>(dbg_func_name,  value)&#160;&#160;&#160;        dbg_func_name(<a class="el" href="#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value)</td></tr>
+<tr class="memitem:a3d80dcf66f051287e0bd6e6d692a2e6c" id="r_a3d80dcf66f051287e0bd6e6d692a2e6c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d80dcf66f051287e0bd6e6d692a2e6c">CALL_DBG</a>(dbg_func_name,  value)&#160;&#160;&#160;        dbg_func_name(<a class="el" href="logger_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value)</td></tr>
 <tr class="memdesc:a3d80dcf66f051287e0bd6e6d692a2e6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to call a debug function for a variable.  <br /></td></tr>
 <tr class="separator:a3d80dcf66f051287e0bd6e6d692a2e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cf2a3e231c4a3c55578e8ccde380305" id="r_a5cf2a3e231c4a3c55578e8ccde380305"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a>(dbg_func_name,  value,  length)&#160;&#160;&#160;        dbg_func_name(<a class="el" href="#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value, length)</td></tr>
+<tr class="memitem:a5cf2a3e231c4a3c55578e8ccde380305" id="r_a5cf2a3e231c4a3c55578e8ccde380305"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a>(dbg_func_name,  value,  length)&#160;&#160;&#160;        dbg_func_name(<a class="el" href="logger_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value, length)</td></tr>
 <tr class="memdesc:a5cf2a3e231c4a3c55578e8ccde380305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to call a debug function for an array.  <br /></td></tr>
 <tr class="separator:a5cf2a3e231c4a3c55578e8ccde380305"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a527c3a831b811490c671cb70a31f6ebb" id="r_a527c3a831b811490c671cb70a31f6ebb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a527c3a831b811490c671cb70a31f6ebb">DBG_FUNC_DECL</a>(type,  name,  fmt)</td></tr>
@@ -151,7 +151,7 @@ Functions</h2></td></tr>
 <p>This header provides macros and functions to facilitate debugging by printing values of various data types and arrays, along with their expressions, file names, line numbers, and function names. The <a class="el" href="#ab2ad123fb65eadf2d20d6d827ac84209" title="Macro to print a debug message for a variable.">dbg()</a> macro aims to be similar to the rust dbg!() one.</p>
 <dl class="section note"><dt>Note</dt><dd>You can define NODBG to remove <a class="el" href="#ab2ad123fb65eadf2d20d6d827ac84209" title="Macro to print a debug message for a variable.">dbg()</a> and <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Macro to print a debug message for an array.">dbg_array()</a> macro call without removing the expression statement</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The <a class="el" href="#ab2ad123fb65eadf2d20d6d827ac84209" title="Macro to print a debug message for a variable.">dbg()</a> and <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Macro to print a debug message for an array.">dbg_array()</a> macro are only defined for C11 or newer. In version lower than C11, the comportement is like if NODBG was defined. If you work on version lower than C11, you are free to use the <a class="el" href="#a3d80dcf66f051287e0bd6e6d692a2e6c" title="Macro to call a debug function for a variable.">CALL_DBG()</a> and <a class="el" href="#a5cf2a3e231c4a3c55578e8ccde380305" title="Macro to call a debug function for an array.">CALL_DBG_ARRAY()</a> macros.</dd></dl>
-<p>Usage example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">ayaztub/core_utils/debug.h</a>&gt;</span></div>
+<p>Usage example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">ayaztub/utils/debug.h</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="#adbcf56eef7621327cadf29e3db6c7415">DBG_ARRAY_FUNC_DECL</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> **, <span class="keywordtype">string</span>, <span class="stringliteral">&quot;\&quot;%s\&quot;&quot;</span>)</div>
 <div class="line"> </div>
@@ -169,7 +169,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="adebug_8h_html_a5cf2a3e231c4a3c55578e8ccde380305"><div class="ttname"><a href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a></div><div class="ttdeci">#define CALL_DBG_ARRAY(dbg_func_name, value, length)</div><div class="ttdoc">Macro to call a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:239</div></div>
 <div class="ttc" id="adebug_8h_html_a7cdbf05f95e59109480e0952d40b1086"><div class="ttname"><a href="#a7cdbf05f95e59109480e0952d40b1086">set_breakpoint</a></div><div class="ttdeci">void set_breakpoint(void)</div><div class="ttdoc">Function to set a breakpoint for debugging.</div></div>
 <div class="ttc" id="adebug_8h_html_ab2ad123fb65eadf2d20d6d827ac84209"><div class="ttname"><a href="#ab2ad123fb65eadf2d20d6d827ac84209">dbg</a></div><div class="ttdeci">#define dbg(value)</div><div class="ttdoc">Macro to print a debug message for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:103</div></div>
-<div class="ttc" id="adebug_8h_html_adbcf56eef7621327cadf29e3db6c7415"><div class="ttname"><a href="#adbcf56eef7621327cadf29e3db6c7415">DBG_ARRAY_FUNC_DECL</a></div><div class="ttdeci">#define DBG_ARRAY_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:313</div></div>
+<div class="ttc" id="adebug_8h_html_adbcf56eef7621327cadf29e3db6c7415"><div class="ttname"><a href="#adbcf56eef7621327cadf29e3db6c7415">DBG_ARRAY_FUNC_DECL</a></div><div class="ttdeci">#define DBG_ARRAY_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:319</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a5fccb4fc71e44089a1b1a77fc76c0b68" name="a5fccb4fc71e44089a1b1a77fc76c0b68"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5fccb4fc71e44089a1b1a77fc76c0b68">&#9670;&#160;</a></span>__FILENAME__</h2>
@@ -178,7 +178,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define __FILENAME__&#160;&#160;&#160;((__FILE__) + (<a class="el" href="#a9dc6c49b86b33b5b3f81883ef02fbfd1">SOURCE_PATH_SIZE</a>))</td>
+          <td class="memname">#define __FILENAME__&#160;&#160;&#160;((__FILE__) + (<a class="el" href="logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1">SOURCE_PATH_SIZE</a>))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -202,7 +202,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">value</span>&#160;)&#160;&#160;&#160;        dbg_func_name(<a class="el" href="#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">value</span>&#160;)&#160;&#160;&#160;        dbg_func_name(<a class="el" href="logger_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -247,7 +247,7 @@ Instead of the <a class="el" href="#ab2ad123fb65eadf2d20d6d827ac84209" title="Ma
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">length</span>&#160;)&#160;&#160;&#160;        dbg_func_name(<a class="el" href="#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value, length)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">length</span>&#160;)&#160;&#160;&#160;        dbg_func_name(<a class="el" href="logger_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value, length)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -515,7 +515,7 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line">    <a class="code hl_define" href="#a3d80dcf66f051287e0bd6e6d692a2e6c">CALL_DBG</a>(dbg_my_int, argc);</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="adebug_8h_html_a527c3a831b811490c671cb70a31f6ebb"><div class="ttname"><a href="#a527c3a831b811490c671cb70a31f6ebb">DBG_FUNC_DECL</a></div><div class="ttdeci">#define DBG_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:276</div></div>
+<div class="ttc" id="adebug_8h_html_a527c3a831b811490c671cb70a31f6ebb"><div class="ttname"><a href="#a527c3a831b811490c671cb70a31f6ebb">DBG_FUNC_DECL</a></div><div class="ttdeci">#define DBG_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:282</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -579,7 +579,7 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a6cfef18da99c3955ca9857d1b0683e1.html">ayaztub</a></li><li class="navelem"><a class="el" href="dir_ce65c590ecfd628045fd53db9233ef53.html">core_utils</a></li><li class="navelem"><a class="el" href="debug_8h.html">debug.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a6cfef18da99c3955ca9857d1b0683e1.html">ayaztub</a></li><li class="navelem"><a class="el" href="dir_3432ee83dccd92b96605fd2bcebfba30.html">utils</a></li><li class="navelem"><a class="el" href="debug_8h.html">debug.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>

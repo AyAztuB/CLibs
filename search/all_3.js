@@ -6,6 +6,6 @@ var searchData=
   ['dbg_5ffunc_5fdecl_3',['DBG_FUNC_DECL',['../debug_8h.html#a527c3a831b811490c671cb70a31f6ebb',1,'debug.h']]],
   ['dbg_5foutstream_4',['DBG_OUTSTREAM',['../debug_8h.html#a731415649bbdbb4705521e2d8b519d6d',1,'debug.h']]],
   ['debug_2eh_5',['debug.h',['../debug_8h.html',1,'']]],
-  ['dependencies_6',['Lib dependencies',['../index.html#autotoc_md7',1,'']]],
+  ['dependencies_6',['Lib dependencies',['../index.html#autotoc_md8',1,'']]],
   ['documentation_7',['Documentation',['../index.html#autotoc_md1',1,'']]]
 ];

@@ -1,0 +1,39 @@
+name: Deploy Doxygen Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake flex bison graphviz
+
+    - name: Build and install Doxygen 1.10.0 from source
+      run: |
+        wget https://github.com/doxygen/doxygen/archive/refs/tags/Release_1_10_0.tar.gz
+        tar -xzf Release_1_10_0.tar.gz
+        cd doxygen-Release_1_10_0
+        mkdir build
+        cd build
+        cmake ..
+        make -j$(nproc)
+        sudo make install
+
+    - name: Generate Doxygen documentation
+      run: doxygen Doxyfile
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GH_WPAT }}
+        publish_dir: ./docs

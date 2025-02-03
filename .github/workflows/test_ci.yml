@@ -1,0 +1,33 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake libcriterion-dev
+
+    - name: Build unit tests with CMake
+      run: |
+        cmake -B build/unit_tests -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON
+        cmake --build build/unit_tests --target tests
+
+    - name: Run unit tests with criterion
+      run: |
+        cd build/unit_tests
+        ctest

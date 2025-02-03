@@ -26,12 +26,16 @@ cd build && gcovr -r .. . --html-details coverage.html && firefox coverage.html
 
 ## Libraries
 
-### Core Utils
+### Utils
 
 - Assert
 - Debug
-- Logger
 - Util Attributes
+- Util Macros
+
+### Logger
+
+A complete (and thread-safe) logging API designed to be *possibly* portable (event if not the case yet).
 
 
 ## Usage
@@ -41,7 +45,7 @@ In general, you can use it after installation like so:
 
 ```c
 #include <ayaztub.h>
-// or a more specific header like <ayaztub/core_utils/logger.h>
+// or a more specific header like <ayaztub/logger.h>
 
 // ...
 ```
@@ -54,4 +58,4 @@ gcc your_code.c -layaztub <AND_LIB_DEPENDENCIES>
 ## Lib dependencies
 
 The lib requires some dependencies:
-- pthread
+- pthread (windows is not yet supported...)

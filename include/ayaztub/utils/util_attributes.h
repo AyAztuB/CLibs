@@ -1,9 +1,11 @@
-#ifndef __AYAZTUB__CORE_UTILS__UTIL_ATTRIBUTES__H__
-#define __AYAZTUB__CORE_UTILS__UTIL_ATTRIBUTES__H__
+#ifndef __AYAZTUB__UTILS__UTIL_ATTRIBUTES_H__
+#define __AYAZTUB__UTILS__UTIL_ATTRIBUTES_H__
 
 #ifndef __GNUC__
-#define __attribute__(x)
+#    define __attribute__(x)
 #endif // __GNUC__
+
+#define ATTRIBUTE(X) __attribute__(X)
 
 #define ACCESS(mode, ref_idx) __attribute__((access(mode, ref_idx)))
 
@@ -28,7 +30,8 @@
 #define FD_ARG_READ(n) __attribute__((fd_arg_read(n)))
 #define FD_ARG_WRITE(n) __attribute__((fd_arg_write(n)))
 
-#define FORMAT(archetype, string_index, first_to_check) __attribute__((format(archetype, string_index, first_to_check)))
+#define FORMAT(archetype, string_index, first_to_check)                        \
+    __attribute__((format(archetype, string_index, first_to_check)))
 #define FORMAT_ARG(string_index) __attribute__((format_arg(string_index)))
 
 #define MALLOC(deallocator) __attribute__((malloc(deallocator)))
@@ -39,7 +42,8 @@
 #define NORETURN __attribute__((noreturn))
 #define NOTHROW __attribute__((nothrow))
 
-#define NULL_TERMINATED_STRING_ARG(n) __attribute__((null_terminated_string_arg(n)))
+#define NULL_TERMINATED_STRING_ARG(n)                                          \
+    __attribute__((null_terminated_string_arg(n)))
 
 #define PURE __attribute__((pure))
 
@@ -56,9 +60,9 @@
 #define WARN_UNUSED_RESULT __attribute__((warn_unused_result))
 
 #ifdef __GNUC__
-#define UNREACHABLE __builtin_unreachable()
+#    define UNREACHABLE __builtin_unreachable()
 #else // __GNUC__
-#define UNREACHABLE (void)0
+#    define UNREACHABLE (void)0
 #endif // __GNUC__
 
-#endif // __AYAZTUB__CORE_UTILS__UTIL_ATTRIBUTES__H__
+#endif // __AYAZTUB__UTILS__UTIL_ATTRIBUTES_H__

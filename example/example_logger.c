@@ -1,4 +1,4 @@
-#include <ayaztub/core_utils/logger.h>
+#include <ayaztub/logger.h>
 
 static void segv_func(int *ptr) {
     if (!ptr) LOG_FATAL("ptr is NULL...");

@@ -17,7 +17,7 @@
  *
  * Usage example:
  * @code
- * #include <ayaztub/core_utils/debug.h>
+ * #include <ayaztub/utils/debug.h>
  *
  * DBG_ARRAY_FUNC_DECL(const char **, string, "\"%s\"")
  *
@@ -34,8 +34,8 @@
  * @endcode
  */
 
-#ifndef __AYAZTUB__CORE_UTILS__DEBUG_H__
-#define __AYAZTUB__CORE_UTILS__DEBUG_H__
+#ifndef __AYAZTUB__UTILS__DEBUG_H__
+#define __AYAZTUB__UTILS__DEBUG_H__
 
 #include <stdbool.h>
 
@@ -245,9 +245,15 @@
 #    define CALL_DBG_ARRAY(dbg_func_name, value, length) (value)
 #endif // NODBG
 
-#define GRAY "\033[0;2m"
-#define RESET "\033[0m"
-#define TURQUOISE "\033[0;36m"
+#ifndef GRAY
+#    define GRAY "\033[0;2m"
+#endif // GRAY
+#ifndef RESET
+#    define RESET "\033[0m"
+#endif // RESET
+#ifndef TURQUOISE
+#    define TURQUOISE "\033[0;36m"
+#endif // TURQUOISE
 
 /**
  * @def DBG_FUNC_DECL(type, name, fmt)
@@ -474,4 +480,4 @@ static inline bool *dbg_array_bool(const char *file, unsigned int line,
  */
 void set_breakpoint(void);
 
-#endif // __AYAZTUB__CORE_UTILS__DEBUG_H__
+#endif // __AYAZTUB__UTILS__DEBUG_H__

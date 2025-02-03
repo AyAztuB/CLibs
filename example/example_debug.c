@@ -1,4 +1,4 @@
-#include <ayaztub/core_utils/debug.h>
+#include <ayaztub/utils/debug.h>
 
 
 DBG_ARRAY_FUNC_DECL(const char **, string, "\"%s\"")

@@ -35,4 +35,4 @@ endfunction()
 
 package_add_test(logger_test
   logger_tests.c
-  ${CMAKE_SOURCE_DIR}/src/CoreUtils/Logger/logger.c)
+  ${CMAKE_SOURCE_DIR}/src/Logger/logger.c)

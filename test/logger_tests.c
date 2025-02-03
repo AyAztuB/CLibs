@@ -1,6 +1,6 @@
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include <ayaztub/core_utils/logger.h>
+#include <ayaztub/logger.h>
 #include <unistd.h>
 #include <signal.h>
 #include <stdio.h>

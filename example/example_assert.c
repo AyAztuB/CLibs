@@ -1,4 +1,4 @@
-#include <ayaztub/core_utils/assert.h>
+#include <ayaztub/utils/assert.h>
 
 int main(void) {
     COMPILE_ASSERT(sizeof(size_t) == 8, main_example);

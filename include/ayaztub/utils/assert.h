@@ -10,8 +10,8 @@
  * @note You can define NOASSERT to remove assertions.
  */
 
-#ifndef __AYAZTUB__CORE_UTILS__ASSERT_H__
-#define __AYAZTUB__CORE_UTILS__ASSERT_H__
+#ifndef __AYAZTUB__UTILS__ASSERT_H__
+#define __AYAZTUB__UTILS__ASSERT_H__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,7 +20,9 @@
 #    define COMPILE_ASSERT(predicate, file) ((void)0);
 #    define ASSERT(predicate, message) ((void)0);
 #else // NOASSERT
-#    define __GLUE(a, b) a##b
+#    ifndef __GLUE
+#        define __GLUE(a, b) a##b
+#    endif // __GLUE
 #    define __CASSERT_IMPL(predicate, file, line)                              \
         typedef char __attribute__((unused))                                   \
         __GLUE(assertion_failed_##file##_, line)[2 * !!(predicate)-1]
@@ -74,7 +76,7 @@
             if (!(predicate)) {                                                \
                 fprintf(stderr,                                                \
                         "\033[0;31mAssertion failed\033[0m: `%s`, with "       \
-                        "message " fmt " (%s:%d in %s())\n",                   \
+                        "message `" fmt "` (%s:%d in %s())\n",                   \
                         #predicate, __VA_ARGS__, __FILE__, __LINE__,           \
                         __func__);                                             \
                 abort();                                                       \
@@ -110,4 +112,4 @@
 #    define assert(predicate) ASSERT(predicate, "%s", "failed")
 #endif // assert
 
-#endif // __AYAZTUB__CORE_UTILS__ASSERT_H__
+#endif // __AYAZTUB__UTILS__ASSERT_H__

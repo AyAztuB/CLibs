@@ -2,7 +2,7 @@
 #    define _GNU_SOURCE
 #endif // __linux__
 
-#include <ayaztub/core_utils/logger.h>
+#include <ayaztub/logger.h>
 
 #include <errno.h>
 #include <execinfo.h>

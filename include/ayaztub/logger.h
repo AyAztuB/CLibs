@@ -27,7 +27,7 @@
  *
  * @code
  * // usage example
- * #include <ayaztub/core_utils/logger.h>
+ * #include <ayaztub/logger.h>
  *
  * int main(int argc, char **argv) {
  * #ifndef __GNUC__
@@ -77,10 +77,10 @@
  * any allocation (fatal error may be due to corrupted memory...).
  */
 
-#ifndef __AYAZTUB__CORE_UTILS__LOGGER_H__
-#define __AYAZTUB__CORE_UTILS__LOGGER_H__
+#ifndef __AYAZTUB__LOGGER_H__
+#define __AYAZTUB__LOGGER_H__
 
-#include <ayaztub/core_utils/util_attributes.h>
+#include <ayaztub/utils/util_attributes.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -333,4 +333,4 @@ void log_on_stdout(enum log_level, const char *const, const char *const) NONNULL
 void log_on_stderr(enum log_level, const char *const, const char *const) NONNULL
     NULL_TERMINATED_STRING_ARG(2) NULL_TERMINATED_STRING_ARG(3);
 
-#endif // __AYAZTUB__CORE_UTILS__LOGGER_H__
+#endif // __AYAZTUB__LOGGER_H__

@@ -1,17 +1,12 @@
 var searchData=
 [
-  ['u16_0',['u16',['../group__Type.html#gaa0b167025ed1eead1300bc4dbdfb230e',1,'util_macros.h']]],
-  ['u32_1',['u32',['../group__Type.html#ga10e94b422ef0c20dcdec20d31a1f5049',1,'util_macros.h']]],
-  ['u64_2',['u64',['../group__Type.html#gac0b0e5ad15a599850f4ca02c451110ba',1,'util_macros.h']]],
-  ['u8_3',['u8',['../group__Type.html#gaed742c436da53c1080638ce6ef7d13de',1,'util_macros.h']]],
-  ['unavailable_4',['UNAVAILABLE',['../util__attributes_8h.html#aa509b602cb814de08c6da7c80d19456d',1,'util_attributes.h']]],
-  ['unavailable_5fmsg_5',['UNAVAILABLE_MSG',['../util__attributes_8h.html#a83df166cc35d49e4db5f7b0d767f0389',1,'util_attributes.h']]],
-  ['unreachable_6',['UNREACHABLE',['../util__attributes_8h.html#a3af99897b60119951af8961dbd52dd3f',1,'util_attributes.h']]],
-  ['unused_7',['UNUSED',['../util__attributes_8h.html#addf5ec070e9499d36b7f2009ce736076',1,'util_attributes.h']]],
-  ['usage_8',['Usage',['../index.html#autotoc_md7',1,'']]],
-  ['used_9',['USED',['../util__attributes_8h.html#abcd0a22ee4346cad5706adb6d2119429',1,'util_attributes.h']]],
-  ['util_5fattributes_2eh_10',['util_attributes.h',['../util__attributes_8h.html',1,'']]],
-  ['util_5fmacros_2eh_11',['util_macros.h',['../util__macros_8h.html',1,'']]],
-  ['utilities_12',['Point Utilities',['../group__Floating.html',1,'']]],
-  ['utils_13',['Utils',['../index.html#autotoc_md5',1,'']]]
+  ['scope_0',['SCOPE',['../util__macros_8h.html#a37d1399a997ddc8a609c6edd80e52e96',1,'util_macros.h']]],
+  ['sentinel_1',['SENTINEL',['../util__attributes_8h.html#af2af475b85aef66019c417d8ded1c435',1,'util_attributes.h']]],
+  ['set_5fbreakpoint_2',['set_breakpoint',['../debug_8h.html#a7cdbf05f95e59109480e0952d40b1086',1,'debug.h']]],
+  ['setbit_3',['SETBIT',['../group__Bit.html#gad85abd29adcfb54d762022601677c97a',1,'util_macros.h']]],
+  ['source_5fpath_5fsize_4',['SOURCE_PATH_SIZE',['../logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1',1,'SOURCE_PATH_SIZE:&#160;logger.h'],['../debug_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1',1,'SOURCE_PATH_SIZE:&#160;debug.h'],['../util__macros_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1',1,'SOURCE_PATH_SIZE:&#160;util_macros.h']]],
+  ['specifiers_5',['Specifiers',['../group__Format.html',1,'']]],
+  ['stmt_6',['STMT',['../util__macros_8h.html#acb0fe4f9245cf266c85d20db0aff3018',1,'util_macros.h']]],
+  ['str_7',['STR',['../group__Token.html#ga6388870e639eee9c0a69446876f1f8cc',1,'util_macros.h']]],
+  ['swap_8',['SWAP',['../group__Math.html#gaac9153aee4bdb92701df902e06a74eb3',1,'util_macros.h']]]
 ];

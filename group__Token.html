@@ -98,11 +98,174 @@ $(function(){initNavTree('group__Token.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">and Loop Helpers</div></div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gac43f8b52ae96a4e813d8df9022d7e2c3" id="r_gac43f8b52ae96a4e813d8df9022d7e2c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gac43f8b52ae96a4e813d8df9022d7e2c3">__STR</a>(s)&#160;&#160;&#160;#s</td></tr>
+<tr class="separator:gac43f8b52ae96a4e813d8df9022d7e2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6388870e639eee9c0a69446876f1f8cc" id="r_ga6388870e639eee9c0a69446876f1f8cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga6388870e639eee9c0a69446876f1f8cc">STR</a>(s)&#160;&#160;&#160;<a class="el" href="#gac43f8b52ae96a4e813d8df9022d7e2c3">__STR</a>(s)</td></tr>
+<tr class="separator:ga6388870e639eee9c0a69446876f1f8cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf3ddc5a73ff88a58733f0879ce37196d" id="r_gaf3ddc5a73ff88a58733f0879ce37196d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaf3ddc5a73ff88a58733f0879ce37196d">GLUE</a>(a,  b)&#160;&#160;&#160;__GLUE(a, b)</td></tr>
+<tr class="separator:gaf3ddc5a73ff88a58733f0879ce37196d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8b990df40cc5ce0bda79daa914009b5a" id="r_ga8b990df40cc5ce0bda79daa914009b5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga8b990df40cc5ce0bda79daa914009b5a">UNIQUE_TOKEN</a>(name)&#160;&#160;&#160;<a class="el" href="#gaf3ddc5a73ff88a58733f0879ce37196d">GLUE</a>(<a class="el" href="#gaf3ddc5a73ff88a58733f0879ce37196d">GLUE</a>(__, name##_), __LINE__)</td></tr>
+<tr class="separator:ga8b990df40cc5ce0bda79daa914009b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga75c828ed6c02fcd44084e67a032e422c" id="r_ga75c828ed6c02fcd44084e67a032e422c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga75c828ed6c02fcd44084e67a032e422c">FOREVER</a>&#160;&#160;&#160;for (;;)</td></tr>
+<tr class="separator:ga75c828ed6c02fcd44084e67a032e422c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c7e2d4e64aaccecfcc4ff6f3d07419a" id="r_ga6c7e2d4e64aaccecfcc4ff6f3d07419a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga6c7e2d4e64aaccecfcc4ff6f3d07419a">RANGE</a>(begin,  end)</td></tr>
+<tr class="separator:ga6c7e2d4e64aaccecfcc4ff6f3d07419a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga89a23d1eb2b313fee0c1743dec9553b8" id="r_ga89a23d1eb2b313fee0c1743dec9553b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga89a23d1eb2b313fee0c1743dec9553b8">RANGE_STEP</a>(begin,  end,  step)</td></tr>
+<tr class="separator:ga89a23d1eb2b313fee0c1743dec9553b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Useful macros for tokens and safer loop constructs. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="gac43f8b52ae96a4e813d8df9022d7e2c3" name="gac43f8b52ae96a4e813d8df9022d7e2c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac43f8b52ae96a4e813d8df9022d7e2c3">&#9670;&#160;</a></span>__STR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __STR</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">s</span></td><td>)</td>
+          <td>&#160;&#160;&#160;#s</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga75c828ed6c02fcd44084e67a032e422c" name="ga75c828ed6c02fcd44084e67a032e422c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga75c828ed6c02fcd44084e67a032e422c">&#9670;&#160;</a></span>FOREVER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FOREVER&#160;&#160;&#160;for (;;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gaf3ddc5a73ff88a58733f0879ce37196d" name="gaf3ddc5a73ff88a58733f0879ce37196d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf3ddc5a73ff88a58733f0879ce37196d">&#9670;&#160;</a></span>GLUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GLUE</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">a, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">b</span>&#160;)&#160;&#160;&#160;__GLUE(a, b)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga6c7e2d4e64aaccecfcc4ff6f3d07419a" name="ga6c7e2d4e64aaccecfcc4ff6f3d07419a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6c7e2d4e64aaccecfcc4ff6f3d07419a">&#9670;&#160;</a></span>RANGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RANGE</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">begin, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">end</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a> <a class="code hl_define" href="#ga8b990df40cc5ce0bda79daa914009b5a">UNIQUE_TOKEN</a>(i) = (begin); <a class="code hl_define" href="#ga8b990df40cc5ce0bda79daa914009b5a">UNIQUE_TOKEN</a>(i) != (end);              \</div>
+<div class="line">         UNIQUE_TOKEN(i) += (((begin) &lt; (end)) ? (+1) : (-1)))</div>
+<div class="ttc" id="agroup__Token_html_ga8b990df40cc5ce0bda79daa914009b5a"><div class="ttname"><a href="#ga8b990df40cc5ce0bda79daa914009b5a">UNIQUE_TOKEN</a></div><div class="ttdeci">#define UNIQUE_TOKEN(name)</div><div class="ttdef"><b>Definition</b> util_macros.h:241</div></div>
+<div class="ttc" id="agroup__Type_html_ga82d732327869e3692c5383e2f4d33f2d"><div class="ttname"><a href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a></div><div class="ttdeci">signed long long int i64</div><div class="ttdoc">64-bit signed integer</div><div class="ttdef"><b>Definition</b> util_macros.h:104</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga89a23d1eb2b313fee0c1743dec9553b8" name="ga89a23d1eb2b313fee0c1743dec9553b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga89a23d1eb2b313fee0c1743dec9553b8">&#9670;&#160;</a></span>RANGE_STEP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RANGE_STEP</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">begin, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">end, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">step</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a> <a class="code hl_define" href="#ga8b990df40cc5ce0bda79daa914009b5a">UNIQUE_TOKEN</a>(i) = (begin);                                        \</div>
+<div class="line">         (((end) &gt; (begin)) &amp;&amp; (<a class="code hl_define" href="#ga8b990df40cc5ce0bda79daa914009b5a">UNIQUE_TOKEN</a>(i) &lt; (end)))                      \</div>
+<div class="line">         || (((end) &lt;= (begin)) &amp;&amp; (<a class="code hl_define" href="#ga8b990df40cc5ce0bda79daa914009b5a">UNIQUE_TOKEN</a>(i) &gt; (end)));                 \</div>
+<div class="line">         UNIQUE_TOKEN(i) +=                                                    \</div>
+<div class="line">         ((((begin) &lt; (end)) &amp;&amp; ((step) &gt; 0)) ? (+(step)) : (-(step))))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga6388870e639eee9c0a69446876f1f8cc" name="ga6388870e639eee9c0a69446876f1f8cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6388870e639eee9c0a69446876f1f8cc">&#9670;&#160;</a></span>STR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">s</span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="#gac43f8b52ae96a4e813d8df9022d7e2c3">__STR</a>(s)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga8b990df40cc5ce0bda79daa914009b5a" name="ga8b990df40cc5ce0bda79daa914009b5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8b990df40cc5ce0bda79daa914009b5a">&#9670;&#160;</a></span>UNIQUE_TOKEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UNIQUE_TOKEN</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">name</span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="#gaf3ddc5a73ff88a58733f0879ce37196d">GLUE</a>(<a class="el" href="#gaf3ddc5a73ff88a58733f0879ce37196d">GLUE</a>(__, name##_), __LINE__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

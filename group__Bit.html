@@ -98,11 +98,129 @@ $(function(){initNavTree('group__Bit.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">Manipulation Macros</div></div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gad27cc17b25bb93134368d5eb21126eae" id="r_gad27cc17b25bb93134368d5eb21126eae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad27cc17b25bb93134368d5eb21126eae">BIT</a>(x)&#160;&#160;&#160;(1 &lt;&lt; (x))</td></tr>
+<tr class="separator:gad27cc17b25bb93134368d5eb21126eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad85abd29adcfb54d762022601677c97a" id="r_gad85abd29adcfb54d762022601677c97a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad85abd29adcfb54d762022601677c97a">SETBIT</a>(x,  p)&#160;&#160;&#160;((x) | (1 &lt;&lt; (p)))</td></tr>
+<tr class="separator:gad85abd29adcfb54d762022601677c97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b48e098211f636433666e36c138bb82" id="r_ga6b48e098211f636433666e36c138bb82"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga6b48e098211f636433666e36c138bb82">CLEARBIT</a>(x,  p)&#160;&#160;&#160;((x) &amp; (~(1 &lt;&lt; (p))))</td></tr>
+<tr class="separator:ga6b48e098211f636433666e36c138bb82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga45e4e737f9442a0f0697019e1a8d9614" id="r_ga45e4e737f9442a0f0697019e1a8d9614"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga45e4e737f9442a0f0697019e1a8d9614">GETBIT</a>(x,  p)&#160;&#160;&#160;(((x) &gt;&gt; (p)) &amp; 1)</td></tr>
+<tr class="separator:ga45e4e737f9442a0f0697019e1a8d9614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf883b4211bc6c948b0863f9563b80c6b" id="r_gaf883b4211bc6c948b0863f9563b80c6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaf883b4211bc6c948b0863f9563b80c6b">TOGGLEBIT</a>(x,  p)&#160;&#160;&#160;((x) ^ (1 &lt;&lt; (p)))</td></tr>
+<tr class="separator:gaf883b4211bc6c948b0863f9563b80c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Simple macros for setting, clearing, and querying bits. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="gad27cc17b25bb93134368d5eb21126eae" name="gad27cc17b25bb93134368d5eb21126eae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad27cc17b25bb93134368d5eb21126eae">&#9670;&#160;</a></span>BIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BIT</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x</span></td><td>)</td>
+          <td>&#160;&#160;&#160;(1 &lt;&lt; (x))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga6b48e098211f636433666e36c138bb82" name="ga6b48e098211f636433666e36c138bb82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6b48e098211f636433666e36c138bb82">&#9670;&#160;</a></span>CLEARBIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CLEARBIT</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">p</span>&#160;)&#160;&#160;&#160;((x) &amp; (~(1 &lt;&lt; (p))))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga45e4e737f9442a0f0697019e1a8d9614" name="ga45e4e737f9442a0f0697019e1a8d9614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga45e4e737f9442a0f0697019e1a8d9614">&#9670;&#160;</a></span>GETBIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GETBIT</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">p</span>&#160;)&#160;&#160;&#160;(((x) &gt;&gt; (p)) &amp; 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gad85abd29adcfb54d762022601677c97a" name="gad85abd29adcfb54d762022601677c97a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad85abd29adcfb54d762022601677c97a">&#9670;&#160;</a></span>SETBIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SETBIT</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">p</span>&#160;)&#160;&#160;&#160;((x) | (1 &lt;&lt; (p)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gaf883b4211bc6c948b0863f9563b80c6b" name="gaf883b4211bc6c948b0863f9563b80c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf883b4211bc6c948b0863f9563b80c6b">&#9670;&#160;</a></span>TOGGLEBIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOGGLEBIT</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">p</span>&#160;)&#160;&#160;&#160;((x) ^ (1 &lt;&lt; (p)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

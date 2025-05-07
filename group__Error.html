@@ -98,11 +98,129 @@ $(function(){initNavTree('group__Error.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">Handling Macros</div></div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga4cce6070a2dc28230a6be2a2990f8210" id="r_ga4cce6070a2dc28230a6be2a2990f8210"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4cce6070a2dc28230a6be2a2990f8210">TRY_GOTO</a>(pred,  label)</td></tr>
+<tr class="separator:ga4cce6070a2dc28230a6be2a2990f8210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8993dfe838636f504280d4507835235a" id="r_ga8993dfe838636f504280d4507835235a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga8993dfe838636f504280d4507835235a">TRY_THROW</a>(pred)</td></tr>
+<tr class="separator:ga8993dfe838636f504280d4507835235a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga15ac80a6c8c3ed0d99fc2a7a867f2cce" id="r_ga15ac80a6c8c3ed0d99fc2a7a867f2cce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga15ac80a6c8c3ed0d99fc2a7a867f2cce">TRY_LOG</a>(pred,  msg)</td></tr>
+<tr class="separator:ga15ac80a6c8c3ed0d99fc2a7a867f2cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4c499ff2ed7135df61c8cba98d0c68e0" id="r_ga4c499ff2ed7135df61c8cba98d0c68e0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4c499ff2ed7135df61c8cba98d0c68e0">TRY_EXEC</a>(pred,  block)</td></tr>
+<tr class="separator:ga4c499ff2ed7135df61c8cba98d0c68e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Macros to simplify conditional error handling. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga4c499ff2ed7135df61c8cba98d0c68e0" name="ga4c499ff2ed7135df61c8cba98d0c68e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4c499ff2ed7135df61c8cba98d0c68e0">&#9670;&#160;</a></span>TRY_EXEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_EXEC</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">pred, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">block</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                                       \</div>
+<div class="line">        if (!(pred)) {                                                         \</div>
+<div class="line">            do                                                                 \</div>
+<div class="line">                block <span class="keywordflow">while</span> (0);                                               \</div>
+<div class="line">        }                                                                      \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga4cce6070a2dc28230a6be2a2990f8210" name="ga4cce6070a2dc28230a6be2a2990f8210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4cce6070a2dc28230a6be2a2990f8210">&#9670;&#160;</a></span>TRY_GOTO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_GOTO</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">pred, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">label</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                                       \</div>
+<div class="line">        if (!(pred)) {                                                         \</div>
+<div class="line">            <span class="keywordflow">goto</span> label;                                                        \</div>
+<div class="line">        }                                                                      \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga15ac80a6c8c3ed0d99fc2a7a867f2cce" name="ga15ac80a6c8c3ed0d99fc2a7a867f2cce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga15ac80a6c8c3ed0d99fc2a7a867f2cce">&#9670;&#160;</a></span>TRY_LOG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_LOG</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">pred, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">msg</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                                       \</div>
+<div class="line">        if (!(pred)) {                                                         \</div>
+<div class="line">            fprintf(stderr, <span class="stringliteral">&quot;Error catched at %s:%s[%d]: %s&quot;</span>, <a class="code hl_define" href="util__macros_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>,    \</div>
+<div class="line">                    __func__, __LINE__, msg);                                  \</div>
+<div class="line">        }                                                                      \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+<div class="ttc" id="autil__macros_8h_html_a5fccb4fc71e44089a1b1a77fc76c0b68"><div class="ttname"><a href="util__macros_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a></div><div class="ttdeci">#define __FILENAME__</div><div class="ttdoc">Macro to adjust the file path based on SOURCE_PATH_SIZE.</div><div class="ttdef"><b>Definition</b> util_macros.h:86</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga8993dfe838636f504280d4507835235a" name="ga8993dfe838636f504280d4507835235a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8993dfe838636f504280d4507835235a">&#9670;&#160;</a></span>TRY_THROW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_THROW</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">pred</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                                       \</div>
+<div class="line">        if (!(pred)) {                                                         \</div>
+<div class="line">            exit(EXIT_FAILURE);                                                \</div>
+<div class="line">        }                                                                      \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

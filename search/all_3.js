@@ -1,16 +1,12 @@
 var searchData=
 [
-  ['dbg_0',['dbg',['../debug_8h.html#ab2ad123fb65eadf2d20d6d827ac84209',1,'debug.h']]],
-  ['dbg_5farray_1',['dbg_array',['../debug_8h.html#a8f811545e44871a453d4b4aff6896e2a',1,'debug.h']]],
-  ['dbg_5farray_5ffunc_5fdecl_2',['DBG_ARRAY_FUNC_DECL',['../debug_8h.html#adbcf56eef7621327cadf29e3db6c7415',1,'debug.h']]],
-  ['dbg_5ffunc_5fdecl_3',['DBG_FUNC_DECL',['../debug_8h.html#a527c3a831b811490c671cb70a31f6ebb',1,'debug.h']]],
-  ['dbg_5foutstream_4',['DBG_OUTSTREAM',['../debug_8h.html#a731415649bbdbb4705521e2d8b519d6d',1,'debug.h']]],
-  ['debug_2eh_5',['debug.h',['../debug_8h.html',1,'']]],
-  ['defer_6',['DEFER',['../util__macros_8h.html#a7e756094109038f75476e084b42f366b',1,'util_macros.h']]],
-  ['dependencies_7',['Lib dependencies',['../index.html#autotoc_md8',1,'']]],
-  ['deprecated_8',['DEPRECATED',['../util__attributes_8h.html#ac1e8a42306d8e67cb94ca31c3956ee78',1,'util_attributes.h']]],
-  ['deprecated_5fmsg_9',['DEPRECATED_MSG',['../util__attributes_8h.html#acf5fe7b5c4b0f8918b44f5b3f3916ba2',1,'util_attributes.h']]],
-  ['destructor_10',['DESTRUCTOR',['../util__attributes_8h.html#ae4b16785aced0553a09527fb67c34144',1,'util_attributes.h']]],
-  ['detection_20macros_11',['Architecture Detection Macros',['../group__Endianness.html',1,'']]],
-  ['documentation_12',['Documentation',['../index.html#autotoc_md1',1,'']]]
+  ['call_5fdbg_0',['CALL_DBG',['../debug_8h.html#a3d80dcf66f051287e0bd6e6d692a2e6c',1,'debug.h']]],
+  ['call_5fdbg_5farray_1',['CALL_DBG_ARRAY',['../debug_8h.html#a5cf2a3e231c4a3c55578e8ccde380305',1,'debug.h']]],
+  ['ceil_2',['CEIL',['../group__Floating.html#ga4ec18a98c812ab4d498c8111c193aa17',1,'util_macros.h']]],
+  ['clamp_3',['CLAMP',['../group__Math.html#gaa46c464f8003d6bc85ccb0d97e7fa481',1,'util_macros.h']]],
+  ['clearbit_4',['CLEARBIT',['../group__Bit.html#ga6b48e098211f636433666e36c138bb82',1,'util_macros.h']]],
+  ['clibs_5',['CLibs',['../index.html',1,'']]],
+  ['compile_5fassert_6',['COMPILE_ASSERT',['../assert_8h.html#a4b023efa74e82314e5e2aca4914e2806',1,'assert.h']]],
+  ['const_7',['CONST',['../util__attributes_8h.html#a0c33b494a68ce28497e7ce8e5e95feff',1,'util_attributes.h']]],
+  ['constructor_8',['CONSTRUCTOR',['../util__attributes_8h.html#a5facd426173a400e33c57d48617b3a66',1,'util_attributes.h']]]
 ];

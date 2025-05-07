@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['detection_20macros_0',['Architecture Detection Macros',['../group__Endianness.html',1,'']]]
+  ['builtins_20detection_0',['builtins detection',['../group__compiler.html',1,'']]]
 ];

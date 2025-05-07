@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['specifiers_0',['Specifiers',['../group__Format.html',1,'']]]
+  ['point_20utilities_0',['Point Utilities',['../group__Floating.html',1,'']]]
 ];

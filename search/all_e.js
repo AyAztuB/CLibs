@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['scope_0',['SCOPE',['../util__macros_8h.html#a37d1399a997ddc8a609c6edd80e52e96',1,'util_macros.h']]],
-  ['sentinel_1',['SENTINEL',['../util__attributes_8h.html#af2af475b85aef66019c417d8ded1c435',1,'util_attributes.h']]],
-  ['set_5fbreakpoint_2',['set_breakpoint',['../debug_8h.html#a7cdbf05f95e59109480e0952d40b1086',1,'debug.h']]],
-  ['source_5fpath_5fsize_3',['SOURCE_PATH_SIZE',['../logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1',1,'SOURCE_PATH_SIZE:&#160;logger.h'],['../debug_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1',1,'SOURCE_PATH_SIZE:&#160;debug.h'],['../util__macros_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1',1,'SOURCE_PATH_SIZE:&#160;util_macros.h']]],
-  ['specifiers_4',['Specifiers',['../group__Format.html',1,'']]],
-  ['stmt_5',['STMT',['../util__macros_8h.html#acb0fe4f9245cf266c85d20db0aff3018',1,'util_macros.h']]]
+  ['pi_0',['PI',['../group__Floating.html#ga598a3330b3c21701223ee0ca14316eca',1,'util_macros.h']]],
+  ['point_20utilities_1',['Point Utilities',['../group__Floating.html',1,'']]],
+  ['pri_5fi16_2',['PRI_I16',['../group__Format.html#ga51ec0b337574ffa9d2e8770cdaede4cd',1,'util_macros.h']]],
+  ['pri_5fi32_3',['PRI_I32',['../group__Format.html#gac4396c74e1c820fc083891f879cba792',1,'util_macros.h']]],
+  ['pri_5fi64_4',['PRI_I64',['../group__Format.html#gafc53fde95bcce176df11ac4c1416bcdb',1,'util_macros.h']]],
+  ['pri_5fi8_5',['PRI_I8',['../group__Format.html#gac3eb12f6aad19d3de69e6a5470922ecb',1,'util_macros.h']]],
+  ['pri_5fu16_6',['PRI_U16',['../group__Format.html#gadebaf9f79ae22d1639200a022e85221f',1,'util_macros.h']]],
+  ['pri_5fu32_7',['PRI_U32',['../group__Format.html#ga6e1fc90c08c8d29c6ad673503a717c41',1,'util_macros.h']]],
+  ['pri_5fu64_8',['PRI_U64',['../group__Format.html#ga5a3fa392774524b2607ad0b67baaf039',1,'util_macros.h']]],
+  ['pri_5fu8_9',['PRI_U8',['../group__Format.html#gabffb9ce7aa9b7cbd1127e2506da5f788',1,'util_macros.h']]],
+  ['pure_10',['PURE',['../util__attributes_8h.html#acd42770aecb025cfac170d4d3ace4544',1,'util_attributes.h']]]
 ];

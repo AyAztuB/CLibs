@@ -133,6 +133,8 @@ Macros</h2></td></tr>
 <tr class="memitem:a5cf2a3e231c4a3c55578e8ccde380305" id="r_a5cf2a3e231c4a3c55578e8ccde380305"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a>(dbg_func_name,  value,  length)&#160;&#160;&#160;        dbg_func_name(<a class="el" href="logger_8h.html#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value, length)</td></tr>
 <tr class="memdesc:a5cf2a3e231c4a3c55578e8ccde380305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to call a debug function for an array.  <br /></td></tr>
 <tr class="separator:a5cf2a3e231c4a3c55578e8ccde380305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab702106cf3b3e96750b6845ded4e0299" id="r_ab702106cf3b3e96750b6845ded4e0299"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab702106cf3b3e96750b6845ded4e0299">RESET</a>&#160;&#160;&#160;&quot;\033[0m&quot;</td></tr>
+<tr class="separator:ab702106cf3b3e96750b6845ded4e0299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a527c3a831b811490c671cb70a31f6ebb" id="r_a527c3a831b811490c671cb70a31f6ebb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a527c3a831b811490c671cb70a31f6ebb">DBG_FUNC_DECL</a>(type,  name,  fmt)</td></tr>
 <tr class="memdesc:a527c3a831b811490c671cb70a31f6ebb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to declare a debug function for a variable.  <br /></td></tr>
 <tr class="separator:a527c3a831b811490c671cb70a31f6ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,10 +168,10 @@ Functions</h2></td></tr>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Debug utilities for various data types and arrays.</div></div>
-<div class="ttc" id="adebug_8h_html_a5cf2a3e231c4a3c55578e8ccde380305"><div class="ttname"><a href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a></div><div class="ttdeci">#define CALL_DBG_ARRAY(dbg_func_name, value, length)</div><div class="ttdoc">Macro to call a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:239</div></div>
+<div class="ttc" id="adebug_8h_html_a5cf2a3e231c4a3c55578e8ccde380305"><div class="ttname"><a href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a></div><div class="ttdeci">#define CALL_DBG_ARRAY(dbg_func_name, value, length)</div><div class="ttdoc">Macro to call a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:241</div></div>
 <div class="ttc" id="adebug_8h_html_a7cdbf05f95e59109480e0952d40b1086"><div class="ttname"><a href="#a7cdbf05f95e59109480e0952d40b1086">set_breakpoint</a></div><div class="ttdeci">void set_breakpoint(void)</div><div class="ttdoc">Function to set a breakpoint for debugging.</div></div>
-<div class="ttc" id="adebug_8h_html_ab2ad123fb65eadf2d20d6d827ac84209"><div class="ttname"><a href="#ab2ad123fb65eadf2d20d6d827ac84209">dbg</a></div><div class="ttdeci">#define dbg(value)</div><div class="ttdoc">Macro to print a debug message for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:103</div></div>
-<div class="ttc" id="adebug_8h_html_adbcf56eef7621327cadf29e3db6c7415"><div class="ttname"><a href="#adbcf56eef7621327cadf29e3db6c7415">DBG_ARRAY_FUNC_DECL</a></div><div class="ttdeci">#define DBG_ARRAY_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:319</div></div>
+<div class="ttc" id="adebug_8h_html_ab2ad123fb65eadf2d20d6d827ac84209"><div class="ttname"><a href="#ab2ad123fb65eadf2d20d6d827ac84209">dbg</a></div><div class="ttdeci">#define dbg(value)</div><div class="ttdoc">Macro to print a debug message for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:105</div></div>
+<div class="ttc" id="adebug_8h_html_adbcf56eef7621327cadf29e3db6c7415"><div class="ttname"><a href="#adbcf56eef7621327cadf29e3db6c7415">DBG_ARRAY_FUNC_DECL</a></div><div class="ttdeci">#define DBG_ARRAY_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for an array.</div><div class="ttdef"><b>Definition</b> debug.h:321</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a5fccb4fc71e44089a1b1a77fc76c0b68" name="a5fccb4fc71e44089a1b1a77fc76c0b68"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5fccb4fc71e44089a1b1a77fc76c0b68">&#9670;&#160;</a></span>__FILENAME__</h2>
@@ -224,7 +226,7 @@ Instead of the <a class="el" href="#ab2ad123fb65eadf2d20d6d827ac84209" title="Ma
 <div class="line"><span class="keywordflow">if</span> ((<a class="code hl_define" href="#a3d80dcf66f051287e0bd6e6d692a2e6c">CALL_DBG</a>(dbg_int, x) + 1) % 10 == 0) {</div>
 <div class="line">    printf(<span class="stringliteral">&quot;This is true!\n&quot;</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="adebug_8h_html_a3d80dcf66f051287e0bd6e6d692a2e6c"><div class="ttname"><a href="#a3d80dcf66f051287e0bd6e6d692a2e6c">CALL_DBG</a></div><div class="ttdeci">#define CALL_DBG(dbg_func_name, value)</div><div class="ttdoc">Macro to call a debug function for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:212</div></div>
+<div class="ttc" id="adebug_8h_html_a3d80dcf66f051287e0bd6e6d692a2e6c"><div class="ttname"><a href="#a3d80dcf66f051287e0bd6e6d692a2e6c">CALL_DBG</a></div><div class="ttdeci">#define CALL_DBG(dbg_func_name, value)</div><div class="ttdoc">Macro to call a debug function for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:214</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -270,7 +272,9 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_define" href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a>(dbg_array_int, arr, 10)[0] == 0) {</div>
 <div class="line">    printf(<span class="stringliteral">&quot;This is true!\n&quot;</span>);</div>
 <div class="line">}</div>
-</div><!-- fragment --> 
+</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="example_debug_8c-example.html#a2">example_debug.c</a>.</dd>
+</dl>
+
 </div>
 </div>
 <a id="ab2ad123fb65eadf2d20d6d827ac84209" name="ab2ad123fb65eadf2d20d6d827ac84209"></a>
@@ -310,7 +314,7 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line">             const unsigned char *: dbg_const_uchar_p,                         \</div>
 <div class="line">             default: dbg_pointer)                                             \</div>
 <div class="line">        (<a class="code hl_define" href="#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a>, __LINE__, __func__, #value, value)</div>
-<div class="ttc" id="adebug_8h_html_a5fccb4fc71e44089a1b1a77fc76c0b68"><div class="ttname"><a href="#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a></div><div class="ttdeci">#define __FILENAME__</div><div class="ttdoc">Macro to adjust the file path based on SOURCE_PATH_SIZE.</div><div class="ttdef"><b>Definition</b> debug.h:75</div></div>
+<div class="ttc" id="adebug_8h_html_a5fccb4fc71e44089a1b1a77fc76c0b68"><div class="ttname"><a href="#a5fccb4fc71e44089a1b1a77fc76c0b68">__FILENAME__</a></div><div class="ttdeci">#define __FILENAME__</div><div class="ttdoc">Macro to adjust the file path based on SOURCE_PATH_SIZE.</div><div class="ttdef"><b>Definition</b> debug.h:77</div></div>
 </div><!-- fragment -->
 <p>Macro to print a debug message for a variable. </p>
 <p>This macro prints a debug message for the specified variable, including its name and value. It aims to be the same as the rust dbg!() macro.</p>
@@ -326,7 +330,9 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <p>Example usage: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> x = 42;</div>
 <div class="line"><span class="keywordtype">float</span> f = ((float) <a class="code hl_define" href="#ab2ad123fb65eadf2d20d6d827ac84209">dbg</a>(x)) + 0.5f;</div>
 <div class="line"><a class="code hl_define" href="#ab2ad123fb65eadf2d20d6d827ac84209">dbg</a>(f);</div>
-</div><!-- fragment --> 
+</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="example_debug_8c-example.html#a1">example_debug.c</a>.</dd>
+</dl>
+
 </div>
 </div>
 <a id="a8f811545e44871a453d4b4aff6896e2a" name="a8f811545e44871a453d4b4aff6896e2a"></a>
@@ -394,7 +400,7 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_define" href="#a8f811545e44871a453d4b4aff6896e2a">dbg_array</a>(arr, 5)[0] == 0) {</div>
 <div class="line">    printf(<span class="stringliteral">&quot;This should not be true...\n&quot;</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="adebug_8h_html_a8f811545e44871a453d4b4aff6896e2a"><div class="ttname"><a href="#a8f811545e44871a453d4b4aff6896e2a">dbg_array</a></div><div class="ttdeci">#define dbg_array(value, length)</div><div class="ttdoc">Macro to print a debug message for an array.</div><div class="ttdef"><b>Definition</b> debug.h:152</div></div>
+<div class="ttc" id="adebug_8h_html_a8f811545e44871a453d4b4aff6896e2a"><div class="ttname"><a href="#a8f811545e44871a453d4b4aff6896e2a">dbg_array</a></div><div class="ttdeci">#define dbg_array(value, length)</div><div class="ttdoc">Macro to print a debug message for an array.</div><div class="ttdef"><b>Definition</b> debug.h:154</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -425,7 +431,7 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> line, <span class="keyword">const</span> <span class="keywordtype">char</span> *func_name,            \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *expr, type array, <span class="keywordtype">size_t</span> length) {                         \</div>
 <div class="line">        fprintf(<a class="code hl_define" href="#a731415649bbdbb4705521e2d8b519d6d">DBG_OUTSTREAM</a>,                                                 \</div>
-<div class="line">                GRAY <span class="stringliteral">&quot;%s:%u in %s()&quot;</span> RESET <span class="stringliteral">&quot;: &quot;</span> TURQUOISE <span class="stringliteral">&quot;%s&quot;</span> RESET <span class="stringliteral">&quot; = [ &quot;</span>,  \</div>
+<div class="line">                GRAY <span class="stringliteral">&quot;%s:%u in %s()&quot;</span> <a class="code hl_define" href="#ab702106cf3b3e96750b6845ded4e0299">RESET</a> <span class="stringliteral">&quot;: &quot;</span> TURQUOISE <span class="stringliteral">&quot;%s&quot;</span> <a class="code hl_define" href="#ab702106cf3b3e96750b6845ded4e0299">RESET</a> <span class="stringliteral">&quot; = [ &quot;</span>,  \</div>
 <div class="line">                file, line, func_name, expr);                                  \</div>
 <div class="line">        for (<span class="keywordtype">size_t</span> i = 0; i &lt; length; i++) {                                  \</div>
 <div class="line">            if (i)                                                             \</div>
@@ -435,7 +441,8 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line">        fprintf(<a class="code hl_define" href="#a731415649bbdbb4705521e2d8b519d6d">DBG_OUTSTREAM</a>, <span class="stringliteral">&quot; ] with length = %zu\n&quot;</span>, length);              \</div>
 <div class="line">        <span class="keywordflow">return</span> array;                                                          \</div>
 <div class="line">    }</div>
-<div class="ttc" id="adebug_8h_html_a731415649bbdbb4705521e2d8b519d6d"><div class="ttname"><a href="#a731415649bbdbb4705521e2d8b519d6d">DBG_OUTSTREAM</a></div><div class="ttdeci">#define DBG_OUTSTREAM</div><div class="ttdoc">Macro for the debug output stream.</div><div class="ttdef"><b>Definition</b> debug.h:52</div></div>
+<div class="ttc" id="adebug_8h_html_a731415649bbdbb4705521e2d8b519d6d"><div class="ttname"><a href="#a731415649bbdbb4705521e2d8b519d6d">DBG_OUTSTREAM</a></div><div class="ttdeci">#define DBG_OUTSTREAM</div><div class="ttdoc">Macro for the debug output stream.</div><div class="ttdef"><b>Definition</b> debug.h:54</div></div>
+<div class="ttc" id="adebug_8h_html_ab702106cf3b3e96750b6845ded4e0299"><div class="ttname"><a href="#ab702106cf3b3e96750b6845ded4e0299">RESET</a></div><div class="ttdeci">#define RESET</div><div class="ttdef"><b>Definition</b> debug.h:254</div></div>
 </div><!-- fragment -->
 <p>Macro to declare a debug function for an array. </p>
 <p>This macro declares a debug function for the specified array type.</p>
@@ -459,7 +466,9 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
 <div class="line">    <a class="code hl_define" href="#a5cf2a3e231c4a3c55578e8ccde380305">CALL_DBG_ARRAY</a>(dbg_array_string, (<span class="keyword">const</span> <span class="keywordtype">char</span> **)argv, argc);</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
-</div><!-- fragment --> 
+</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="example_debug_8c-example.html#a0">example_debug.c</a>.</dd>
+</dl>
+
 </div>
 </div>
 <a id="a527c3a831b811490c671cb70a31f6ebb" name="a527c3a831b811490c671cb70a31f6ebb"></a>
@@ -489,7 +498,7 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line">                                  <span class="keyword">const</span> <span class="keywordtype">char</span> *func_name, <span class="keyword">const</span> <span class="keywordtype">char</span> *expr,     \</div>
 <div class="line">                                  type value) {                                \</div>
 <div class="line">        fprintf(<a class="code hl_define" href="#a731415649bbdbb4705521e2d8b519d6d">DBG_OUTSTREAM</a>,                                                 \</div>
-<div class="line">                GRAY <span class="stringliteral">&quot;%s:%u in %s()&quot;</span> RESET <span class="stringliteral">&quot;: &quot;</span> TURQUOISE <span class="stringliteral">&quot;%s&quot;</span> RESET <span class="stringliteral">&quot; = &quot;</span> fmt \</div>
+<div class="line">                GRAY <span class="stringliteral">&quot;%s:%u in %s()&quot;</span> <a class="code hl_define" href="#ab702106cf3b3e96750b6845ded4e0299">RESET</a> <span class="stringliteral">&quot;: &quot;</span> TURQUOISE <span class="stringliteral">&quot;%s&quot;</span> <a class="code hl_define" href="#ab702106cf3b3e96750b6845ded4e0299">RESET</a> <span class="stringliteral">&quot; = &quot;</span> fmt \</div>
 <div class="line">                     <span class="stringliteral">&quot;\n&quot;</span>,                                                     \</div>
 <div class="line">                file, line, func_name, expr, value);                           \</div>
 <div class="line">        <span class="keywordflow">return</span> value;                                                          \</div>
@@ -515,7 +524,7 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 <div class="line">    <a class="code hl_define" href="#a3d80dcf66f051287e0bd6e6d692a2e6c">CALL_DBG</a>(dbg_my_int, argc);</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="adebug_8h_html_a527c3a831b811490c671cb70a31f6ebb"><div class="ttname"><a href="#a527c3a831b811490c671cb70a31f6ebb">DBG_FUNC_DECL</a></div><div class="ttdeci">#define DBG_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:282</div></div>
+<div class="ttc" id="adebug_8h_html_a527c3a831b811490c671cb70a31f6ebb"><div class="ttname"><a href="#a527c3a831b811490c671cb70a31f6ebb">DBG_FUNC_DECL</a></div><div class="ttdeci">#define DBG_FUNC_DECL(type, name, fmt)</div><div class="ttdoc">Macro to declare a debug function for a variable.</div><div class="ttdef"><b>Definition</b> debug.h:284</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -533,6 +542,20 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 
 <p>Macro for the debug output stream. </p>
 <p>This macro allow you to set the debuf output stream as you want (file/stdio/stderr). By default, if undefined, it is an alias of the stderr standard stream. </p>
+
+</div>
+</div>
+<a id="ab702106cf3b3e96750b6845ded4e0299" name="ab702106cf3b3e96750b6845ded4e0299"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab702106cf3b3e96750b6845ded4e0299">&#9670;&#160;</a></span>RESET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET&#160;&#160;&#160;&quot;\033[0m&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -571,6 +594,8 @@ Instead of the <a class="el" href="#a8f811545e44871a453d4b4aff6896e2a" title="Ma
 
 <p>Function to set a breakpoint for debugging. </p>
 <p>This function raises a <code>SIGTRAP</code> signal, which causes the program to stop and enter a state where a debugger can be attached. It is useful for setting breakpoints in code. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="example_debug_8c-example.html#a3">example_debug.c</a>.</dd>
+</dl>
 
 </div>
 </div>

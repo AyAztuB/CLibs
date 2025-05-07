@@ -98,11 +98,291 @@ $(function(){initNavTree('group__Floating.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">Point Utilities</div></div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga598a3330b3c21701223ee0ca14316eca" id="r_ga598a3330b3c21701223ee0ca14316eca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga598a3330b3c21701223ee0ca14316eca">PI</a>&#160;&#160;&#160;3.14159265358979323846</td></tr>
+<tr class="separator:ga598a3330b3c21701223ee0ca14316eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa3616a5af1a14b0a5a1b2f542066ae45" id="r_gaa3616a5af1a14b0a5a1b2f542066ae45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaa3616a5af1a14b0a5a1b2f542066ae45">DEG2RAD</a>(deg)&#160;&#160;&#160;((deg) * (<a class="el" href="#ga598a3330b3c21701223ee0ca14316eca">PI</a>) / 180.0)</td></tr>
+<tr class="separator:gaa3616a5af1a14b0a5a1b2f542066ae45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaacc958134b53425ec947541bb72ac8b1" id="r_gaacc958134b53425ec947541bb72ac8b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaacc958134b53425ec947541bb72ac8b1">RAD2DEG</a>(rad)&#160;&#160;&#160;((rad) * 180.0 / (<a class="el" href="#ga598a3330b3c21701223ee0ca14316eca">PI</a>))</td></tr>
+<tr class="separator:gaacc958134b53425ec947541bb72ac8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac2246d945b53c51c63e9d0e7beeb2425" id="r_gac2246d945b53c51c63e9d0e7beeb2425"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gac2246d945b53c51c63e9d0e7beeb2425">IS_NAN</a>(x)&#160;&#160;&#160;((x) != (x))</td></tr>
+<tr class="separator:gac2246d945b53c51c63e9d0e7beeb2425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab1f73cdbc25f0b24f246249efa98ee14" id="r_gab1f73cdbc25f0b24f246249efa98ee14"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gab1f73cdbc25f0b24f246249efa98ee14">FLOAT_EPSILON</a>&#160;&#160;&#160;(1e-6f)</td></tr>
+<tr class="separator:gab1f73cdbc25f0b24f246249efa98ee14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61aed733f8e5502628b6a87e51ca4e4f" id="r_ga61aed733f8e5502628b6a87e51ca4e4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga61aed733f8e5502628b6a87e51ca4e4f">DOUBLE_EPSILON</a>&#160;&#160;&#160;(1e-12)</td></tr>
+<tr class="separator:ga61aed733f8e5502628b6a87e51ca4e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacd66e8cacf954c3bc3bba81d09425a12" id="r_gacd66e8cacf954c3bc3bba81d09425a12"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gacd66e8cacf954c3bc3bba81d09425a12">ROUND</a>(x)&#160;&#160;&#160;(((x) &lt; 0.0) ? ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)((x) - 0.5)) : ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)((x) + 0.5)))</td></tr>
+<tr class="separator:gacd66e8cacf954c3bc3bba81d09425a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f0eecb0f7856721f56faff8f27b0dc1" id="r_ga2f0eecb0f7856721f56faff8f27b0dc1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga2f0eecb0f7856721f56faff8f27b0dc1">FLOOR</a>(x)&#160;&#160;&#160;(((x) &lt; 0.0) ? ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x) - 1) : ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x)))</td></tr>
+<tr class="separator:ga2f0eecb0f7856721f56faff8f27b0dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ec18a98c812ab4d498c8111c193aa17" id="r_ga4ec18a98c812ab4d498c8111c193aa17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4ec18a98c812ab4d498c8111c193aa17">CEIL</a>(x)&#160;&#160;&#160;    (((x) == (<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x)) ? (<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x) : (((x) &lt; 0.0) ? (<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x) : ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x) + 1)))</td></tr>
+<tr class="separator:ga4ec18a98c812ab4d498c8111c193aa17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga449c6490c7c0c1e5602fcc2ee6c11254" id="r_ga449c6490c7c0c1e5602fcc2ee6c11254"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>(x)&#160;&#160;&#160;(((x) &lt; 0.0) ? -(x) : (x))</td></tr>
+<tr class="separator:ga449c6490c7c0c1e5602fcc2ee6c11254"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga235e1c6235a294907d36b4b09358a9f1" id="r_ga235e1c6235a294907d36b4b09358a9f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga235e1c6235a294907d36b4b09358a9f1">FLOAT_ALMOST_EQUALS</a>(x,  y)&#160;&#160;&#160;(<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>((x) - (y)) &lt;= <a class="el" href="#gab1f73cdbc25f0b24f246249efa98ee14">FLOAT_EPSILON</a>)</td></tr>
+<tr class="separator:ga235e1c6235a294907d36b4b09358a9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8bdbc916b81234da7d50194da31d165f" id="r_ga8bdbc916b81234da7d50194da31d165f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga8bdbc916b81234da7d50194da31d165f">DOUBLE_ALMOST_EQUALS</a>(x,  y)&#160;&#160;&#160;(<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>((x) - (y)) &lt;= <a class="el" href="#ga61aed733f8e5502628b6a87e51ca4e4f">DOUBLE_EPSILON</a>)</td></tr>
+<tr class="separator:ga8bdbc916b81234da7d50194da31d165f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed1db40831af1909e2e3b35350484c95" id="r_gaed1db40831af1909e2e3b35350484c95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaed1db40831af1909e2e3b35350484c95">FLOAT_RELATIVE_EQUAL</a>(x,  y)&#160;&#160;&#160;    (<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>((x) - (y)) &lt;= (<a class="el" href="#gab1f73cdbc25f0b24f246249efa98ee14">FLOAT_EPSILON</a> * <a class="el" href="group__Math.html#gafa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>(<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>(x), <a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>(y))))</td></tr>
+<tr class="separator:gaed1db40831af1909e2e3b35350484c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf8f7adaa980ab81ecfce3db3fa394dba" id="r_gaf8f7adaa980ab81ecfce3db3fa394dba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaf8f7adaa980ab81ecfce3db3fa394dba">DOUBLE_RELATIVE_EQUAL</a>(x,  y)&#160;&#160;&#160;    (<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>((x) - (y)) &lt;= (<a class="el" href="#ga61aed733f8e5502628b6a87e51ca4e4f">DOUBLE_EPSILON</a> * <a class="el" href="group__Math.html#gafa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>(<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>(x), <a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>(y))))</td></tr>
+<tr class="separator:gaf8f7adaa980ab81ecfce3db3fa394dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Macros for comparing and rounding floating point numbers. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga4ec18a98c812ab4d498c8111c193aa17" name="ga4ec18a98c812ab4d498c8111c193aa17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4ec18a98c812ab4d498c8111c193aa17">&#9670;&#160;</a></span>CEIL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CEIL</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x</span></td><td>)</td>
+          <td>&#160;&#160;&#160;    (((x) == (<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x)) ? (<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x) : (((x) &lt; 0.0) ? (<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x) : ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x) + 1)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gaa3616a5af1a14b0a5a1b2f542066ae45" name="gaa3616a5af1a14b0a5a1b2f542066ae45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa3616a5af1a14b0a5a1b2f542066ae45">&#9670;&#160;</a></span>DEG2RAD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEG2RAD</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">deg</span></td><td>)</td>
+          <td>&#160;&#160;&#160;((deg) * (<a class="el" href="#ga598a3330b3c21701223ee0ca14316eca">PI</a>) / 180.0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga8bdbc916b81234da7d50194da31d165f" name="ga8bdbc916b81234da7d50194da31d165f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8bdbc916b81234da7d50194da31d165f">&#9670;&#160;</a></span>DOUBLE_ALMOST_EQUALS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOUBLE_ALMOST_EQUALS</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">y</span>&#160;)&#160;&#160;&#160;(<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>((x) - (y)) &lt;= <a class="el" href="#ga61aed733f8e5502628b6a87e51ca4e4f">DOUBLE_EPSILON</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga61aed733f8e5502628b6a87e51ca4e4f" name="ga61aed733f8e5502628b6a87e51ca4e4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga61aed733f8e5502628b6a87e51ca4e4f">&#9670;&#160;</a></span>DOUBLE_EPSILON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOUBLE_EPSILON&#160;&#160;&#160;(1e-12)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gaf8f7adaa980ab81ecfce3db3fa394dba" name="gaf8f7adaa980ab81ecfce3db3fa394dba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf8f7adaa980ab81ecfce3db3fa394dba">&#9670;&#160;</a></span>DOUBLE_RELATIVE_EQUAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOUBLE_RELATIVE_EQUAL</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">y</span>&#160;)&#160;&#160;&#160;    (<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>((x) - (y)) &lt;= (<a class="el" href="#ga61aed733f8e5502628b6a87e51ca4e4f">DOUBLE_EPSILON</a> * <a class="el" href="group__Math.html#gafa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>(<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>(x), <a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>(y))))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga449c6490c7c0c1e5602fcc2ee6c11254" name="ga449c6490c7c0c1e5602fcc2ee6c11254"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga449c6490c7c0c1e5602fcc2ee6c11254">&#9670;&#160;</a></span>FLOAT_ABS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLOAT_ABS</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x</span></td><td>)</td>
+          <td>&#160;&#160;&#160;(((x) &lt; 0.0) ? -(x) : (x))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga235e1c6235a294907d36b4b09358a9f1" name="ga235e1c6235a294907d36b4b09358a9f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga235e1c6235a294907d36b4b09358a9f1">&#9670;&#160;</a></span>FLOAT_ALMOST_EQUALS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLOAT_ALMOST_EQUALS</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">y</span>&#160;)&#160;&#160;&#160;(<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>((x) - (y)) &lt;= <a class="el" href="#gab1f73cdbc25f0b24f246249efa98ee14">FLOAT_EPSILON</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gab1f73cdbc25f0b24f246249efa98ee14" name="gab1f73cdbc25f0b24f246249efa98ee14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab1f73cdbc25f0b24f246249efa98ee14">&#9670;&#160;</a></span>FLOAT_EPSILON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLOAT_EPSILON&#160;&#160;&#160;(1e-6f)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gaed1db40831af1909e2e3b35350484c95" name="gaed1db40831af1909e2e3b35350484c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaed1db40831af1909e2e3b35350484c95">&#9670;&#160;</a></span>FLOAT_RELATIVE_EQUAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLOAT_RELATIVE_EQUAL</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">y</span>&#160;)&#160;&#160;&#160;    (<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>((x) - (y)) &lt;= (<a class="el" href="#gab1f73cdbc25f0b24f246249efa98ee14">FLOAT_EPSILON</a> * <a class="el" href="group__Math.html#gafa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>(<a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>(x), <a class="el" href="#ga449c6490c7c0c1e5602fcc2ee6c11254">FLOAT_ABS</a>(y))))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga2f0eecb0f7856721f56faff8f27b0dc1" name="ga2f0eecb0f7856721f56faff8f27b0dc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2f0eecb0f7856721f56faff8f27b0dc1">&#9670;&#160;</a></span>FLOOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLOOR</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x</span></td><td>)</td>
+          <td>&#160;&#160;&#160;(((x) &lt; 0.0) ? ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x) - 1) : ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)(x)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gac2246d945b53c51c63e9d0e7beeb2425" name="gac2246d945b53c51c63e9d0e7beeb2425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac2246d945b53c51c63e9d0e7beeb2425">&#9670;&#160;</a></span>IS_NAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_NAN</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x</span></td><td>)</td>
+          <td>&#160;&#160;&#160;((x) != (x))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga598a3330b3c21701223ee0ca14316eca" name="ga598a3330b3c21701223ee0ca14316eca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga598a3330b3c21701223ee0ca14316eca">&#9670;&#160;</a></span>PI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PI&#160;&#160;&#160;3.14159265358979323846</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gaacc958134b53425ec947541bb72ac8b1" name="gaacc958134b53425ec947541bb72ac8b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaacc958134b53425ec947541bb72ac8b1">&#9670;&#160;</a></span>RAD2DEG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RAD2DEG</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">rad</span></td><td>)</td>
+          <td>&#160;&#160;&#160;((rad) * 180.0 / (<a class="el" href="#ga598a3330b3c21701223ee0ca14316eca">PI</a>))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gacd66e8cacf954c3bc3bba81d09425a12" name="gacd66e8cacf954c3bc3bba81d09425a12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacd66e8cacf954c3bc3bba81d09425a12">&#9670;&#160;</a></span>ROUND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ROUND</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x</span></td><td>)</td>
+          <td>&#160;&#160;&#160;(((x) &lt; 0.0) ? ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)((x) - 0.5)) : ((<a class="el" href="group__Type.html#ga82d732327869e3692c5383e2f4d33f2d">i64</a>)((x) + 0.5)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

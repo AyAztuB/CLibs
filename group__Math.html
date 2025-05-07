@@ -98,11 +98,162 @@ $(function(){initNavTree('group__Math.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">Macros</div></div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gafa99ec4acc4ecb2dc3c2d05da15d0e3f" id="r_gafa99ec4acc4ecb2dc3c2d05da15d0e3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gafa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>(a,  b)&#160;&#160;&#160;((a) &gt; (b) ? (a) : (b))</td></tr>
+<tr class="separator:gafa99ec4acc4ecb2dc3c2d05da15d0e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3acffbd305ee72dcd4593c0d8af64a4f" id="r_ga3acffbd305ee72dcd4593c0d8af64a4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga3acffbd305ee72dcd4593c0d8af64a4f">MIN</a>(a,  b)&#160;&#160;&#160;((a) &lt; (b) ? (a) : (b))</td></tr>
+<tr class="separator:ga3acffbd305ee72dcd4593c0d8af64a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa46c464f8003d6bc85ccb0d97e7fa481" id="r_gaa46c464f8003d6bc85ccb0d97e7fa481"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaa46c464f8003d6bc85ccb0d97e7fa481">CLAMP</a>(val,  min,  max)&#160;&#160;&#160;(<a class="el" href="#ga3acffbd305ee72dcd4593c0d8af64a4f">MIN</a>(<a class="el" href="#gafa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>((val), (min)), (max)))</td></tr>
+<tr class="separator:gaa46c464f8003d6bc85ccb0d97e7fa481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga996f7be338ccb40d1a2a5abc1ad61759" id="r_ga996f7be338ccb40d1a2a5abc1ad61759"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga996f7be338ccb40d1a2a5abc1ad61759">ABS</a>(x)&#160;&#160;&#160;(((x) &lt; 0) ? -(x) : (x))</td></tr>
+<tr class="separator:ga996f7be338ccb40d1a2a5abc1ad61759"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae8dfe7105f0d6d646483135965ee0a3" id="r_gaae8dfe7105f0d6d646483135965ee0a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaae8dfe7105f0d6d646483135965ee0a3">DIFF</a>(a,  b)&#160;&#160;&#160;<a class="el" href="#ga996f7be338ccb40d1a2a5abc1ad61759">ABS</a>((a) - (b))</td></tr>
+<tr class="separator:gaae8dfe7105f0d6d646483135965ee0a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac9153aee4bdb92701df902e06a74eb3" id="r_gaac9153aee4bdb92701df902e06a74eb3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaac9153aee4bdb92701df902e06a74eb3">SWAP</a>(a,  b)</td></tr>
+<tr class="separator:gaac9153aee4bdb92701df902e06a74eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Common math operations. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga996f7be338ccb40d1a2a5abc1ad61759" name="ga996f7be338ccb40d1a2a5abc1ad61759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga996f7be338ccb40d1a2a5abc1ad61759">&#9670;&#160;</a></span>ABS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ABS</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">x</span></td><td>)</td>
+          <td>&#160;&#160;&#160;(((x) &lt; 0) ? -(x) : (x))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gaa46c464f8003d6bc85ccb0d97e7fa481" name="gaa46c464f8003d6bc85ccb0d97e7fa481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa46c464f8003d6bc85ccb0d97e7fa481">&#9670;&#160;</a></span>CLAMP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CLAMP</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">val, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">min, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">max</span>&#160;)&#160;&#160;&#160;(<a class="el" href="#ga3acffbd305ee72dcd4593c0d8af64a4f">MIN</a>(<a class="el" href="#gafa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>((val), (min)), (max)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gaae8dfe7105f0d6d646483135965ee0a3" name="gaae8dfe7105f0d6d646483135965ee0a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaae8dfe7105f0d6d646483135965ee0a3">&#9670;&#160;</a></span>DIFF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DIFF</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">a, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">b</span>&#160;)&#160;&#160;&#160;<a class="el" href="#ga996f7be338ccb40d1a2a5abc1ad61759">ABS</a>((a) - (b))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gafa99ec4acc4ecb2dc3c2d05da15d0e3f" name="gafa99ec4acc4ecb2dc3c2d05da15d0e3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafa99ec4acc4ecb2dc3c2d05da15d0e3f">&#9670;&#160;</a></span>MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">a, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">b</span>&#160;)&#160;&#160;&#160;((a) &gt; (b) ? (a) : (b))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga3acffbd305ee72dcd4593c0d8af64a4f" name="ga3acffbd305ee72dcd4593c0d8af64a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3acffbd305ee72dcd4593c0d8af64a4f">&#9670;&#160;</a></span>MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIN</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">a, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">b</span>&#160;)&#160;&#160;&#160;((a) &lt; (b) ? (a) : (b))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gaac9153aee4bdb92701df902e06a74eb3" name="gaac9153aee4bdb92701df902e06a74eb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaac9153aee4bdb92701df902e06a74eb3">&#9670;&#160;</a></span>SWAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SWAP</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">a, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">b</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                                       \</div>
+<div class="line">        a ^= b;                                                                \</div>
+<div class="line">        b ^= a;                                                                \</div>
+<div class="line">        a ^= b;                                                                \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

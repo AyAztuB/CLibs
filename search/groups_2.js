@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['handling_20macros_0',['Handling Macros',['../group__Error.html',1,'']]],
-  ['helpers_1',['and Loop Helpers',['../group__Token.html',1,'']]]
+  ['detection_0',['builtins detection',['../group__compiler.html',1,'']]],
+  ['detection_20macros_1',['Architecture Detection Macros',['../group__Endianness.html',1,'']]]
 ];

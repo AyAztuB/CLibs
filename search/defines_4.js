@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['log_0',['LOG',['../logger_8h.html#aabadde7d5f8f3525736c00118b4949e5',1,'logger.h']]],
-  ['log_5ffatal_1',['LOG_FATAL',['../logger_8h.html#a89cecd05aeaafc715ebc091cf74d10fe',1,'logger.h']]]
+  ['error_0',['ERROR',['../util__attributes_8h.html#a435175024ad996b2a45d734fa9eea0e3',1,'util_attributes.h']]]
 ];

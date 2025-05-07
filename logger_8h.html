@@ -109,7 +109,7 @@ $(function(){initNavTree('logger_8h.html',''); initResizable(); });
 
 <p>Thread-safe logger library for debugging purposes in C99.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;ayaztub/utils/util_attributes.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="util__attributes_8h.html">ayaztub/utils/util_attributes.h</a>&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -156,10 +156,10 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6cda152b3e74fc5280f2fc04a11f4470" id="r_a6cda152b3e74fc5280f2fc04a11f4470"><td class="memItemLeft" align="right" valign="top">CONSTRUCTOR void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cda152b3e74fc5280f2fc04a11f4470">logger_init</a> (void)</td></tr>
+<tr class="memitem:a6cda152b3e74fc5280f2fc04a11f4470" id="r_a6cda152b3e74fc5280f2fc04a11f4470"><td class="memItemLeft" align="right" valign="top"><a class="el" href="util__attributes_8h.html#a5facd426173a400e33c57d48617b3a66">CONSTRUCTOR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cda152b3e74fc5280f2fc04a11f4470">logger_init</a> (void)</td></tr>
 <tr class="memdesc:a6cda152b3e74fc5280f2fc04a11f4470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the logger.  <br /></td></tr>
 <tr class="separator:a6cda152b3e74fc5280f2fc04a11f4470"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bd3de0ee241e4594c569f5e8a01c690" id="r_a8bd3de0ee241e4594c569f5e8a01c690"><td class="memItemLeft" align="right" valign="top">DESTRUCTOR void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bd3de0ee241e4594c569f5e8a01c690">logger_deinit</a> (void)</td></tr>
+<tr class="memitem:a8bd3de0ee241e4594c569f5e8a01c690" id="r_a8bd3de0ee241e4594c569f5e8a01c690"><td class="memItemLeft" align="right" valign="top"><a class="el" href="util__attributes_8h.html#ae4b16785aced0553a09527fb67c34144">DESTRUCTOR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bd3de0ee241e4594c569f5e8a01c690">logger_deinit</a> (void)</td></tr>
 <tr class="memdesc:a8bd3de0ee241e4594c569f5e8a01c690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitializes the logger.  <br /></td></tr>
 <tr class="separator:a8bd3de0ee241e4594c569f5e8a01c690"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08ba77d031efbe7183ed875fa2b068d5" id="r_a08ba77d031efbe7183ed875fa2b068d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08ba77d031efbe7183ed875fa2b068d5">logger_set_format_options</a> (bool show_date, bool show_thread, bool log_trace_on_fatal)</td></tr>
@@ -168,19 +168,19 @@ Functions</h2></td></tr>
 <tr class="memitem:a63bb2b09bd88f24c2f1decca1d9b9bed" id="r_a63bb2b09bd88f24c2f1decca1d9b9bed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63bb2b09bd88f24c2f1decca1d9b9bed">logger_set_log_level</a> (enum <a class="el" href="#ac91d55174d383848b976a34de843748e">log_level</a> level)</td></tr>
 <tr class="memdesc:a63bb2b09bd88f24c2f1decca1d9b9bed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current log level.  <br /></td></tr>
 <tr class="separator:a63bb2b09bd88f24c2f1decca1d9b9bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa92717fb0ce600f0229eccf6f0dc8084" id="r_aa92717fb0ce600f0229eccf6f0dc8084"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa92717fb0ce600f0229eccf6f0dc8084">logger_set_log_level_from_string</a> (const char *const <a class="el" href="#ac91d55174d383848b976a34de843748e">log_level</a>) NONNULL NULL_TERMINATED_STRING_ARG(1)</td></tr>
+<tr class="memitem:aa92717fb0ce600f0229eccf6f0dc8084" id="r_aa92717fb0ce600f0229eccf6f0dc8084"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa92717fb0ce600f0229eccf6f0dc8084">logger_set_log_level_from_string</a> (const char *const <a class="el" href="#ac91d55174d383848b976a34de843748e">log_level</a>) <a class="el" href="util__attributes_8h.html#ada64c64b4206846e8f545c2fbfb3f307">NONNULL</a> <a class="el" href="util__attributes_8h.html#afaf3705ae000be0ee724fe39365d3a75">NULL_TERMINATED_STRING_ARG</a>(1)</td></tr>
 <tr class="memdesc:aa92717fb0ce600f0229eccf6f0dc8084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the log level based on a string.  <br /></td></tr>
 <tr class="separator:aa92717fb0ce600f0229eccf6f0dc8084"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94eebc0a8452a9da82bf353be3460bb6" id="r_a94eebc0a8452a9da82bf353be3460bb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94eebc0a8452a9da82bf353be3460bb6">logger_set_log_level_from_env</a> (void)</td></tr>
 <tr class="memdesc:a94eebc0a8452a9da82bf353be3460bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the log level based on an environment variable.  <br /></td></tr>
 <tr class="separator:a94eebc0a8452a9da82bf353be3460bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26992023b8ac6bca5656df0cbbf824af" id="r_a26992023b8ac6bca5656df0cbbf824af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26992023b8ac6bca5656df0cbbf824af">logger_set_log_file</a> (const char *const filename) NONNULL NULL_TERMINATED_STRING_ARG(1)</td></tr>
+<tr class="memitem:a26992023b8ac6bca5656df0cbbf824af" id="r_a26992023b8ac6bca5656df0cbbf824af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26992023b8ac6bca5656df0cbbf824af">logger_set_log_file</a> (const char *const filename) <a class="el" href="util__attributes_8h.html#ada64c64b4206846e8f545c2fbfb3f307">NONNULL</a> <a class="el" href="util__attributes_8h.html#afaf3705ae000be0ee724fe39365d3a75">NULL_TERMINATED_STRING_ARG</a>(1)</td></tr>
 <tr class="memdesc:a26992023b8ac6bca5656df0cbbf824af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the output file for log messages.  <br /></td></tr>
 <tr class="separator:a26992023b8ac6bca5656df0cbbf824af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a406bdc6fcc685da32a57da4dc2c0d08d" id="r_a406bdc6fcc685da32a57da4dc2c0d08d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a406bdc6fcc685da32a57da4dc2c0d08d">logger_set_log_file_from_env</a> (const char *const default_filename)</td></tr>
 <tr class="memdesc:a406bdc6fcc685da32a57da4dc2c0d08d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the output file for log messages based on an environment variable.  <br /></td></tr>
 <tr class="separator:a406bdc6fcc685da32a57da4dc2c0d08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a6ce951c9f1f4695583e7adac885170" id="r_a7a6ce951c9f1f4695583e7adac885170"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a6ce951c9f1f4695583e7adac885170">logger_set_log_fileno</a> (FILE *file) NONNULL FD_ARG_WRITE(1)</td></tr>
+<tr class="memitem:a7a6ce951c9f1f4695583e7adac885170" id="r_a7a6ce951c9f1f4695583e7adac885170"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a6ce951c9f1f4695583e7adac885170">logger_set_log_fileno</a> (FILE *file) <a class="el" href="util__attributes_8h.html#ada64c64b4206846e8f545c2fbfb3f307">NONNULL</a> <a class="el" href="util__attributes_8h.html#a9f1e66bb9b5234e171ce65fec3b09dde">FD_ARG_WRITE</a>(1)</td></tr>
 <tr class="memdesc:a7a6ce951c9f1f4695583e7adac885170"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the file descriptor for log output.  <br /></td></tr>
 <tr class="separator:a7a6ce951c9f1f4695583e7adac885170"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdf7ddecf73078efbbc3d7267545695c" id="r_acdf7ddecf73078efbbc3d7267545695c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdf7ddecf73078efbbc3d7267545695c">logger_close_file</a> (void)</td></tr>
@@ -189,15 +189,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ac848ee13709493711546f940e4bf8352" id="r_ac848ee13709493711546f940e4bf8352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac848ee13709493711546f940e4bf8352">logger_set_callback</a> (<a class="el" href="#a8d3b211d107f2e27ed9d85188eab8edb">logger_cb_t</a> callback)</td></tr>
 <tr class="memdesc:ac848ee13709493711546f940e4bf8352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a callback function to handle log messages.  <br /></td></tr>
 <tr class="separator:ac848ee13709493711546f940e4bf8352"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab90ee99204ff0ba50b85c0fb1bd460b7" id="r_ab90ee99204ff0ba50b85c0fb1bd460b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab90ee99204ff0ba50b85c0fb1bd460b7">log_message</a> (enum <a class="el" href="#ac91d55174d383848b976a34de843748e">log_level</a> level, const char *const file, size_t line, const char *const func, const char *const fmt,...) NONNULL NULL_TERMINATED_STRING_ARG(2) NULL_TERMINATED_STRING_ARG(4)</td></tr>
+<tr class="memitem:ab90ee99204ff0ba50b85c0fb1bd460b7" id="r_ab90ee99204ff0ba50b85c0fb1bd460b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab90ee99204ff0ba50b85c0fb1bd460b7">log_message</a> (enum <a class="el" href="#ac91d55174d383848b976a34de843748e">log_level</a> level, const char *const file, size_t line, const char *const func, const char *const fmt,...) <a class="el" href="util__attributes_8h.html#ada64c64b4206846e8f545c2fbfb3f307">NONNULL</a> <a class="el" href="util__attributes_8h.html#afaf3705ae000be0ee724fe39365d3a75">NULL_TERMINATED_STRING_ARG</a>(2) <a class="el" href="util__attributes_8h.html#afaf3705ae000be0ee724fe39365d3a75">NULL_TERMINATED_STRING_ARG</a>(4)</td></tr>
 <tr class="memdesc:ab90ee99204ff0ba50b85c0fb1bd460b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message with a specified log level.  <br /></td></tr>
 <tr class="separator:ab90ee99204ff0ba50b85c0fb1bd460b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad146321d6120055e276a6ffbd7e0c581" id="r_ad146321d6120055e276a6ffbd7e0c581"><td class="memItemLeft" align="right" valign="top"><a id="ad146321d6120055e276a6ffbd7e0c581" name="ad146321d6120055e276a6ffbd7e0c581"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>log_on_stdout</b> (enum <a class="el" href="#ac91d55174d383848b976a34de843748e">log_level</a>, const char *const, const char *const) NONNULL NULL_TERMINATED_STRING_ARG(2) NULL_TERMINATED_STRING_ARG(3)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>log_on_stdout</b> (enum <a class="el" href="#ac91d55174d383848b976a34de843748e">log_level</a>, const char *const, const char *const) <a class="el" href="util__attributes_8h.html#ada64c64b4206846e8f545c2fbfb3f307">NONNULL</a> <a class="el" href="util__attributes_8h.html#afaf3705ae000be0ee724fe39365d3a75">NULL_TERMINATED_STRING_ARG</a>(2) <a class="el" href="util__attributes_8h.html#afaf3705ae000be0ee724fe39365d3a75">NULL_TERMINATED_STRING_ARG</a>(3)</td></tr>
 <tr class="memdesc:ad146321d6120055e276a6ffbd7e0c581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message to stdout using the logger callback. <br /></td></tr>
 <tr class="separator:ad146321d6120055e276a6ffbd7e0c581"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c0216ca61a3d8879836786a201103de" id="r_a2c0216ca61a3d8879836786a201103de"><td class="memItemLeft" align="right" valign="top"><a id="a2c0216ca61a3d8879836786a201103de" name="a2c0216ca61a3d8879836786a201103de"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>log_on_stderr</b> (enum <a class="el" href="#ac91d55174d383848b976a34de843748e">log_level</a>, const char *const, const char *const) NONNULL NULL_TERMINATED_STRING_ARG(2) NULL_TERMINATED_STRING_ARG(3)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>log_on_stderr</b> (enum <a class="el" href="#ac91d55174d383848b976a34de843748e">log_level</a>, const char *const, const char *const) <a class="el" href="util__attributes_8h.html#ada64c64b4206846e8f545c2fbfb3f307">NONNULL</a> <a class="el" href="util__attributes_8h.html#afaf3705ae000be0ee724fe39365d3a75">NULL_TERMINATED_STRING_ARG</a>(2) <a class="el" href="util__attributes_8h.html#afaf3705ae000be0ee724fe39365d3a75">NULL_TERMINATED_STRING_ARG</a>(3)</td></tr>
 <tr class="memdesc:a2c0216ca61a3d8879836786a201103de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message to stderr using the logger callback. <br /></td></tr>
 <tr class="separator:a2c0216ca61a3d8879836786a201103de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -507,7 +507,7 @@ This library is thread-safe but the logger callback registered by the user is ca
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DESTRUCTOR void logger_deinit </td>
+          <td class="memname"><a class="el" href="util__attributes_8h.html#ae4b16785aced0553a09527fb67c34144">DESTRUCTOR</a> void logger_deinit </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -528,7 +528,7 @@ This library is thread-safe but the logger callback registered by the user is ca
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">CONSTRUCTOR void logger_init </td>
+          <td class="memname"><a class="el" href="util__attributes_8h.html#a5facd426173a400e33c57d48617b3a66">CONSTRUCTOR</a> void logger_init </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>

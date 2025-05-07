@@ -27,6 +27,7 @@ var NAVTREE =
   [ "C-libs", "index.html", [
     [ "CLibs", "index.html", "index" ],
     [ "Todo List", "todo.html", null ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [

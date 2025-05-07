@@ -105,7 +105,7 @@
  * characters from the beginning, making the logged file paths more readable.
  */
 #ifndef __FILENAME__
-#define __FILENAME__ ((__FILE__) + (SOURCE_PATH_SIZE))
+#    define __FILENAME__ ((__FILE__) + (SOURCE_PATH_SIZE))
 #endif // __FILENAME__
 
 /**

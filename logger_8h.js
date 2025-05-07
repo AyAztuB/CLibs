@@ -4,7 +4,7 @@ var logger_8h =
     [ "LOG", "logger_8h.html#aabadde7d5f8f3525736c00118b4949e5", null ],
     [ "LOG_FATAL", "logger_8h.html#a89cecd05aeaafc715ebc091cf74d10fe", null ],
     [ "SOURCE_PATH_SIZE", "logger_8h.html#a9dc6c49b86b33b5b3f81883ef02fbfd1", null ],
-    [ "logger_cb_t", "logger_8h.html#a8d3b211d107f2e27ed9d85188eab8edb", null ],
+    [ "logger_cb_t", "logger_8h.html#a29959cf22f139e0841d3a5d14e1a9220", null ],
     [ "log_level", "logger_8h.html#ac91d55174d383848b976a34de843748e", [
       [ "LOG_QUITE", "logger_8h.html#ac91d55174d383848b976a34de843748ea7ddef0d5f8a0a1af5365f52b373dab9a", null ],
       [ "LOG_FATAL", "logger_8h.html#ac91d55174d383848b976a34de843748eac630750884d91cb9767ef2200bbb048b", null ],

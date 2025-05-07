@@ -22,7 +22,7 @@ var searchData=
   ['log_5fwarn_19',['LOG_WARN',['../logger_8h.html#ac91d55174d383848b976a34de843748eac8041ffa22bc823d4726701cdb13fc13',1,'logger.h']]],
   ['logger_20',['Logger',['../index.html#autotoc_md6',1,'']]],
   ['logger_2eh_21',['logger.h',['../logger_8h.html',1,'']]],
-  ['logger_5fcb_5ft_22',['logger_cb_t',['../logger_8h.html#a8d3b211d107f2e27ed9d85188eab8edb',1,'logger.h']]],
+  ['logger_5fcb_5ft_22',['logger_cb_t',['../logger_8h.html#a29959cf22f139e0841d3a5d14e1a9220',1,'logger.h']]],
   ['logger_5fclose_5ffile_23',['logger_close_file',['../logger_8h.html#acdf7ddecf73078efbbc3d7267545695c',1,'logger.h']]],
   ['logger_5fdeinit_24',['logger_deinit',['../logger_8h.html#a8bd3de0ee241e4594c569f5e8a01c690',1,'logger.h']]],
   ['logger_5finit_25',['logger_init',['../logger_8h.html#a6cda152b3e74fc5280f2fc04a11f4470',1,'logger.h']]],

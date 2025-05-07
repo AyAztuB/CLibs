@@ -1,7 +1,8 @@
 #include <ayaztub/logger.h>
 
 static void segv_func(int *ptr) {
-    if (!ptr) LOG_FATAL("ptr is NULL...");
+    if (!ptr)
+        LOG_FATAL("ptr is NULL...");
     *ptr = 0;
 }
 

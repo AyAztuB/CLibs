@@ -287,6 +287,7 @@ typedef __float128 f128; ///< 128-bit float (GCC 4.3+ extension)
 /** @def DEFER
  * @brief Run `tail` after `head` in a single lexical scope (cleanup emulation).
  *
+ * Example usage:
  * @code
  * DEFER(open_file(), close_file()) {
  *     // do work
@@ -323,6 +324,7 @@ typedef __float128 f128; ///< 128-bit float (GCC 4.3+ extension)
 /** @def ONCE
  * @brief Execute `stmts` once, ever.
  *
+ * Example usage:
  * @code
  * ONCE(
  *     printf("This happens once.\n");

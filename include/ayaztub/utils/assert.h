@@ -8,6 +8,8 @@
  * conditions are not met.
  *
  * @note You can define NOASSERT to remove assertions.
+ *
+ * @example example_assert.c
  */
 
 #ifndef __AYAZTUB__UTILS__ASSERT_H__
@@ -24,8 +26,8 @@
 #        define __GLUE(a, b) a##b
 #    endif // __GLUE
 #    define __CASSERT_IMPL(predicate, file, line)                              \
-        typedef char __attribute__((unused))                                   \
-        __GLUE(assertion_failed_##file##_, line)[2 * !!(predicate)-1]
+        typedef char __attribute__((unused)) __GLUE(                           \
+            assertion_failed_##file##_, line)[2 * !!(predicate) - 1]
 
 /**
  * @def COMPILE_ASSERT(predicate, file)
@@ -76,7 +78,7 @@
             if (!(predicate)) {                                                \
                 fprintf(stderr,                                                \
                         "\033[0;31mAssertion failed\033[0m: `%s`, with "       \
-                        "message `" fmt "` (%s:%d in %s())\n",                   \
+                        "message `" fmt "` (%s:%d in %s())\n",                 \
                         #predicate, __VA_ARGS__, __FILE__, __LINE__,           \
                         __func__);                                             \
                 abort();                                                       \

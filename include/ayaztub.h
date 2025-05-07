@@ -4,5 +4,6 @@
 // #include <ayaztub/data_structures.h>
 #include <ayaztub/utils.h>
 #include <ayaztub/logger.h>
+#include <ayaztub/atomics.h>
 
 #endif // __AYAZTUB_H__

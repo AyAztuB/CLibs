@@ -11,6 +11,7 @@ EXAMPLE_BINS = \
 	example_logger \
 	example_assert \
 	example_debug \
+	example_atomics \
 
 
 all: ${EXAMPLE_BINS}

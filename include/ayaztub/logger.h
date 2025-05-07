@@ -25,8 +25,18 @@
  * recursive logging and thus MUST NEVER call any logger core functions/macros
  * in the callback provided.
  *
+ * @note On fatal error (or signal SIGSEGV, SIGABRT, SIGILL, SIGFPE, SIGBUS),
+ * the backtrace may be logged as FATAL.
+ * For example, the backtrace log `./a.out(+0x21ae) [0x5620024571ae]`
+ * can be retrieved using addr2line:
+ * `addr2line -Cfspe ./a.out +0x21ae` gives us the function, file and line
+ * (with debug flags -g)
+ *
+ * @todo Integrate the addr2line tool in the log_backtrace() function, without
+ * any allocation (fatal error may be due to corrupted memory...).
+ *
+ * Usage example:
  * @code
- * // usage example
  * #include <ayaztub/logger.h>
  *
  * int main(int argc, char **argv) {
@@ -66,15 +76,7 @@
  * }
  * @endcode
  *
- * @note On fatal error (or signal SIGSEGV, SIGABRT, SIGILL, SIGFPE, SIGBUS),
- * the backtrace may be logged as FATAL.
- * For example, the backtrace log `./a.out(+0x21ae) [0x5620024571ae]`
- * can be retrieved using addr2line:
- * `addr2line -Cfspe ./a.out +0x21ae` gives us the function, file and line
- * (with debug flags -g)
- *
- * @todo Integrate the addr2line tool in the log_backtrace() function, without
- * any allocation (fatal error may be due to corrupted memory...).
+ * @example example_logger.c
  */
 
 #ifndef __AYAZTUB__LOGGER_H__

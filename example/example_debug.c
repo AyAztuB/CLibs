@@ -1,6 +1,5 @@
 #include <ayaztub/utils/debug.h>
 
-
 DBG_ARRAY_FUNC_DECL(const char **, string, "\"%s\"")
 
 int main(void) {

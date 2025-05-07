@@ -32,6 +32,8 @@
  *     return 0;
  * }
  * @endcode
+ *
+ * @example example_debug.c
  */
 
 #ifndef __AYAZTUB__UTILS__DEBUG_H__

@@ -16,7 +16,9 @@ EXAMPLE_BINS = \
 
 all: ${EXAMPLE_BINS}
 
+%: %.o
+
 clean:
-	${RM} ${EXAMPLE_BINS}
+	${RM} ${EXAMPLE_BINS} *.o
 
 .PHONY: all clean

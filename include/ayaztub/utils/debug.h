@@ -77,6 +77,103 @@
 #    define __FILENAME__ ((__FILE__) + (SOURCE_PATH_SIZE))
 #endif // __FILENAME__
 
+#define _DBG_PRINT_HDR_FMT                                                     \
+    GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = "
+#define _DBG_PRINT_HDR_ARGS file, line, func_name, expr
+
+#define _DBG_ARRAY_PRINT_HDR_FMT                                               \
+    GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = [ "
+#define _DBG_ARRAY_PRINT_HDR_ARGS file, line, func_name, expr
+
+#define _DBG_ARRAY_PRINT_FOOTER                                                \
+    fprintf(DBG_OUTSTREAM, " ] with length = %zu\n", length)
+
+#define _DBG_FUNC_PREFIX static inline
+#define _DBG_FUNC_SIG(name, type)                                              \
+    type name(const char *file, unsigned int line, const char *func_name,      \
+              const char *expr, type value)
+#define _DBG_ARRAY_FUNC_SIG(name, type)                                        \
+    type name(const char *file, unsigned int line, const char *func_name,      \
+              const char *expr, type array, size_t length)
+
+#define DBG_TYPE_MAP(X)                                                        \
+    X(char, dbg_char)                                                          \
+    X(signed char, dbg_schar)                                                  \
+    X(unsigned char, dbg_uchar)                                                \
+    X(short, dbg_short)                                                        \
+    X(unsigned short, dbg_ushort)                                              \
+    X(int, dbg_int)                                                            \
+    X(unsigned int, dbg_uint)                                                  \
+    X(long, dbg_long)                                                          \
+    X(unsigned long, dbg_ulong)                                                \
+    X(long long, dbg_llong)                                                    \
+    X(unsigned long long, dbg_ullong)                                          \
+    X(float, dbg_float)                                                        \
+    X(double, dbg_double)                                                      \
+    X(bool, dbg_bool)                                                          \
+    X(char *, dbg_char_p)                                                      \
+    X(const char *, dbg_const_char_p)                                          \
+    X(signed char *, dbg_schar_p)                                              \
+    X(const signed char *, dbg_const_schar_p)                                  \
+    X(unsigned char *, dbg_uchar_p)                                            \
+    X(const unsigned char *, dbg_const_uchar_p)                                \
+    X(void *, dbg_pointer)
+
+#define DBG_ARRAY_TYPE_MAP(X)                                                  \
+    X(short *, dbg_array_short)                                                \
+    X(const short *, dbg_array_const_short)                                    \
+    X(unsigned short *, dbg_array_ushort)                                      \
+    X(const unsigned short *, dbg_array_const_ushort)                          \
+    X(int *, dbg_array_int)                                                    \
+    X(const int *, dbg_array_const_int)                                        \
+    X(unsigned int *, dbg_array_uint)                                          \
+    X(const unsigned int *, dbg_array_const_uint)                              \
+    X(long *, dbg_array_long)                                                  \
+    X(const long *, dbg_array_const_long)                                      \
+    X(unsigned long *, dbg_array_ulong)                                        \
+    X(const unsigned long *, dbg_array_const_ulong)                            \
+    X(long long *, dbg_array_llong)                                            \
+    X(const long long *, dbg_array_const_llong)                                \
+    X(unsigned long long *, dbg_array_ullong)                                  \
+    X(const unsigned long long *, dbg_array_const_ullong)                      \
+    X(float *, dbg_array_float)                                                \
+    X(const float *, dbg_array_const_float)                                    \
+    X(double *, dbg_array_double)                                              \
+    X(const double *, dbg_array_const_double)                                  \
+    X(char *, dbg_array_char)                                                  \
+    X(const char *, dbg_array_const_char)                                      \
+    X(signed char *, dbg_array_schar)                                          \
+    X(const signed char *, dbg_array_const_schar)                              \
+    X(unsigned char *, dbg_array_uchar)                                        \
+    X(const unsigned char *, dbg_array_const_uchar)                            \
+    X(bool *, dbg_array_bool)                                                  \
+    X(const bool *, dbg_array_const_bool)                                      \
+    X(char **, dbg_array_cstr)                                                 \
+    X(const char **, dbg_array_const_cstr)
+
+/* Helpers */
+#define DBG_GEN(type, fn)                                                      \
+type:                                                                          \
+    fn,
+
+/* Allow user to extend */
+#ifdef DBG_USER_TYPE_MAP
+#    define DBG_ALL_TYPES(X)                                                   \
+        DBG_TYPE_MAP(X)                                                        \
+        DBG_USER_TYPE_MAP(X)
+#else
+#    define DBG_ALL_TYPES(X) DBG_TYPE_MAP(X)
+#endif
+
+/* Allow user to extend */
+#ifdef DBG_ARRAY_USER_TYPE_MAP
+#    define DBG_ARRAY_ALL_TYPES(X)                                             \
+        DBG_ARRAY_TYPE_MAP(X)                                                  \
+        DBG_ARRAY_USER_TYPE_MAP(X)
+#else
+#    define DBG_ARRAY_ALL_TYPES(X) DBG_ARRAY_TYPE_MAP(X)
+#endif
+
 #ifndef NODBG
 #    if __STDC_VERSION__ >= 201112L
 /**
@@ -103,29 +200,8 @@
  * @endcode
  */
 #        define dbg(value)                                                     \
-            _Generic((value),                                                  \
-             char: dbg_char,                                                   \
-             signed char: dbg_schar,                                           \
-             unsigned char: dbg_uchar,                                         \
-             short: dbg_short,                                                 \
-             unsigned short: dbg_ushort,                                       \
-             int: dbg_int,                                                     \
-             unsigned int: dbg_uint,                                           \
-             long: dbg_long,                                                   \
-             unsigned long: dbg_ulong,                                         \
-             long long: dbg_llong,                                             \
-             unsigned long long: dbg_ullong,                                   \
-             float: dbg_float,                                                 \
-             double: dbg_double,                                               \
-             bool: dbg_bool,                                                   \
-             char *: dbg_char_p,                                               \
-             const char *: dbg_const_char_p,                                   \
-             signed char *: dbg_schar_p,                                       \
-             const signed char *: dbg_const_schar_p,                           \
-             unsigned char *: dbg_uchar_p,                                     \
-             const unsigned char *: dbg_const_uchar_p,                         \
-             default: dbg_pointer)                                             \
-        (__FILENAME__, __LINE__, __func__, #value, value)
+            _Generic((value), DBG_ALL_TYPES(DBG_GEN) default: dbg_pointer)(    \
+                __FILENAME__, __LINE__, __func__, #value, value)
 
 /**
  * @def dbg_array(value, length)
@@ -153,35 +229,8 @@
  */
 #        define dbg_array(value, length)                                       \
             _Generic((value),                                                  \
-             short *: dbg_array_short,                                         \
-             const short *: dbg_array_const_short,                             \
-             unsigned short *: dbg_array_ushort,                               \
-             const unsigned short *: dbg_array_const_ushort,                   \
-             int *: dbg_array_int,                                             \
-             const int *: dbg_array_const_int,                                 \
-             unsigned int *: dbg_array_uint,                                   \
-             const unsigned int *: dbg_array_const_uint,                       \
-             long *: dbg_array_long,                                           \
-             const long *: dbg_array_const_long,                               \
-             unsigned long *: dbg_array_ulong,                                 \
-             const unsigned long *: dbg_array_const_ulong,                     \
-             long long *: dbg_array_llong,                                     \
-             const long long *: dbg_array_const_llong,                         \
-             unsigned long long *: dbg_array_ullong,                           \
-             const unsigned long long *: dbg_array_const_ullong,               \
-             float *: dbg_array_float,                                         \
-             const float *: dbg_array_const_float,                             \
-             double *: dbg_array_double,                                       \
-             const double *: dbg_array_const_double,                           \
-             char *: dbg_array_char,                                           \
-             const char *: dbg_array_const_char,                               \
-             signed char *: dbg_array_schar,                                   \
-             const signed char *: dbg_array_const_schar,                       \
-             unsigned char *: dbg_array_uchar,                                 \
-             const unsigned char *: dbg_array_const_uchar,                     \
-             bool *: dbg_array_bool,                                           \
-             const bool *: dbg_array_const_bool)                               \
-        (__FILENAME__, __LINE__, __func__, #value, value, length)
+                DBG_ARRAY_ALL_TYPES(DBG_GEN) default: dbg_array_pointer)(      \
+                __FILENAME__, __LINE__, __func__, #value, value, length)
 #    else // __STDC_VERSION__ >= 201112L
 // macros undefined
 #        define dbg(value) (value)
@@ -285,10 +334,8 @@
     static inline type dbg_##name(const char *file, unsigned int line,         \
                                   const char *func_name, const char *expr,     \
                                   type value) {                                \
-        fprintf(DBG_OUTSTREAM,                                                 \
-                GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = " fmt \
-                     "\n",                                                     \
-                file, line, func_name, expr, value);                           \
+        fprintf(DBG_OUTSTREAM, _DBG_PRINT_HDR_FMT fmt "\n",                    \
+                _DBG_PRINT_HDR_ARGS, value);                                   \
         return value;                                                          \
     }
 
@@ -322,15 +369,14 @@
     static inline type dbg_array_##name(                                       \
         const char *file, unsigned int line, const char *func_name,            \
         const char *expr, type array, size_t length) {                         \
-        fprintf(DBG_OUTSTREAM,                                                 \
-                GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = [ ",  \
-                file, line, func_name, expr);                                  \
+        fprintf(DBG_OUTSTREAM, _DBG_ARRAY_PRINT_HDR_FMT,                       \
+                _DBG_ARRAY_PRINT_HDR_ARGS);                                    \
         for (size_t i = 0; i < length; i++) {                                  \
             if (i)                                                             \
                 fprintf(DBG_OUTSTREAM, ", ");                                  \
             fprintf(DBG_OUTSTREAM, fmt, array[i]);                             \
         }                                                                      \
-        fprintf(DBG_OUTSTREAM, " ] with length = %zu\n", length);              \
+        _DBG_ARRAY_PRINT_FOOTER;                                               \
         return array;                                                          \
     }
 
@@ -353,9 +399,8 @@ DBG_FUNC_DECL(double, double, "%lf")
 static inline bool dbg_bool(const char *file, unsigned int line,
                             const char *func_name, const char *expr,
                             bool value) {
-    fprintf(DBG_OUTSTREAM,
-            GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = %s\n",
-            file, line, func_name, expr, value ? "true" : "false");
+    fprintf(DBG_OUTSTREAM, _DBG_PRINT_HDR_FMT "%s\n", _DBG_PRINT_HDR_ARGS,
+            value ? "true" : "false");
     return value;
 }
 
@@ -367,9 +412,7 @@ DBG_FUNC_DECL(const char *, const_char_p, "\"%s\"")
 static inline const signed char *
 dbg_const_schar_p(const char *file, unsigned int line, const char *func_name,
                   const char *expr, const signed char *value) {
-    fprintf(DBG_OUTSTREAM,
-            GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = ", file,
-            line, func_name, expr);
+    fprintf(DBG_OUTSTREAM, _DBG_PRINT_HDR_FMT, _DBG_PRINT_HDR_ARGS);
     if (!value)
         fprintf(DBG_OUTSTREAM, "(null)\n");
     else {
@@ -393,9 +436,7 @@ static inline signed char *dbg_schar_p(const char *file, unsigned int line,
 static inline const unsigned char *
 dbg_const_uchar_p(const char *file, unsigned int line, const char *func_name,
                   const char *expr, const unsigned char *value) {
-    fprintf(DBG_OUTSTREAM,
-            GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = ", file,
-            line, func_name, expr);
+    fprintf(DBG_OUTSTREAM, _DBG_PRINT_HDR_FMT, _DBG_PRINT_HDR_ARGS);
     if (!value)
         fprintf(DBG_OUTSTREAM, "(null)\n");
     else {
@@ -454,15 +495,13 @@ DBG_ARRAY_FUNC_DECL(const unsigned char *, const_uchar, "%hhu")
 static inline const bool *
 dbg_array_const_bool(const char *file, unsigned int line, const char *func_name,
                      const char *expr, const bool *array, size_t length) {
-    fprintf(DBG_OUTSTREAM,
-            GRAY "%s:%u in %s()" RESET ": " TURQUOISE "%s" RESET " = [ ", file,
-            line, func_name, expr);
+    fprintf(DBG_OUTSTREAM, _DBG_ARRAY_PRINT_HDR_FMT, _DBG_ARRAY_PRINT_HDR_ARGS);
     for (size_t i = 0; i < length; i++) {
         if (i)
             fprintf(DBG_OUTSTREAM, ", ");
         fprintf(DBG_OUTSTREAM, "%s", array[i] ? "true" : "false");
     }
-    fprintf(DBG_OUTSTREAM, " ] with length = %zu\n", length);
+    _DBG_ARRAY_PRINT_FOOTER;
     return array;
 }
 
@@ -472,6 +511,10 @@ static inline bool *dbg_array_bool(const char *file, unsigned int line,
     dbg_array_const_bool(file, line, func_name, expr, array, length);
     return array;
 }
+
+DBG_ARRAY_FUNC_DECL(char **, cstr, "%s")
+DBG_ARRAY_FUNC_DECL(const char **, const_cstr, "%s")
+DBG_ARRAY_FUNC_DECL(void **, pointer, "%p")
 
 /**
  * @brief Function to set a breakpoint for debugging.

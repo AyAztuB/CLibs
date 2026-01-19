@@ -88,7 +88,12 @@
 #define _DBG_ARRAY_PRINT_FOOTER                                                \
     fprintf(DBG_OUTSTREAM, " ] with length = %zu\n", length)
 
-#define _DBG_FUNC_PREFIX static inline
+#ifdef DBG_STATIC_IMPL
+#    define _DBG_FUNC_PREFIX static inline
+#else
+#    define _DBG_FUNC_PREFIX
+#endif // DBG_STATIC_IMPL
+
 #define _DBG_FUNC_SIG(name, type)                                              \
     type name(const char *file, unsigned int line, const char *func_name,      \
               const char *expr, type value)
@@ -331,9 +336,7 @@ type:                                                                          \
  * @endcode
  */
 #define DBG_FUNC_DECL(type, name, fmt)                                         \
-    static inline type dbg_##name(const char *file, unsigned int line,         \
-                                  const char *func_name, const char *expr,     \
-                                  type value) {                                \
+    _DBG_FUNC_PREFIX _DBG_FUNC_SIG(dbg_##name, type) {                         \
         fprintf(DBG_OUTSTREAM, _DBG_PRINT_HDR_FMT fmt "\n",                    \
                 _DBG_PRINT_HDR_ARGS, value);                                   \
         return value;                                                          \
@@ -366,9 +369,7 @@ type:                                                                          \
  * @endcode
  */
 #define DBG_ARRAY_FUNC_DECL(type, name, fmt)                                   \
-    static inline type dbg_array_##name(                                       \
-        const char *file, unsigned int line, const char *func_name,            \
-        const char *expr, type array, size_t length) {                         \
+    _DBG_FUNC_PREFIX _DBG_ARRAY_FUNC_SIG(dbg_array_##name, type) {             \
         fprintf(DBG_OUTSTREAM, _DBG_ARRAY_PRINT_HDR_FMT,                       \
                 _DBG_ARRAY_PRINT_HDR_ARGS);                                    \
         for (size_t i = 0; i < length; i++) {                                  \
@@ -379,6 +380,8 @@ type:                                                                          \
         _DBG_ARRAY_PRINT_FOOTER;                                               \
         return array;                                                          \
     }
+
+#if defined(DBG_STATIC_IMPL) || defined(DBG_IMPLEMENTATION)
 
 // Basic types
 DBG_FUNC_DECL(char, char, "'%c'")
@@ -396,9 +399,7 @@ DBG_FUNC_DECL(float, float, "%f")
 DBG_FUNC_DECL(double, double, "%lf")
 // DBG_FUNC_DECL(bool, bool, "%d")
 
-static inline bool dbg_bool(const char *file, unsigned int line,
-                            const char *func_name, const char *expr,
-                            bool value) {
+_DBG_FUNC_PREFIX _DBG_FUNC_SIG(dbg_bool, bool) {
     fprintf(DBG_OUTSTREAM, _DBG_PRINT_HDR_FMT "%s\n", _DBG_PRINT_HDR_ARGS,
             value ? "true" : "false");
     return value;
@@ -409,9 +410,7 @@ DBG_FUNC_DECL(void *, pointer, "%p")
 DBG_FUNC_DECL(char *, char_p, "\"%s\"")
 DBG_FUNC_DECL(const char *, const_char_p, "\"%s\"")
 
-static inline const signed char *
-dbg_const_schar_p(const char *file, unsigned int line, const char *func_name,
-                  const char *expr, const signed char *value) {
+_DBG_FUNC_PREFIX _DBG_FUNC_SIG(dbg_const_schar_p, const signed char *) {
     fprintf(DBG_OUTSTREAM, _DBG_PRINT_HDR_FMT, _DBG_PRINT_HDR_ARGS);
     if (!value)
         fprintf(DBG_OUTSTREAM, "(null)\n");
@@ -426,16 +425,12 @@ dbg_const_schar_p(const char *file, unsigned int line, const char *func_name,
     return value;
 }
 
-static inline signed char *dbg_schar_p(const char *file, unsigned int line,
-                                       const char *func_name, const char *expr,
-                                       signed char *value) {
+_DBG_FUNC_PREFIX _DBG_FUNC_SIG(dbg_schar_p, signed char *) {
     dbg_const_schar_p(file, line, func_name, expr, value);
     return value;
 }
 
-static inline const unsigned char *
-dbg_const_uchar_p(const char *file, unsigned int line, const char *func_name,
-                  const char *expr, const unsigned char *value) {
+_DBG_FUNC_PREFIX _DBG_FUNC_SIG(dbg_const_uchar_p, const unsigned char *) {
     fprintf(DBG_OUTSTREAM, _DBG_PRINT_HDR_FMT, _DBG_PRINT_HDR_ARGS);
     if (!value)
         fprintf(DBG_OUTSTREAM, "(null)\n");
@@ -450,10 +445,7 @@ dbg_const_uchar_p(const char *file, unsigned int line, const char *func_name,
     return value;
 }
 
-static inline unsigned char *dbg_uchar_p(const char *file, unsigned int line,
-                                         const char *func_name,
-                                         const char *expr,
-                                         unsigned char *value) {
+_DBG_FUNC_PREFIX _DBG_FUNC_SIG(dbg_uchar_p, unsigned char *) {
     dbg_const_uchar_p(file, line, func_name, expr, value);
     return value;
 }
@@ -492,9 +484,7 @@ DBG_ARRAY_FUNC_DECL(const unsigned char *, const_uchar, "%hhu")
 // DBG_ARRAY_FUNC_DECL(bool *, bool, "%d")
 // DBG_ARRAY_FUNC_DECL(const bool *, const_bool, "%d")
 
-static inline const bool *
-dbg_array_const_bool(const char *file, unsigned int line, const char *func_name,
-                     const char *expr, const bool *array, size_t length) {
+_DBG_FUNC_PREFIX _DBG_ARRAY_FUNC_SIG(dbg_array_const_bool, const bool *) {
     fprintf(DBG_OUTSTREAM, _DBG_ARRAY_PRINT_HDR_FMT, _DBG_ARRAY_PRINT_HDR_ARGS);
     for (size_t i = 0; i < length; i++) {
         if (i)
@@ -505,16 +495,75 @@ dbg_array_const_bool(const char *file, unsigned int line, const char *func_name,
     return array;
 }
 
-static inline bool *dbg_array_bool(const char *file, unsigned int line,
-                                   const char *func_name, const char *expr,
-                                   bool *array, size_t length) {
-    dbg_array_const_bool(file, line, func_name, expr, array, length);
+_DBG_FUNC_PREFIX _DBG_ARRAY_FUNC_SIG(dbg_array_bool, bool) {
+    dbg_array_const_bool(file, line, func_name, expr, (bool *)array, length);
     return array;
 }
 
 DBG_ARRAY_FUNC_DECL(char **, cstr, "%s")
 DBG_ARRAY_FUNC_DECL(const char **, const_cstr, "%s")
 DBG_ARRAY_FUNC_DECL(void **, pointer, "%p")
+
+#else // if !DBG_STATIC_IMPL && !DBG_IMPLEMENTATION
+
+_DBG_FUNC_SIG(dbg_char, char);
+_DBG_FUNC_SIG(dbg_schar, signed char);
+_DBG_FUNC_SIG(dbg_uchar, unsigned char);
+_DBG_FUNC_SIG(dbg_short, short);
+_DBG_FUNC_SIG(dbg_ushort, unsigned short);
+_DBG_FUNC_SIG(dbg_int, int);
+_DBG_FUNC_SIG(dbg_uint, unsigned int);
+_DBG_FUNC_SIG(dbg_long, long);
+_DBG_FUNC_SIG(dbg_ulong, unsigned long);
+_DBG_FUNC_SIG(dbg_llong, long long);
+_DBG_FUNC_SIG(dbg_ullong, unsigned long long);
+_DBG_FUNC_SIG(dbg_float, float);
+_DBG_FUNC_SIG(dbg_double, double);
+_DBG_FUNC_SIG(dbg_bool, bool);
+
+// Pointers
+_DBG_FUNC_SIG(dbg_pointer, void *);
+_DBG_FUNC_SIG(dbg_char_p, char *);
+_DBG_FUNC_SIG(dbg_const_char_p, const char *);
+_DBG_FUNC_SIG(dbg_const_schar_p, const signed char *);
+_DBG_FUNC_SIG(dbg_schar_p, signed char *);
+_DBG_FUNC_SIG(dbg_const_uchar_p, const unsigned char *);
+_DBG_FUNC_SIG(dbg_uchar_p, unsigned char *);
+
+// Arrays
+_DBG_ARRAY_FUNC_SIG(dbg_array_short, short *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_short, const short *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_ushort, unsigned short *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_ushort, const unsigned short *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_int, int *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_int, const int *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_uint, unsigned int *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_uint, const unsigned int *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_long, long *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_long, const long *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_ulong, unsigned long *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_ulong, const unsigned long *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_llong, long long *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_llong, const long long *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_ullong, unsigned long long *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_ullong, const unsigned long long *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_float, float *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_float, const float *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_double, double *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_double, const double *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_char, char *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_char, const char *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_schar, signed char *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_schar, const signed char *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_uchar, unsigned char *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_uchar, const unsigned char *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_bool, const bool *);
+_DBG_ARRAY_FUNC_SIG(dbg_array_bool, bool);
+_DBG_ARRAY_FUNC_SIG(dbg_array_cstr, char **);
+_DBG_ARRAY_FUNC_SIG(dbg_array_const_cstr, const char **);
+_DBG_ARRAY_FUNC_SIG(dbg_array_pointer, void **);
+
+#endif // DBG_STATIC_IMPL || DBG_IMPLEMENTATION
 
 /**
  * @brief Function to set a breakpoint for debugging.

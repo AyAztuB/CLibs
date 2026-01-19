@@ -1,5 +1,6 @@
 #define DBG_USER_TYPE_MAP(X) X(foo, user_dbg_foo)
 #define DBG_ARRAY_USER_TYPE_MAP(X) X(foo *, user_dbg_array_foo)
+#define DBG_STATIC_IMPL
 
 #include <ayaztub/utils/debug.h>
 
@@ -24,7 +25,7 @@ _DBG_FUNC_PREFIX _DBG_ARRAY_FUNC_SIG(user_dbg_array_foo, foo *) {
     return array;
 }
 
-int main(void) {
+int main(int argc, char **argv) {
     int a = 5;
     float b = 3.14f;
     double c = 2.718281828;
@@ -52,6 +53,8 @@ int main(void) {
     dbg(myfoo);
     foo arr_foo[] = { myfoo, myfoo, (foo){ .x = 100, .y = -100 } };
     dbg_array(arr_foo, sizeof(arr_foo) / sizeof(*arr_foo));
+
+    dbg_array(argv, argc);
 
     set_breakpoint();
 
